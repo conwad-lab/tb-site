@@ -391,9 +391,9 @@
 })();
 </script>
 <script>
-// G2 gate: when the Cal.com account exists, set CALCOM_URL to the event URL —
-// the booking CTA swaps from mailto to the calendar automatically.
-var CALCOM_URL = null;
+// G2 CLOSED 2026-07-19: booking goes to the Cal.com event (verified 200).
+// The mailto in the markup stays as the no-JS fallback.
+var CALCOM_URL = 'https://cal.com/conny-wadbro-impk9g/architecture-review';
 if (CALCOM_URL) { var b = document.getElementById('book-cta'); if (b) { b.href = CALCOM_URL; b.target = '_blank'; b.rel = 'noopener'; } }
 </script>
 <script type="application/ld+json">
