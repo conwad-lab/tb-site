@@ -1,0 +1,412 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transformation & Beyond — Commercial excellence, law and AI</title>
+<meta name="description" content="Transformation & Beyond advises Nordic companies taking AI from pilot to auditable operations — commercial excellence, law and AI architecture in one advisor. Fixed-price Architecture Review: 75 000 SEK, two weeks.">
+<link rel="canonical" href="https://transformationbeyond.se/">
+<meta property="og:title" content="Transformation & Beyond — Commercial excellence, law and AI">
+<meta property="og:description" content="Advice from someone who stands in the build — artefacts before claims. Fixed-price Architecture Review, two weeks.">
+<meta property="og:url" content="https://transformationbeyond.se/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://transformationbeyond.se/assets/og-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#1C2022; --body:#3B3E42; --muted:#6B6E72;
+    --bronze:#8A6430; --bronze-deep:#5C421E; --rule:#1C2022; --hair:#E3DFD5;
+    --dark:#231F1A; --dark-ink:#EFEBE2;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --sans:"Hanken Grotesk","SF Pro Text",-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+  a{color:inherit}
+  ::selection{background:#E8D9BE;color:var(--bronze-deep)}
+  a:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+
+  /* ---- mono whisper: the shared label register (move 4) ---- */
+  .eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);margin:0 0 26px;display:flex;gap:14px;align-items:center;line-height:1.4}
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--hair)}
+
+  header{border-bottom:1px solid var(--rule)}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:74px}
+  .mark{font-family:var(--serif);font-weight:500;font-size:21px;text-decoration:none;letter-spacing:.005em}
+  .mark span{font-family:var(--mono);font-weight:500;font-size:.78em;color:var(--bronze)}
+  .nav-r{display:flex;gap:32px;align-items:center;font-size:14px;font-weight:500}
+  .nav-r a{text-decoration:none;color:var(--muted)}
+  .nav-r a:hover{color:var(--ink)}
+  .cta{font-family:var(--mono);font-size:12px;letter-spacing:.04em;background:var(--ink);color:var(--paper) !important;padding:12px 22px;text-decoration:none}
+  .cta:hover{background:#000}
+  @media(max-width:760px){.nav-r a:not(.cta){display:none}}
+
+  section{padding:clamp(64px,9vw,120px) 0}
+  section + section{border-top:1px solid var(--rule)}
+
+  /* ---- hero: collision, not coexistence (moves 1–3) ---- */
+  .hero{padding-top:clamp(56px,12vh,140px)}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,8.5vw,112px);line-height:.98;letter-spacing:-.02em;margin:.6em 0 .8em;max-width:15ch;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--bronze)}
+  .lede{font-size:17px;color:var(--body);max-width:36em;line-height:1.62;margin:0 0 18px}
+  .lede + .lede{margin-bottom:44px}
+  .lede b{color:var(--ink);font-weight:600}
+  .hero-ctas{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .cta-big{font-family:var(--mono);font-size:13px;letter-spacing:.04em;background:var(--ink);color:var(--paper);padding:16px 28px;text-decoration:none}
+  .cta-big:hover{background:#000}
+  .proof-link{font-size:14px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:2px}
+  .proof-link:hover{color:var(--ink)}
+  .hero-base{margin-top:clamp(48px,8vh,90px);font-size:13.5px;color:var(--muted)}
+  .hero-base a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
+  .hero-base a:hover{color:var(--ink)}
+  .hero-base b{color:var(--ink);font-weight:600}
+
+  /* ---- praktiken — tre lager (moves 5–6 register) ---- */
+  .lead-stmt{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24px,3.4vw,30px);line-height:1.24;color:var(--bronze);margin:0 0 44px;max-width:22ch;text-wrap:balance}
+  .lead-stmt b{font-style:normal;font-weight:500}
+  .layers{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+  .layer{padding:34px 30px 40px}
+  .layer + .layer{border-left:1px solid var(--rule)}
+  .layer .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:22px}
+  .layer h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 12px;line-height:1.1}
+  .layer p{font-size:14.5px;color:var(--body);margin:0;line-height:1.6}
+  @media(max-width:760px){.layers{grid-template-columns:1fr}.layer + .layer{border-left:none;border-top:1px solid var(--rule)}}
+
+  /* ---- arc: directional handoff (move 7 + motion) ---- */
+  .arc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule)}
+  .stage{padding:32px 26px 36px;position:relative}
+  .stage + .stage{border-left:1px solid var(--rule)}
+  .stage .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:18px}
+  .stage.here .k{color:var(--bronze)}
+  .stage h4{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 10px;line-height:1.1}
+  .stage p{font-size:13.5px;color:var(--muted);margin:0 0 14px;line-height:1.55}
+  .stage .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .stage.here{background:#FDFCF8}
+  .stage.here .who{color:var(--bronze)}
+  .arc-note{font-size:14px;color:var(--muted);margin-top:24px;max-width:46em}
+  .arc-note a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--bronze)}
+  @media(max-width:860px){.arc{grid-template-columns:1fr 1fr}.stage:nth-child(3),.stage:nth-child(4){border-top:1px solid var(--rule)}.stage:nth-child(3){border-left:none}}
+  @media(max-width:520px){.arc{grid-template-columns:1fr}.stage + .stage{border-left:none;border-top:1px solid var(--rule)}}
+
+  /* ---- grundaren — artefakt först (move 6) ---- */
+  .founder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,5fr);gap:clamp(32px,5vw,72px)}
+  .founder h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.4vw,40px);line-height:1.18;margin:0;text-wrap:balance}
+  .proofs{display:flex;flex-direction:column}
+  .proof{padding:22px 0;border-top:1px solid var(--hair)}
+  .proof:first-child{border-top:1px solid var(--rule)}
+  .proof .t{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:8px}
+  .proof .name{font-weight:600;color:var(--ink);font-size:16px}
+  .proof .d{font-size:14.5px;color:var(--body);line-height:1.55}
+  .proof .metric{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:block;margin-top:8px}
+  @media(max-width:760px){.founder{grid-template-columns:1fr}}
+
+  /* ---- dark band: earn the inversion (move 7) ---- */
+  .dark{background:var(--dark);color:var(--dark-ink);padding:14vh 0}
+  .dark .eyebrow{color:#B69463}
+  .dark .eyebrow::after{background:#4A4238}
+  .dark-in{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;flex-wrap:wrap}
+  .dark h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6vw,72px);margin:0;max-width:14ch;line-height:1.04;letter-spacing:-.015em}
+  .cta-bronze{font-family:var(--mono);font-size:13px;letter-spacing:.04em;background:var(--bronze);color:#fff;padding:17px 32px;text-decoration:none;white-space:nowrap}
+  .cta-bronze:hover{background:var(--bronze-deep)}
+
+  footer{border-top:1px solid var(--rule);padding:38px 0 56px;font-size:13px;color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+  .foot .mono{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+  .foot a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
+  .foot a:hover{color:var(--ink)}
+
+  /* ---- därför finns vi: gap-statement (Schumpeter-paret) ---- */
+  #darfor{padding:clamp(48px,7vw,88px) 0}
+  .gap-stmt{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3.2vw,38px);line-height:1.28;color:var(--ink);margin:0;max-width:30em;text-wrap:balance}
+  .gap-stmt em{font-style:italic;color:var(--bronze)}
+
+  /* ---- the questions we answer (Advise scope) ---- */
+  .qs{margin-top:40px;border:1px solid var(--rule);padding:26px 30px 30px}
+  .qs-k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:18px}
+  .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px}
+  .qs-grid span{font-family:var(--serif);font-size:18px;line-height:1.4;color:var(--body);padding-left:18px;position:relative}
+  .qs-grid span::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--bronze)}
+  @media(max-width:700px){.qs-grid{grid-template-columns:1fr}}
+
+  /* ---- the review: the buyable object ---- */
+  .offer{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);border:1px solid var(--rule);padding:clamp(28px,4vw,48px)}
+  .offer h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4vw,46px);margin:0 0 10px;line-height:1.06}
+  .price{font-family:var(--mono);font-size:15px;letter-spacing:.02em;color:var(--ink);margin:0 0 22px}
+  .price span{color:var(--muted);font-size:12px;letter-spacing:.06em}
+  .offer-lede{font-size:15.5px;color:var(--body);line-height:1.6;margin:0 0 30px;max-width:34em}
+  .offer-mech{display:flex;flex-direction:column}
+  .mrow{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--hair);font-size:14.5px;color:var(--body);line-height:1.55}
+  .mrow:first-child{border-top:1px solid var(--rule)}
+  .mk{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);padding-top:3px}
+  @media(max-width:860px){.offer{grid-template-columns:1fr}}
+
+  /* ---- kontakt booking block ---- */
+  .book{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  .book-sub{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#8F887C;line-height:1.9}
+  .book-sub a{color:inherit}
+
+  /* ---- shared motion primitive: rule-draw + text-settle (JS-added class only) ---- */
+  .reveal .r-rule{transform-origin:left center;transform:scaleX(0)}
+  .reveal .r-fade{opacity:0;transform:translateY(9px)}
+  .revealed .r-rule{transform:scaleX(1);transition:transform .5s cubic-bezier(.2,0,0,1)}
+  .revealed .r-fade{opacity:1;transform:none;transition:opacity .45s cubic-bezier(.2,0,0,1),transform .45s cubic-bezier(.2,0,0,1)}
+  .reveal[data-rule] > .r-rule-top{position:absolute;top:-1px;left:0;height:1px;width:100%;background:var(--bronze);transform-origin:left center;transform:scaleX(0)}
+  .revealed[data-rule] > .r-rule-top{transform:scaleX(1);transition:transform .55s cubic-bezier(.2,0,0,1)}
+  section{position:relative}
+  /* directional stagger on the arc */
+  .revealed .stage:nth-child(1){transition-delay:0ms}
+  .revealed .stage:nth-child(2){transition-delay:60ms}
+  .revealed .stage:nth-child(3){transition-delay:120ms}
+  .revealed .stage:nth-child(4){transition-delay:180ms}
+.amp-dev{font-family:var(--mono);font-weight:500;font-size:.78em;margin:0 .16em}.amp-dev.own{color:var(--bronze)}
+.mat-band{margin:0;border-top:1px solid #1C2022;border-bottom:1px solid #1C2022}.mat-band img{width:100%;height:280px;object-fit:cover;display:block}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a class="mark" href="#">Transformation <span>&amp;</span> Beyond</a>
+    <nav class="nav-r" aria-label="Primary">
+      <a href="#praktiken">What we do</a><a href="#arbetssatt">How we work</a><a href="#review">The review</a><a href="#grundaren">Who you get</a>
+      <a class="cta" href="#kontakt">Book the review</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none">
+    <div class="wrap">
+      <p class="eyebrow r-fade" style="max-width:460px">Advisory · Commercial excellence × Law × AI</p>
+      <h1 class="r-fade">Commercial excellence, law and&nbsp;AI —<br><em>in one advisor</em>, not three consultancies.</h1>
+      <p class="lede r-fade">Transformation<span class="amp-dev own">&amp;</span>Beyond advises Nordic companies taking AI from pilot to auditable operations.</p>
+      <p class="lede r-fade">The strategy comes from someone who builds the systems — <b>the architecture is open for review before you engage us.</b></p>
+      <div class="hero-ctas r-fade">
+        <a class="cta-big" href="#kontakt">Book the architecture review</a>
+        <a class="proof-link" href="#grundaren">Read the architecture decisions first →</a>
+      </div>
+      <p class="hero-base r-fade">Build &amp; Run are delivered by our sister company <a href="https://www.dignami.com" target="_blank" rel="noopener"><b>Dignami</b> ↗</a></p>
+    </div>
+  </section>
+
+  <figure class="mat-band"><!-- duotone raw material: Irene Demetri / Unsplash --><img style="height:220px" src="assets/contours-duotone.jpg" alt="Topographic contour layers in bronze duotone"></figure>
+  <section id="darfor" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow r-fade">Why we exist</p>
+      <p class="gap-stmt r-fade">The consulting giants understand your business but don't build the technology. The AI labs build the technology but don't understand your business. <em>We sit in the gap</em> — small by design, like the elite law firms.</p>
+    </div>
+  </section>
+
+  <section id="praktiken" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow r-fade">What we do — three disciplines, one advisor</p>
+      <p class="lead-stmt r-fade">Each discipline is common. <b>The combination in a single advisor is not.</b></p>
+      <figure style="margin:0 0 40px;max-width:640px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Three fine-lined horizontal strata representing business, legal, and AI architecture, separated by gaps, crossed by a single bronze bridging bar that overshoots past the bottom ruled line">
+  <title>Transformation &amp; Beyond — the gap</title>
+  <defs>
+    <pattern id="tb-hz" width="8" height="8" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="4" x2="8" y2="4" stroke="#1C2022" stroke-width="1" opacity="0.35"/>
+    </pattern>
+    <pattern id="tb-dg" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M-2 2 L2 -2 M0 8 L8 0 M6 10 L10 6" fill="none" stroke="#1C2022" stroke-width="1" opacity="0.35"/>
+    </pattern>
+    <pattern id="tb-gr" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M10 0 H0 V10" fill="none" stroke="#1C2022" stroke-width="1" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- ruled paper anchor -->
+  <line x1="60" y1="452.5" x2="740" y2="452.5" stroke="#1C2022" stroke-width="1" opacity="0.4"/>
+
+  <!-- stratum I : business -->
+  <g>
+    <rect x="140" y="84" width="460" height="56" fill="url(#tb-hz)" stroke="#1C2022" stroke-width="1.25"/>
+    <line x1="140" y1="90" x2="600" y2="90" stroke="#1C2022" stroke-width="1" opacity="0.7"/>
+  </g>
+
+  <!-- stratum II : legal -->
+  <g>
+    <rect x="170" y="196" width="470" height="56" fill="url(#tb-dg)" stroke="#1C2022" stroke-width="1.25"/>
+    <line x1="170" y1="202" x2="640" y2="202" stroke="#1C2022" stroke-width="1" opacity="0.7"/>
+  </g>
+
+  <!-- stratum III : AI architecture -->
+  <g>
+    <rect x="120" y="308" width="500" height="56" fill="url(#tb-gr)" stroke="#1C2022" stroke-width="1.25"/>
+    <line x1="120" y1="314" x2="620" y2="314" stroke="#1C2022" stroke-width="1" opacity="0.7"/>
+  </g>
+
+  <!-- gap measures, left margin -->
+  <g stroke="#1C2022" stroke-width="1">
+    <line x1="112" y1="141" x2="112" y2="195"/>
+    <line x1="106" y1="141" x2="118" y2="141"/>
+    <line x1="106" y1="195" x2="118" y2="195"/>
+    <line x1="112" y1="253" x2="112" y2="307"/>
+    <line x1="106" y1="253" x2="118" y2="253"/>
+    <line x1="106" y1="307" x2="118" y2="307"/>
+  </g>
+
+  <!-- edge ticks, right of each stratum -->
+  <g stroke="#1C2022" stroke-width="1">
+    <line x1="600" y1="112" x2="612" y2="112"/>
+    <line x1="640" y1="224" x2="652" y2="224"/>
+    <line x1="620" y1="336" x2="632" y2="336"/>
+  </g>
+
+  <!-- the bridge : one bronze element, solid only where it crosses the gaps,
+       overshooting past its terminus and through the ruled line -->
+  <g>
+    <rect x="496" y="140" width="8" height="56" fill="#8A6430"/>
+    <rect x="496" y="252" width="8" height="56" fill="#8A6430"/>
+    <rect x="496" y="60" width="8" height="412" fill="none" stroke="#8A6430" stroke-width="1.25"/>
+    <line x1="486" y1="60" x2="514" y2="60" stroke="#8A6430" stroke-width="1.25"/>
+    <line x1="486" y1="472" x2="514" y2="472" stroke="#8A6430" stroke-width="1.25"/>
+  </g>
+</svg></figure>
+      <div class="layers r-fade">
+        <div class="layer"><span class="k">01 · Business</span><h3>Commercial excellence &amp; strategy</h3><p>Two decades in consulting — sales leadership, pricing, go-to-market. We know how deals are won and how they scale.</p></div>
+        <div class="layer"><span class="k">02 · Law</span><h3>Commercial law</h3><p>A master's degree in commercial law. We read DORA, AMLR and the AI Act in the source text — not in summaries.</p></div>
+        <div class="layer"><span class="k">03 · Technology</span><h3>AI architecture</h3><p>We build agentic AI platforms that run in production — not slideware. The architectures are open for review.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="arbetssatt" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow r-fade">How we work — four stages, two companies</p>
+      <div class="arc">
+        <div class="stage here r-fade"><span class="k">01 · Here</span><h4>Advise</h4><p>Strategy, AI governance, regulatory gap analysis, project scoping.</p><span class="who">T&amp;B · project</span></div>
+        <div class="stage r-fade"><span class="k">02 · Build</span><h4>Build</h4><p>The audit-proof system is built with you: ledger, verification gate, sovereign runtime.</p><span class="who">Dignami · project</span></div>
+        <div class="stage r-fade"><span class="k">03 · Run</span><h4>Run</h4><p>The system runs on Dignami AOS — EU-only, immutable ledger, WORM retention.</p><span class="who">Dignami · platform</span></div>
+        <div class="stage r-fade"><span class="k">04 · Operate</span><h4>Operate</h4><p>Ongoing operations, monitoring and incident handling.</p><span class="who">Dignami · managed</span></div>
+      </div>
+      <p class="arc-note r-fade">Stage 1 lives here. Stages 2–4 are delivered by our sister company <a href="https://www.dignami.com" target="_blank" rel="noopener">Dignami — AI that survives cross-examination ↗</a></p>
+      <div class="qs r-fade">
+        <span class="qs-k">The questions we answer</span>
+        <div class="qs-grid">
+          <span>Which tasks should be automated — and which should not?</span>
+          <span>When is an open-source model enough?</span>
+          <span>How do the economics actually work?</span>
+          <span>How do you hedge the cost of tokens?</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="review" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow r-fade">The entry point — fixed price, fixed scope</p>
+      <div class="offer r-fade">
+        <div>
+          <h2>The Architecture Review</h2>
+          <p class="price">75 000 SEK <span>ex VAT · fixed scope · two weeks</span></p>
+          <p class="offer-lede">One question, answered to board standard: <b>where does your AI operation actually stand, and what should you do next?</b> Scoped to the four questions above — no implementation, no vendor theatre.</p>
+          <a class="cta-big" href="#kontakt">Book the review</a>
+        </div>
+        <div class="offer-mech">
+          <div class="mrow"><span class="mk">Week 1</span><span>Intake interview and an agentic-maturity assessment — where your automation stands today, placed on a six-rung capability ladder.</span></div>
+          <div class="mrow"><span class="mk">Week 2</span><span>Gap analysis and a decision memo — what to automate, what not to, and in which order.</span></div>
+          <div class="mrow"><span class="mk">You receive</span><span>A board-readable memo where every claim carries a resolvable citation, sealed with a verification hash.</span></div>
+          <div class="mrow"><span class="mk">Method</span><span>The same production flows we run on our own systems — reviewed before you pay for them.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="grundaren" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap founder">
+      <div>
+        <p class="eyebrow r-fade" style="max-width:280px">Who you get</p>
+        <h2 class="r-fade">The advice comes from someone who stands in the build — artefacts before claims.</h2>
+      </div>
+      <div class="proofs r-fade">
+        <div class="proof">
+          <span class="t">Platform</span>
+          <span class="d"><span class="name">Dignami AOS</span> — audit-proof AI platform: SHA-256 ledger, WORM retention, sovereign EU runtime.
+          <span class="metric">18 architecture decisions published for review</span></span>
+        </div>
+        <div class="proof">
+          <span class="t">In production</span>
+          <span class="d"><span class="name">Mondmodel</span> — AI-driven editorial platform in daily operation.
+          <span class="metric">9 destinations · 4 languages · autonomous operations</span></span>
+        </div>
+        <div class="proof">
+          <span class="t">Method</span>
+          <span class="d"><span class="name">Build-in-public</span> — architecture decisions published as we go. Review them before you engage us.</span>
+        </div>
+        <div class="proof">
+          <span class="t">Foundation</span>
+          <span class="d">Master's in commercial law · sales leadership in consulting · working AI architect. <b>One borderland, one advisor.</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <figure class="mat-band"><!-- duotone raw material: Max van den Oetelaar / Unsplash --><img src="assets/strata-duotone.jpg" alt="Layered rock strata in bronze duotone"></figure>
+  <section class="dark" id="kontakt" data-rule>
+    <span class="r-rule-top" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow r-fade">Contact</p>
+      <div class="dark-in">
+        <h2 class="r-fade">Review the build before you book the call.</h2>
+        <div class="book r-fade">
+          <a class="cta-bronze" id="book-cta" href="mailto:contact@transformationbeyond.se?subject=Architecture%20Review">Book the architecture review</a>
+          <span class="book-sub">75 000 SEK ex VAT · fixed scope · two weeks<br><a href="mailto:contact@transformationbeyond.se">contact@transformationbeyond.se</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-4px"><g fill="#1C2022"><rect x="12" y="6" width="4" height="18"/><rect x="4" y="12" width="18" height="6"/></g><rect x="22" y="12" width="6" height="6" fill="#8A6430"/></svg>&ensp;© 2026 Transformation &amp; Beyond AB</span>
+    <span class="mono">reg. no 559411-1634 · Lomma, Sweden</span>
+    <span><a href="https://www.dignami.com" target="_blank" rel="noopener">Build &amp; Run → Dignami ↗</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  if(!('IntersectionObserver' in window)) return;
+  var secs=document.querySelectorAll('main section');
+  Array.prototype.forEach.call(secs,function(s){s.classList.add('reveal');});
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}
+    });
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  Array.prototype.forEach.call(secs,function(s){io.observe(s);});
+  // hero is above the fold — reveal on next frame so its settle plays on load
+  var hero=document.querySelector('.hero');
+  if(hero){requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('revealed');});});}
+})();
+</script>
+<script>
+// G2 gate: when the Cal.com account exists, set CALCOM_URL to the event URL —
+// the booking CTA swaps from mailto to the calendar automatically.
+var CALCOM_URL = null;
+if (CALCOM_URL) { var b = document.getElementById('book-cta'); if (b) { b.href = CALCOM_URL; b.target = '_blank'; b.rel = 'noopener'; } }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Transformation & Beyond",
+  "legalName": "Transformation & Beyond AB",
+  "taxID": "559411-1634",
+  "url": "https://transformationbeyond.se/",
+  "email": "contact@transformationbeyond.se",
+  "address": {"@type": "PostalAddress", "addressLocality": "Lomma", "addressCountry": "SE"},
+  "areaServed": "Nordics",
+  "parentOrganization": {"@type": "Organization", "name": "Speed & Scale Ventures"},
+  "makesOffer": {"@type": "Offer", "name": "Architecture Review", "price": "75000", "priceCurrency": "SEK", "description": "Fixed-scope two-week AI architecture review: agentic-maturity assessment, gap analysis, board-readable decision memo with resolvable citations."}
+}
+</script>
