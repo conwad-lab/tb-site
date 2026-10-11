@@ -14,7 +14,7 @@ seats:
   conny: { claude: max, codex: plus }
 auth: max-only — ingen API-nyckel i rollernas miljö (bin/check-auth stoppar starten)
 
-merge: human
+merge: auto
 
 team: .claude/skills/agent-team @ v0.6.4-1-g719b86c
 <!-- upgrade with /agent-team upgrade, or: git submodule update --remote .claude/skills/agent-team -->
