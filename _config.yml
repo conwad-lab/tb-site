@@ -1,0 +1,9 @@
+# GitHub Pages (Jekyll): publish only the site, not the team's working files.
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
+  - README.md
+  - extract-assets.mjs
+  - docs
+  - .team
+  - .claude
