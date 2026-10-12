@@ -387,7 +387,11 @@
   if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
   if(!('IntersectionObserver' in window)) return;
   var secs=document.querySelectorAll('main section');
-  Array.prototype.forEach.call(secs,function(s){s.classList.add('reveal');});
+  window.addEventListener('scroll',function(){
+    Array.prototype.forEach.call(secs,function(s){
+      if(!s.classList.contains('revealed')&&s.getBoundingClientRect().top>=window.innerHeight){s.classList.add('reveal');}
+    });
+  },{once:true,passive:true});
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('revealed');io.unobserve(e.target);}
@@ -396,7 +400,7 @@
   Array.prototype.forEach.call(secs,function(s){io.observe(s);});
   // hero is above the fold — reveal on next frame so its settle plays on load
   var hero=document.querySelector('.hero');
-  if(hero){requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('revealed');});});}
+  if(hero){hero.classList.add('reveal');requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('revealed');});});}
 })();
 </script>
 <script>
