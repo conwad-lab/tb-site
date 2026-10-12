@@ -18,7 +18,7 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Rätta faktapåståenden på sidan: C1, C2, C3, C8 och C9 i briefen (examen, "two decades", juridisk avgränsning, `lang`). Liten PR, går först. 001
 - [x] Synka Dignami-referenser och bevis: C4, C5, C6 och C7 i briefen (ny Dignami-slogan, länk till /en/proof, källa för Mondmodel, AOS-status utan driftpåståenden). 002
-- [ ] Byt "How we work" mot kedjan Advise → Assurance → Platform och lägg till ett tydligt överlämningsblock till Dignami enligt briefen, avsnitt "Strukturändring". (efter rad 2)
+- [x] Byt "How we work" mot kedjan Advise → Assurance → Platform och lägg till ett tydligt överlämningsblock till Dignami enligt briefen, avsnitt "Strukturändring". (efter rad 2) 003
 - [ ] Design review enligt briefen, avsnitt "Design review": rapport + skärmbilder i `docs/`, ingen kodändring. Görs mot sidan före rad 3:s ändringar om rad 3 inte är mergad, annars mot den mergade sidan.
 
 ## Väntar på människan
@@ -31,5 +31,6 @@ PO skriver hit när en mergad PR kräver något bara människan får göra (heml
 infrastruktur, spend, beslut). Människan tar bort raden när det är gjort.
 
 - [ ] PR #1 (story 001, faktarättelser) är mergad och ligger live — kontrollera https://transformationbeyond.se/ (examen, "two decades", Law-raden, `lang="en"`).
-- [ ] Story 002 / C5: finns en publik URL till de 21 arkitekturbesluten? PO hittade ingen på dignami.com/en/proof 2026-10-12. Skriv URL:en här, annars blir det "available on request" (`.team/backlog/002-dignami-sync.md`).
-- [ ] Story 002 / C6: bekräfta att https://mondmodel.com är rätt publik källa för "9 destinations · 4 languages", eller ange en bättre sida (`.team/backlog/002-dignami-sync.md`).
+- [ ] PR #2 (story 002, Dignami-synk) är mergad och ligger live — kontrollera https://transformationbeyond.se/ (ny Dignami-slogan, "Examine the proof first" → /en/proof, statusetiketten "Built · In demo · Not in operation" i steg 03 och Platform-raden, källänk mondmodel.com).
+- [ ] Story 002 / C5: Architect hittade heller ingen publik URL till arkitekturbesluten (repona är privata). Sidan säger nu "available on request". Vill du publicera besluten, skriv URL:en här så blir det en ny Kö-rad; annars ta bort raden.
+- [ ] Story 002 / C6: mondmodel.com är nu källänk för "9 destinations · 4 languages" (Architect verifierade siffrorna i sajtkartan). "autonomous operations" går inte att verifiera där — behåll eller stryk? Svara här så skriver PO en Kö-rad vid behov.
