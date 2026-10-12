@@ -77,7 +77,7 @@
   @media(max-width:760px){.layers{grid-template-columns:1fr}.layer + .layer{border-left:none;border-top:1px solid var(--rule)}}
 
   /* ---- arc: directional handoff (move 7 + motion) ---- */
-  .arc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule)}
+  .arc{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule)}
   .stage{padding:32px 26px 36px;position:relative}
   .stage + .stage{border-left:1px solid var(--rule)}
   .stage .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:18px}
@@ -87,12 +87,16 @@
   .stage .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .status{display:block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .stage .status{margin-bottom:4px}
+  .stage .src{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block;margin-bottom:6px}
+  .stage .src a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
+  .stage .src a:hover{color:var(--ink)}
   .stage.here{background:#FDFCF8}
   .stage.here .who{color:var(--bronze)}
-  .arc-note{font-size:14px;color:var(--muted);margin-top:24px;max-width:46em}
-  .arc-note a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--bronze)}
-  @media(max-width:860px){.arc{grid-template-columns:1fr 1fr}.stage:nth-child(3),.stage:nth-child(4){border-top:1px solid var(--rule)}.stage:nth-child(3){border-left:none}}
-  @media(max-width:520px){.arc{grid-template-columns:1fr}.stage + .stage{border-left:none;border-top:1px solid var(--rule)}}
+  .handoff{margin-top:24px;border:1px solid var(--rule);border-left:3px solid var(--bronze);background:#FDFCF8;padding:26px 30px;max-width:46em}
+  .handoff .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:18px}
+  .handoff p{font-size:15px;color:var(--body);margin:0 0 8px}
+  .handoff a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--bronze)}
+  @media(max-width:860px){.arc{grid-template-columns:1fr}.stage + .stage{border-left:none;border-top:1px solid var(--rule)}}
 
   /* ---- grundaren — artefakt först (move 6) ---- */
   .founder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,5fr);gap:clamp(32px,5vw,72px)}
@@ -165,7 +169,6 @@
   .revealed .stage:nth-child(1){transition-delay:0ms}
   .revealed .stage:nth-child(2){transition-delay:60ms}
   .revealed .stage:nth-child(3){transition-delay:120ms}
-  .revealed .stage:nth-child(4){transition-delay:180ms}
 .amp-dev{font-family:var(--mono);font-weight:500;font-size:.78em;margin:0 .16em}.amp-dev.own{color:var(--bronze)}
 .mat-band{margin:0;border-top:1px solid #1C2022;border-bottom:1px solid #1C2022}.mat-band img{width:100%;height:280px;object-fit:cover;display:block}
 </style>
@@ -191,7 +194,7 @@
         <a class="cta-big" href="#kontakt">Book the architecture review</a>
         <a class="proof-link" href="https://www.dignami.com/en/proof" target="_blank" rel="noopener">Examine the proof first →</a>
       </div>
-      <p class="hero-base r-fade">Build &amp; Run are delivered by our sister company <a href="https://www.dignami.com/en" target="_blank" rel="noopener"><b>Dignami</b> ↗</a></p>
+      <p class="hero-base r-fade">Assurance and the platform are delivered by our sister company <a href="https://www.dignami.com/en" target="_blank" rel="noopener"><b>Dignami</b> ↗</a></p>
     </div>
   </section>
 
@@ -282,14 +285,13 @@
   <section id="arbetssatt" data-rule>
     <span class="r-rule-top" aria-hidden="true"></span>
     <div class="wrap">
-      <p class="eyebrow r-fade">How we work — four stages, two companies</p>
+      <p class="eyebrow r-fade">How we work — three links, two companies</p>
       <div class="arc">
-        <div class="stage here r-fade"><span class="k">01 · Here</span><h4>Advise</h4><p>Strategy, AI governance, regulatory gap analysis, project scoping.</p><span class="who">T&amp;B · project</span></div>
-        <div class="stage r-fade"><span class="k">02 · Build</span><h4>Build</h4><p>The audit-proof system is built with you: ledger, verification gate, sovereign runtime.</p><span class="who">Dignami · project</span></div>
-        <div class="stage r-fade"><span class="k">03 · Run</span><h4>Run</h4><p>Dignami AOS — compliance platform for regulated advice, financial advisers first.</p><span class="status">Built · In demo · Not in operation</span><span class="who">Dignami · platform</span></div>
-        <div class="stage r-fade"><span class="k">04 · Operate</span><h4>Operate</h4><p>Ongoing operations, monitoring and incident handling once a system goes live. Operation needs a separate decision.</p><span class="who">Dignami · later stage</span></div>
+        <div class="stage here r-fade"><span class="k">01 · Here</span><h4>Advise</h4><p>The Architecture Review — a board-standard answer on where your AI operation stands and what to do next. Strategy, AI governance, regulatory gap analysis, project scoping.</p><span class="who">T&amp;B · project</span></div>
+        <div class="stage r-fade"><span class="k">02 · Dignami</span><h4>Assurance</h4><p>Understand · Rethink · Rebuild. Every recommendation travels with an evidence pack; every claim has a status.</p><span class="who">Dignami · engagement</span></div>
+        <div class="stage r-fade"><span class="k">03 · Dignami AOS</span><h4>Platform</h4><p>Dignami AOS — compliance platform for regulated advice, financial advisers first.</p><span class="status">Built · In demo · Not in operation</span><span class="src"><a href="https://www.dignami.com/en/proof" target="_blank" rel="noopener">Status as published on dignami.com/en/proof ↗</a></span><span class="who">Dignami · platform</span></div>
       </div>
-      <p class="arc-note r-fade">Stage 1 lives here. Stages 2–4 are delivered by our sister company <a href="https://www.dignami.com/en" target="_blank" rel="noopener">Dignami — Your AI got faster. Your decisions didn't. ↗</a></p>
+      <div class="handoff r-fade"><span class="k">Hand-off → Dignami</span><p>Transformation &amp; Beyond advises; Dignami builds and runs; your counsel gives legal advice.</p><p>The Review's recommendations are carried forward in Dignami Assurance.</p><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Dignami — Your AI got faster. Your decisions didn't. ↗</a></div>
       <div class="qs r-fade">
         <span class="qs-k">The questions we answer</span>
         <div class="qs-grid">
@@ -376,7 +378,7 @@
   <div class="wrap foot">
     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-4px"><g fill="#1C2022"><rect x="12" y="6" width="4" height="18"/><rect x="4" y="12" width="18" height="6"/></g><rect x="22" y="12" width="6" height="6" fill="#8A6430"/></svg>&ensp;© 2026 Transformation &amp; Beyond AB</span>
     <span class="mono">reg. no 559411-1634 · Lomma, Sweden</span>
-    <span><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Build &amp; Run → Dignami ↗</a></span>
+    <span><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Assurance &amp; Platform → Dignami ↗</a></span>
   </div>
 </footer>
 
