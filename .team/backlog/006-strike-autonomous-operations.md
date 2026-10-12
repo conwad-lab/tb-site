@@ -1,7 +1,6 @@
 ---
 id: 006
 title: C6 — drop "autonomous operations" from the Mondmodel row
-parked-until: 005
 ---
 
 ## Outcome
@@ -22,3 +21,4 @@ Conny's decision (ORDER row 6, 2026-10-12): "autonomous operations" cannot be su
 
 ## Log
 - 2026-10-12 PO: created from ORDER row 6. Chained after 005 and before 007 so the one-word change ships early and does not collide with story 009, which restructures the same row.
+- 2026-10-12 PO: un-parked after 005 merged.
