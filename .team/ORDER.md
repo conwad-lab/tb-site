@@ -12,7 +12,7 @@ Regler:
 
 ## Kö
 
-- **merge: auto bekräftad av Conny 2026-10-12** för hela arbetsordern (rad 2–4).
+- **merge: auto bekräftad av Conny 2026-10-12** för hela arbetsordern, även design review-raderna och C6.
 
 Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — läs det först).
 
