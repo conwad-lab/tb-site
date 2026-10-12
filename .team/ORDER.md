@@ -21,8 +21,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 - [x] Byt "How we work" mot kedjan Advise → Assurance → Platform och lägg till ett tydligt överlämningsblock till Dignami enligt briefen, avsnitt "Strukturändring". (efter rad 2) 003
 - [x] Design review enligt briefen, avsnitt "Design review": rapport + skärmbilder i `docs/`, ingen kodändring. Görs mot sidan före rad 3:s ändringar om rad 3 inte är mergad, annars mot den mergade sidan. 004
 
-- [ ] Bygg design review-fynden D1–D8 enligt beslutslistan i `docs/design-review-2026-10.md`. D9 tas inte. Inom nuvarande identitet (palett, typsnitt, layout). Dela i flera stories om det behövs, D1 först.
-- [ ] C6: stryk "autonomous operations" i Mondmodel-raden — går inte att belägga på mondmodel.com. "9 destinations · 4 languages" med källänk står kvar.
+- [x] Bygg design review-fynden D1–D8 enligt beslutslistan i `docs/design-review-2026-10.md`. D9 tas inte. Inom nuvarande identitet (palett, typsnitt, layout). Dela i flera stories om det behövs, D1 först. 005, 007, 008, 009
+- [x] C6: stryk "autonomous operations" i Mondmodel-raden — går inte att belägga på mondmodel.com. "9 destinations · 4 languages" med källänk står kvar. 006
 
 ## Väntar på människan
 
