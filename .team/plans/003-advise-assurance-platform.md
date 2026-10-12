@@ -5,7 +5,7 @@ verdict: plan
 
 # Plan 003 — Replace "How we work" with Advise → Assurance → Platform and add a Dignami hand-off block
 
-Story: `.team/backlog/003-how-we-work-chain.md`
+Story: `.team/backlog/003-advise-assurance-platform.md`
 
 ## Approach
 Rewrite the `#arbetssatt` section of `index.html` (lines 283–293): four `.stage` cards become three, the `.arc-note` paragraph becomes a bordered hand-off block, and the `.arc` grid goes from four columns to three. Two one-line copy edits outside the section (hero base line 194, footer line 379). Every Dignami string below was re-fetched 2026-10-12 and is verbatim on dignami.com/en (slogan, "evidence pack", "Every claim has a status", AOS sentence), /en/about (roles sentence) and /en/products/aos ("Built, in demo", "No client records in operation").
