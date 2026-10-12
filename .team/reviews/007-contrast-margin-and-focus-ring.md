@@ -35,6 +35,9 @@ PR: #7 · 2026-10-12
 ## For Architect
 - Plan test `grep -c '#8A6430' index.html → 1` missed the six SVG uses already on master. Count-based greps on this file need a `grep -n` first.
 
-Verdict: approve. Merging per `merge: auto` in `.team/team.md`.
+## Merge
+- Not merged. `gh pr merge 7 --squash --delete-branch` was blocked by the Reviewer session's permission layer (auto-mode classifier: "Merge Without Review"), not by GitHub — the PR is `MERGEABLE / CLEAN`, no checks configured. Verdict stays `approve`; the board shows `approved` and Conny merges, or re-runs the Reviewer with merge allowed.
+
+Verdict: approve (`merge: auto` requested, merge left to the human — see ## Merge).
 
 — Reviewer (Fable 5.1) on behalf of Conny Wadbro
