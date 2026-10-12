@@ -12,6 +12,8 @@ Regler:
 
 ## Kö
 
+- **merge: auto bekräftad av Conny 2026-10-12** för hela arbetsordern (rad 2–4).
+
 Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — läs det först).
 
 - [x] Rätta faktapåståenden på sidan: C1, C2, C3, C8 och C9 i briefen (examen, "two decades", juridisk avgränsning, `lang`). Liten PR, går först. 001
