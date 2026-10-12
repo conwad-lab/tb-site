@@ -85,6 +85,7 @@
   .stage h4{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 10px;line-height:1.1}
   .stage p{font-size:13.5px;color:var(--muted);margin:0 0 14px;line-height:1.55}
   .stage .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .status{display:block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .stage.here{background:#FDFCF8}
   .stage.here .who{color:var(--bronze)}
   .arc-note{font-size:14px;color:var(--muted);margin-top:24px;max-width:46em}
@@ -102,6 +103,8 @@
   .proof .name{font-weight:600;color:var(--ink);font-size:16px}
   .proof .d{font-size:14.5px;color:var(--body);line-height:1.55}
   .proof .metric{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:block;margin-top:8px}
+  .proof .metric a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
+  .proof .metric a:hover{color:var(--ink)}
   @media(max-width:760px){.founder{grid-template-columns:1fr}}
 
   /* ---- dark band: earn the inversion (move 7) ---- */
@@ -185,9 +188,9 @@
       <p class="lede r-fade">The strategy comes from someone who builds the systems — <b>the architecture is open for review before you engage us.</b></p>
       <div class="hero-ctas r-fade">
         <a class="cta-big" href="#kontakt">Book the architecture review</a>
-        <a class="proof-link" href="#grundaren">Read the architecture decisions first →</a>
+        <a class="proof-link" href="https://www.dignami.com/en/proof" target="_blank" rel="noopener">Read the architecture decisions first →</a>
       </div>
-      <p class="hero-base r-fade">Build &amp; Run are delivered by our sister company <a href="https://www.dignami.com" target="_blank" rel="noopener"><b>Dignami</b> ↗</a></p>
+      <p class="hero-base r-fade">Build &amp; Run are delivered by our sister company <a href="https://www.dignami.com/en" target="_blank" rel="noopener"><b>Dignami</b> ↗</a></p>
     </div>
   </section>
 
@@ -282,10 +285,10 @@
       <div class="arc">
         <div class="stage here r-fade"><span class="k">01 · Here</span><h4>Advise</h4><p>Strategy, AI governance, regulatory gap analysis, project scoping.</p><span class="who">T&amp;B · project</span></div>
         <div class="stage r-fade"><span class="k">02 · Build</span><h4>Build</h4><p>The audit-proof system is built with you: ledger, verification gate, sovereign runtime.</p><span class="who">Dignami · project</span></div>
-        <div class="stage r-fade"><span class="k">03 · Run</span><h4>Run</h4><p>The system runs on Dignami AOS — EU-only, immutable ledger, WORM retention.</p><span class="who">Dignami · platform</span></div>
-        <div class="stage r-fade"><span class="k">04 · Operate</span><h4>Operate</h4><p>Ongoing operations, monitoring and incident handling.</p><span class="who">Dignami · managed</span></div>
+        <div class="stage r-fade"><span class="k">03 · Run</span><h4>Run</h4><p>Dignami AOS — compliance platform for regulated advice, financial advisers first.</p><span class="status">Built · In demo · Not in operation</span><span class="who">Dignami · platform</span></div>
+        <div class="stage r-fade"><span class="k">04 · Operate</span><h4>Operate</h4><p>Ongoing operations, monitoring and incident handling once a system goes live. Operation needs a separate decision.</p><span class="who">Dignami · later stage</span></div>
       </div>
-      <p class="arc-note r-fade">Stage 1 lives here. Stages 2–4 are delivered by our sister company <a href="https://www.dignami.com" target="_blank" rel="noopener">Dignami — AI that survives cross-examination ↗</a></p>
+      <p class="arc-note r-fade">Stage 1 lives here. Stages 2–4 are delivered by our sister company <a href="https://www.dignami.com/en" target="_blank" rel="noopener">Dignami — Your AI got faster. Your decisions didn't. ↗</a></p>
       <div class="qs r-fade">
         <span class="qs-k">The questions we answer</span>
         <div class="qs-grid">
@@ -332,17 +335,17 @@
       <div class="proofs r-fade">
         <div class="proof">
           <span class="t">Platform</span>
-          <span class="d"><span class="name">Dignami AOS</span> — audit-proof AI platform: SHA-256 ledger, WORM retention, sovereign EU runtime.
-          <span class="metric">21 architecture decisions — open for review before you engage</span></span>
+          <span class="d"><span class="name">Dignami AOS</span> — compliance platform for regulated advice: WORM archive, hash chain, policy gate. Architecture decisions available on request.
+          <span class="status">Built · In demo · Not in operation</span></span>
         </div>
         <div class="proof">
           <span class="t">In production</span>
           <span class="d"><span class="name">Mondmodel</span> — AI-driven editorial platform in daily operation.
-          <span class="metric">9 destinations · 4 languages · autonomous operations</span></span>
+          <span class="metric">9 destinations · 4 languages · autonomous operations · <a href="https://mondmodel.com" target="_blank" rel="noopener">source: mondmodel.com ↗</a></span></span>
         </div>
         <div class="proof">
           <span class="t">Method</span>
-          <span class="d"><span class="name">Build-in-public</span> — architecture decisions recorded as we build. Review them before you engage us.</span>
+          <span class="d"><span class="name">Build-in-public</span> — architecture decisions recorded as we build. Available on request before you engage us.</span>
         </div>
         <div class="proof">
           <span class="t">Foundation</span>
@@ -372,7 +375,7 @@
   <div class="wrap foot">
     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-4px"><g fill="#1C2022"><rect x="12" y="6" width="4" height="18"/><rect x="4" y="12" width="18" height="6"/></g><rect x="22" y="12" width="6" height="6" fill="#8A6430"/></svg>&ensp;© 2026 Transformation &amp; Beyond AB</span>
     <span class="mono">reg. no 559411-1634 · Lomma, Sweden</span>
-    <span><a href="https://www.dignami.com" target="_blank" rel="noopener">Build &amp; Run → Dignami ↗</a></span>
+    <span><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Build &amp; Run → Dignami ↗</a></span>
   </div>
 </footer>
 
