@@ -1,7 +1,6 @@
 ---
 id: 007
 title: D2 + D3 — more contrast margin for small mono text and a visible focus ring on dark
-parked-until: 006
 ---
 
 ## Outcome
@@ -24,3 +23,4 @@ Design review D2 and D3 (Should), `docs/design-review-2026-10.md`. Measured toda
 
 ## Log
 - 2026-10-12 PO: created from ORDER row 5 (D2 + D3 together: both are pure colour-value changes, one small PR). 5.5:1 target chosen by PO as "comfortable margin" since the report gives none; the Architect may pick higher.
+- 2026-10-12 PO: un-parked after 006 merged.
