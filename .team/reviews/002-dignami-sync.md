@@ -1,6 +1,6 @@
 ---
 id: 002
-verdict: request-changes
+verdict: approve
 ---
 <!-- verdict: approve | request-changes | escalate — the board reads this line from the PR branch. Keep it current on re-review.
      approve only with no Must fix open. escalate: a Must fix still disputed after the third round (add ## Escalation). -->
@@ -34,7 +34,31 @@ PR: #2 · 2026-10-12
 - Step 02 · Build still says "audit-proof system" and "sovereign runtime", neither on dignami.com. Out of scope here (ORDER row 3 rewrites the chain) but it is the last Dignami claim on the page without a source.
 - "Build-in-public" as the Method row name next to "available on request" — already flagged by Architect and Coder.
 
-## Merge
-Not merged: verdict is request-changes.
+## Round 2 — 2026-10-12
+
+Re-review of 73b5606 (code) and 38d5d13 (response). Diff since round 1: one `<a>` text, one CSS rule, two PNGs, the response file. Nothing else moved.
+
+### Round-1 answers
+- M1 — fixed in 73b5606, accepted. Hero link now reads "Examine the proof first →" and keeps `href="https://www.dignami.com/en/proof"` with `target="_blank" rel="noopener"`. dignami.com/en/proof opens on "Examine the work before you commit." today, so the text now promises what the destination delivers and no more. "Read the architecture decisions" appears nowhere on the page.
+- N1 — fixed in 73b5606, accepted. `.stage .status{margin-bottom:4px}`; measured gap between the Run status label and `.who` is 5 px at both widths, and the two labels read as separate lines in the 1440 px render.
+
+### Must fix
+- none open.
+
+### Should fix
+- none.
+
+### What I checked (round 2)
+- tests run: `python3 -m html.parser index.html` clean; `git diff --check` clean. Playwright 1.58 Chromium at 1440×900 and 390×844, scrolled to the bottom in steps, 1 s wait: 0 unrevealed `.reveal`/`.r-fade`, `compatMode === 'BackCompat'`, `lang === 'en'`. Page heights 6553 px and 7990 px — exactly the PR description's figures and the committed PNGs (1440×6553, 390×7990), +4 px over round 1 from the new margin, as expected.
+- links: every navigable `href` 200 with curl (site root, Google Fonts CSS, dignami.com/en, /en/proof, R2 sample PDF, mondmodel.com, the Cal.com URL in the script); `assets/favicon.svg` present; all five `#` anchors resolve. Both raw.githubusercontent.com screenshot URLs in the PR body return 200 and point at 73b5606, the final code commit. Preconnect bare hosts excluded as before.
+- grep assertions from the plan unchanged: "cross-examination", "runs on Dignami AOS", "Dignami · managed", "SHA-256", "21 architecture", "Read the architecture decisions" → 0; bare `href="https://www.dignami.com"` → 0; `dignami.com/en` → 4; "Built · In demo · Not in operation" → 2. "audit-proof"/"sovereign" survive only in step 02 (line 288), out of scope per story.
+- Dignami status re-fetched 2026-10-12 (round 2): /en still titles "Your AI got faster. Your decisions didn't." and says "some built, in demo, others not in operation; none operates with client records"; /en/products/aos still "Production infrastructure is not in operation", WORM archive / hash chain / policy gate "Built, in demo"; /en/proof "Current product status — no client data"; /en/how-it-works "Operation needs a separate decision." verbatim. Label follows Dignami's published status today. "SHA-256", "sovereign", "audit-proof", "EU-only" absent from /en, /en/proof, /en/about, /en/products/aos, /en/how-it-works (the string "SHA-256" on /en/evidence refers to private-source hashes, not a ledger). No public ADR URL: /en/evidence lists ADRs by file path marked "Not published".
+- PR description: every claim re-checked against the diff and my runs (heights, tests, link check, pages compared, screenshot links, plan differences, For PO) — all hold.
+- rulebook: no `AGENTS.md`, `.team/team.md`, `REVIEW.md` or `.team/roles/` change in the PR.
+- scope vs story: price block, booking CTA, `CNAME`, hosts and fonts untouched; footer and hero base change `href` only; CSS additions limited to `.status`, `.stage .status`, `.proof .metric a`.
+- `gh pr checks 2`: no checks configured (Pages build only), nothing pending or failing.
+- Second reviewer: not run — Team settings list no Second-reviewer paths.
+
+Verdict: approve. Merging per `merge: auto` in `.team/team.md`.
 
 — Reviewer (Fable 5.1) on behalf of Conny Wadbro
