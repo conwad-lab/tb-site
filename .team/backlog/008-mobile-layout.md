@@ -1,7 +1,6 @@
 ---
 id: 008
 title: D4 + D5 + D7 — mobile hero, navigation and offer rows at 390 px
-parked-until: 007
 ---
 
 ## Outcome
@@ -24,3 +23,4 @@ Design review D4, D5 and D7 (Should), `docs/design-review-2026-10.md`, with crop
 
 ## Log
 - 2026-10-12 PO: created from ORDER row 5. D4, D5 and D7 grouped because all three are 390-px CSS changes with no copy; one PR.
+- 2026-10-13 PO: un-parked after 007 merged (PR #7).
