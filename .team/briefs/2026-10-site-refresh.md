@@ -13,7 +13,7 @@ uttryckligen inte påstår. Två sajter som säljer till samma ledningsgrupp få
 ## Fasta beslut
 
 1. **Rollfördelning (från dignami.com/en/about):** "Transformation & Beyond advises; Dignami builds and runs; your counsel gives legal advice."
-2. **Erbjudanden:** T&B:s ingång är kvar — *The Architecture Review*, 75 000 SEK ex VAT, fast omfattning, två veckor, Cal.com-bokningen oförändrad.
+2. **Erbjudanden:** T&B:s ingång är kvar — *The Architecture Review* (**omdöpt 2026-10-13 till *The AI Value Review*, se ORDER**), 75 000 SEK ex VAT, fast omfattning, två veckor, Cal.com-bokningen oförändrad.
    Nästa steg efter reviewn är **Dignami Assurance** (Understand · Rethink · Rebuild, med evidence pack). Dignami AOS nämns som Dignamis compliance-plattform, med samma status som Dignami själv anger.
 3. **Design:** T&B behåller sin egen identitet (papper/brons, Newsreader + Hanken Grotesk, topografiska band). Ingen omgörning till Dignamis mörka petrol-stil.
    Samordning sker i bevisspråk (statusetiketter, källrader) och i överlämningen till Dignami — inte i palett eller typografi.
