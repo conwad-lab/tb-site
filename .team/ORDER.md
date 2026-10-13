@@ -40,3 +40,4 @@ infrastruktur, spend, beslut). Människan tar bort raden när det är gjort.
 - [ ] PR #5 (story 005, D1 reveal-fallback) är mergad och ligger live — kontrollera https://transformationbeyond.se/ (allt innehåll syns utan att scrolla, t.ex. i en länkförhandsvisning; scroll-animationen spelar fortfarande).
 - [ ] PR #6 (story 006, C6) är mergad och ligger live — kontrollera https://transformationbeyond.se/ (Mondmodel-raden: "9 destinations · 4 languages · source: mondmodel.com", inget "autonomous operations").
 - [ ] PR #7 (story 007, D2 + D3) är mergad och ligger live — kontrollera https://transformationbeyond.se/ (mörkare brons/grå på små mono-etiketter, ljus bronsfokusring på det mörka bokningsbandet).
+- [ ] PR #8 (story 008, D4 + D5 + D7 mobil) är mergad och ligger live — kontrollera https://transformationbeyond.se/ på mobil 390 px (hero-rubrikens radbrytning, märke + "Book the review" i navigationen, erbjudanderaderna med etikett ovanför texten).

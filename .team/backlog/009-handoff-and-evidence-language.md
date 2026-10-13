@@ -1,7 +1,6 @@
 ---
 id: 009
 title: D6 + D8 — hand-off as the outcome of the chain, one status-and-source pattern
-parked-until: 008
 ---
 
 ## Outcome
@@ -27,3 +26,4 @@ Design review D6 and D8 (Should), `docs/design-review-2026-10.md`, sections "Han
 
 ## Log
 - 2026-10-12 PO: created from ORDER row 5. D6 and D8 grouped because both restructure the same section and the proof rows, with copy changes the Reviewer must trace to dignami.com; one PR. Last in the chain because it is the largest.
+- 2026-10-13 PO: un-parked after 008 merged (PR #8).
