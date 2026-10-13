@@ -23,6 +23,7 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Bygg design review-fynden D1–D8 enligt beslutslistan i `docs/design-review-2026-10.md`. D9 tas inte. Inom nuvarande identitet (palett, typsnitt, layout). Dela i flera stories om det behövs, D1 först. 005, 007, 008, 009
 - [x] C6: stryk "autonomous operations" i Mondmodel-raden — går inte att belägga på mondmodel.com. "9 destinations · 4 languages" med källänk står kvar. 006
+- [ ] Byt namn på ingångserbjudandet: "The Architecture Review" → "The AI Value Review" överallt på sidan (rubriker, CTA-knappar som "Book the architecture review", nav, `<title>`, meta description, OG-taggar, JSON-LD). Pris (75 000 SEK ex VAT), omfattning, två veckor, Cal.com-URL:en och sample-PDF:ens URL ändras inte. Länktexten till sample-PDF:en får beskriva den som "a sample review of our own orchestrator". Ändra inte Dignamis "decision review". Cal.com-eventets titel byter Conny själv — skriv det som Operatör-rad. (efter 009)
 
 ## Väntar på människan
 
