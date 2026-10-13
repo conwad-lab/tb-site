@@ -16,8 +16,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <style>
   :root{
-    --paper:#F7F5F0; --ink:#1C2022; --body:#3B3E42; --muted:#6B6E72;
-    --bronze:#8A6430; --bronze-deep:#5C421E; --rule:#1C2022; --hair:#E3DFD5;
+    --paper:#F7F5F0; --ink:#1C2022; --body:#3B3E42; --muted:#5B5E62;
+    --bronze:#7A5729; --bronze-deep:#5C421E; --rule:#1C2022; --hair:#E3DFD5;
     --dark:#231F1A; --dark-ink:#EFEBE2;
     --serif:"Newsreader",Georgia,"Times New Roman",serif;
     --sans:"Hanken Grotesk","SF Pro Text",-apple-system,"Helvetica Neue",Arial,sans-serif;
@@ -115,10 +115,11 @@
   /* ---- dark band: earn the inversion (move 7) ---- */
   .dark{background:var(--dark);color:var(--dark-ink);padding:14vh 0}
   .dark .eyebrow{color:#B69463}
+  .dark a:focus-visible{outline-color:#B69463}
   .dark .eyebrow::after{background:#4A4238}
   .dark-in{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;flex-wrap:wrap}
   .dark h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6vw,72px);margin:0;max-width:14ch;line-height:1.04;letter-spacing:-.015em}
-  .cta-bronze{font-family:var(--mono);font-size:13px;letter-spacing:.04em;background:var(--bronze);color:#fff;padding:17px 32px;text-decoration:none;white-space:nowrap}
+  .cta-bronze{font-family:var(--mono);font-size:13px;letter-spacing:.04em;background:#8A6430;color:#fff;padding:17px 32px;text-decoration:none;white-space:nowrap}
   .cta-bronze:hover{background:var(--bronze-deep)}
 
   footer{border-top:1px solid var(--rule);padding:38px 0 56px;font-size:13px;color:var(--muted)}
@@ -154,7 +155,7 @@
 
   /* ---- kontakt booking block ---- */
   .book{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
-  .book-sub{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#8F887C;line-height:1.9}
+  .book-sub{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#A39C8F;line-height:1.9}
   .book-sub a{color:inherit}
 
   /* ---- shared motion primitive: rule-draw + text-settle (JS-added class only) ---- */
