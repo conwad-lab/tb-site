@@ -88,15 +88,15 @@
   .stage p{font-size:13.5px;color:var(--muted);margin:0 0 14px;line-height:1.55}
   .stage .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .status{display:block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .stage .status{margin-bottom:4px}
-  .stage .src{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block;margin-bottom:6px}
-  .stage .src a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
-  .stage .src a:hover{color:var(--ink)}
+  .src{display:block;margin-top:4px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .src a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
+  .src a:hover{color:var(--ink)}
+  .stage .src{margin-bottom:6px}
   .stage.here{background:#FDFCF8}
   .stage.here .who{color:var(--bronze)}
-  .handoff{margin-top:24px;border:1px solid var(--rule);border-left:3px solid var(--bronze);background:#FDFCF8;padding:26px 30px;max-width:46em}
-  .handoff .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:18px}
-  .handoff p{font-size:15px;color:var(--body);margin:0 0 8px}
+  .handoff{margin-top:0;border:0;border-left:3px solid var(--bronze);background:none;padding:22px 30px 2px;max-width:46em}
+  .handoff .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:12px}
+  .handoff p{font-size:14.5px;line-height:1.55;color:var(--body);margin:0 0 10px}
   .handoff a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--bronze)}
   @media(max-width:860px){.arc{grid-template-columns:1fr}.stage + .stage{border-left:none;border-top:1px solid var(--rule)}}
 
@@ -109,9 +109,6 @@
   .proof .t{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:8px}
   .proof .name{font-weight:600;color:var(--ink);font-size:16px}
   .proof .d{font-size:14.5px;color:var(--body);line-height:1.55}
-  .proof .metric{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:block;margin-top:8px}
-  .proof .metric a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair)}
-  .proof .metric a:hover{color:var(--ink)}
   @media(max-width:760px){.founder{grid-template-columns:1fr}}
 
   /* ---- dark band: earn the inversion (move 7) ---- */
@@ -293,9 +290,9 @@
       <div class="arc">
         <div class="stage here r-fade"><span class="k">01 · Here</span><h4>Advise</h4><p>The Architecture Review — a board-standard answer on where your AI operation stands and what to do next. Strategy, AI governance, regulatory gap analysis, project scoping.</p><span class="who">T&amp;B · project</span></div>
         <div class="stage r-fade"><span class="k">02 · Dignami</span><h4>Assurance</h4><p>Understand · Rethink · Rebuild. Every recommendation travels with an evidence pack; every claim has a status.</p><span class="who">Dignami · engagement</span></div>
-        <div class="stage r-fade"><span class="k">03 · Dignami AOS</span><h4>Platform</h4><p>Dignami AOS — compliance platform for regulated advice, financial advisers first.</p><span class="status">Built · In demo · Not in operation</span><span class="src"><a href="https://www.dignami.com/en/proof" target="_blank" rel="noopener">Status as published on dignami.com/en/proof ↗</a></span><span class="who">Dignami · platform</span></div>
+        <div class="stage r-fade"><span class="k">03 · Dignami AOS</span><h4>Platform</h4><p>Dignami AOS — compliance platform for regulated advice, financial advisers first.</p><span class="status">Built · In demo · Not in operation</span><span class="src">Dignami: “some built, in demo, others not in operation; none operates with client records” · <a href="https://www.dignami.com/en/proof#status-table" target="_blank" rel="noopener">source: dignami.com/en/proof ↗</a></span><span class="who">Dignami · platform</span></div>
       </div>
-      <div class="handoff r-fade"><span class="k">Hand-off → Dignami</span><p>Transformation &amp; Beyond advises; Dignami builds and runs; your counsel gives legal advice.</p><p>The Review's recommendations are carried forward in Dignami Assurance.</p><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Dignami — Your AI got faster. Your decisions didn't. ↗</a></div>
+      <div class="handoff r-fade"><span class="k">Hand-off → Dignami</span><p>Transformation &amp; Beyond advises; Dignami builds and runs; your counsel gives legal advice. Review recommendations continue through Dignami Assurance.</p><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Explore Dignami Assurance ↗</a></div>
       <div class="qs r-fade">
         <span class="qs-k">The questions we answer</span>
         <div class="qs-grid">
@@ -343,12 +340,14 @@
         <div class="proof">
           <span class="t">Platform</span>
           <span class="d"><span class="name">Dignami AOS</span> — compliance platform for regulated advice: WORM archive, hash chain, policy gate. Architecture decisions available on request.
-          <span class="status">Built · In demo · Not in operation</span></span>
+          <span class="status">Built · In demo · Not in operation</span>
+          <span class="src">Dignami: “some built, in demo, others not in operation; none operates with client records” · <a href="https://www.dignami.com/en/proof#status-table" target="_blank" rel="noopener">source: dignami.com/en/proof ↗</a></span></span>
         </div>
         <div class="proof">
           <span class="t">In production</span>
-          <span class="d"><span class="name">Mondmodel</span> — AI-driven editorial platform in daily operation.
-          <span class="metric">9 destinations · 4 languages · <a href="https://mondmodel.com" target="_blank" rel="noopener">source: mondmodel.com ↗</a></span></span>
+          <span class="d"><span class="name">Mondmodel</span> — AI-driven editorial platform.
+          <span class="status">In production · daily editorial operation</span>
+          <span class="src">9 destinations · 4 languages · <a href="https://mondmodel.com" target="_blank" rel="noopener">source: mondmodel.com ↗</a></span></span>
         </div>
         <div class="proof">
           <span class="t">Method</span>
