@@ -37,11 +37,11 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Coder extras:** keep `README.md` deploy notes current if hosting details change. Team files (`AGENTS.md`, `CLAUDE.md`, `.team/`, `docs/`, `README.md`) must stay excluded from the published site via `_config.yml`.
 - **Docs to verify:** `README.md`
 
-## If you are Codex, started by an `@codex` comment
+## If you are Codex, started by a task or an `@codex` comment
 
 You are the **Coder** (`.claude/skills/agent-team/team/roles/coder.md`, with `.team/CLOUD.md` taking precedence). In short:
 
-- The comment names a plan in `.team/plans/` and a story in `.team/backlog/`. Read both, this file and `.team/CLOUD.md`. Build exactly what the plan says; anything else you notice goes under **For PO** in the PR body.
+- The task or comment names a plan in `.team/plans/` and a story in `.team/backlog/`. Read both, this file and `.team/CLOUD.md`. Build exactly what the plan says; anything else you notice goes under **For PO** in the PR body.
 - Run the **Test before commit** checks you can run in your environment. Say in the PR body which ran and which did not, and why. Never claim a check you did not run.
 - PR against `master`, title `NNN: <story title>`, body: what, why, how you tested, deviations from the plan, **For PO**. Link the issue with `Closes #<n>`.
 - On `@codex fix …`: answer every Must and Should fix named in the review file in `.team/reviews/NNN-slug.response.md` on the same branch — `M1: fixed in <sha>` or `M1: disputed — <reason>`. Never edit the review file. Push to the same branch.

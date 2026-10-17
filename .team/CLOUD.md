@@ -22,16 +22,16 @@ ORDER row → story + plan (master) → issue + @codex → Codex PR → review �
 ```
 
 1. **Coordinator, as PO:** writes `.team/backlog/NNN-slug.md`, ticks the ORDER row. As Architect: reads the code, runs the **Baseline**, writes `.team/plans/NNN-slug.md`. Commits both to master (`team(po): …`, `team(architect): …`) and pushes. Team files are excluded from the site, so this push changes nothing live.
-2. **Coordinator, handoff:** opens an issue titled `NNN: <story title>` with links to the story and the plan, then posts **one** comment, exactly:
+2. **Coordinator, handoff:** opens an issue titled `NNN: <story title>` with links to the story and the plan, then starts **one** Codex cloud task in the environment `tb-site` (Codex → Moln → tb-site; through the human's browser, or the human pastes it) with exactly:
 
    ```
-   @codex implement .team/plans/NNN-slug.md for story .team/backlog/NNN-slug.md.
+   Implement .team/plans/NNN-slug.md for story .team/backlog/NNN-slug.md in conwad-lab/tb-site.
    Read AGENTS.md first. Open a PR against master titled "NNN: <story title>" whose body says "Closes #<issue>". Do not merge.
    ```
-   The Coordinator's part ends here. It does not watch the PR.
+   Not an `@codex` comment: as of 2026-10-17 a non-review `@codex` comment gets "To use Codex here, create an environment for this repo" even though the environment exists (known Codex bug, issue #12). Smoke test via a direct task: PR #13, correct on the first try. Switch back to the comment when the bug is fixed. The Coordinator's part ends here. It does not watch the PR.
 3. **Codex** implements, runs the checks it can run (see Checks), opens the PR.
 4. **Reviewer:** a Claude cloud session is started on the PR (by the human, or by the Projects coordinator once it exists). It checks out the PR branch, reads story and plan, reads the whole diff, runs every check it can, tries to break it — per `$TEAM/roles/reviewer.md` steps 1–3 and **Review checks** in Team settings. It writes `.team/reviews/NNN-slug.md` from `$TEAM/templates/review.md`, commits it to the PR branch (`team(reviewer): review NNN`), pushes, and posts the file as a PR comment.
-5. **Request-changes:** the Reviewer posts **one** more comment, exactly:
+5. **Request-changes:** the Reviewer posts **one** more comment, exactly (untested — if it hits the same bug as step 2, the same text goes into a direct Codex task on the PR branch instead):
 
    ```
    @codex fix M1, M2, S1 from .team/reviews/NNN-slug.md on this branch.
@@ -68,7 +68,7 @@ Read off GitHub, keyed on the `NNN:` in the issue and PR titles:
 | If | then | whose turn |
 |---|---|---|
 | story, no plan | ready | Coordinator |
-| plan, no issue with `@codex` | planned | Coordinator (handoff) |
+| plan, no issue / Codex task | planned | Coordinator (handoff) |
 | issue, no PR | in-progress | Codex |
 | PR, no review file, or commits newer than it | in-review | Reviewer |
 | review says `request-changes` and is newer than the last commit | changes-requested | Codex (after the `@codex fix` comment) |
@@ -82,14 +82,14 @@ During the test the human merges every PR, whatever `merge:` says: cloud verdict
 
 ## Quota
 
-- One `@codex` comment per handoff and one per review round. No re-pinging.
+- One Codex task (or `@codex` comment) per handoff and one per review round. No re-pinging.
 - Coordinator runs on a smaller model or lower effort; planning a story is not where the budget should go.
 - Reviewer sessions stop watching the PR after `approve` or `escalate`.
 - No polling loops in any session.
 
 ## Measured during the test (until 2026-11-03)
 
-1. Does Codex start on an `@codex` comment posted from a Claude session? (These sessions post under the human's account.)
+1. Does Codex start on an `@codex` comment posted from a Claude session? **No (2026-10-17):** Codex reads it but answers with the missing-environment bug. A direct task works (PR #13). Still open: does `@codex fix` on a PR work?
 2. Does the loop code → review → fix converge?
 3. Does the Claude review find real faults?
 4. Usage: Claude quota, Codex quota, GitHub Actions minutes.
