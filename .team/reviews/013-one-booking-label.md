@@ -41,3 +41,19 @@ PR: #17 · 2026-10-17 · head `9fbd68a` · base `eea6616` (= current master, mer
 - **Not run:** Second reviewer (Team settings: no second-reviewer paths). My own screenshots could not be uploaded to GitHub from this session (REST has no image upload); they exist locally in the reviewer session and match the Coder's committed ones.
 
 — Reviewer (Claude) on behalf of Conny Wadbro
+
+## 2026-10-17 — second Reviewer session concurs (independent run)
+
+Verdict unchanged: **approve**. This local Reviewer session (`reviewer/` clone, Fable 5.1) reviewed `9fbd68a` in parallel without seeing the section above, reached the same findings, and adds its screenshots.
+
+- Reproduced every check above on `9fbd68a`: `html.parser` exit 0; `git diff --check` clean; diff is exactly L182/L195/L373, 3+/3−; grep counts 4/0/0; rulebook, `CNAME`, price, footer, `subject=`, `CALCOM_URL` and script block untouched.
+- Playwright 1.58.2 Chromium, scrolled to bottom, 1440×900 and 390×844: all four CTAs read "Book a scoping call" on one line; at 390 the nav CTA is 43.19 × 189.92 px in a 122.78 px `.nav`, `scrollWidth` 390 = `innerWidth`; `#book-cta` rewrites to the Cal.com URL with `target=_blank rel=noopener`; Cal.com URL 200.
+- href check: every `http(s)` link 200, all six anchors resolve, favicon exists; bare preconnect hosts 404 as documents (expected). Opened the Coder's committed PNGs: nav/hero and `#kontakt` show the new label at both widths.
+- Concur with N1 and N2. One addition for PO, out of scope for 013: in `#kontakt` the button "Book a scoping call" sits directly above "75 000 SEK ex VAT · fixed scope · two weeks"; a first-time reader can take the price as the call's. Same adjacency pre-exists in the offer block. Copy decision, not a defect.
+
+Reviewer screenshots on branch `evidence/013-review-screenshots` (`263c8db`): [1440×900](https://github.com/conwad-lab/tb-site/blob/263c8db/1440x900.png) · [390×844](https://github.com/conwad-lab/tb-site/blob/263c8db/390x844.png).
+
+## Merge
+Not merged by the Reviewer: `.team/CLOUD.md` says the human merges every PR during the cloud test, whatever `merge:` says. Merging deploys to production; Conny checks the live page afterwards (Operatör trigger). Both Reviewer sessions stop watching PR #17.
+
+— Reviewer (Claude) on behalf of Conny Wadbro
