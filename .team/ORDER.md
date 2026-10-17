@@ -29,6 +29,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Gör om The AI Value Review så att den läses som en ledningens genomgång (management review) för ledningsgruppen, som föregår Dignami Assurance. Beställd av Conny 2026-10-17; inriktning: ledningens genomgång, inte ISO 42001-struktur. Pris, omfattning, två veckor, URL:er och CTA-texter oförändrade. 012
 
+- [x] Samma text på alla bokningsknappar: "Book a scoping call" i menyn, hero, erbjudandet och bokningsbandet. Länkar, Cal.com-URL och mailto-adress oförändrade. Beslutat av Conny 2026-10-17. (efter 012) 013
+
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
@@ -49,3 +51,5 @@ infrastruktur, spend, beslut). Människan tar bort raden när det är gjort.
 - [ ] PR #10 (story 010, namnbyte) är mergad och ligger live — kontrollera https://transformationbeyond.se/ ("The AI Value Review" i rubrik, steg 01, båda CTA-knapparna, meta/OG-text och JSON-LD; sample-PDF-länken säger "a sample review of our own orchestrator"). Cal.com-titeln: se raden nedan.
 - [ ] Story 010 (namnbyte → "The AI Value Review"): byt Cal.com-eventets titel själv (https://cal.com/conny-wadbro-impk9g/architecture-review; URL:en ska vara kvar) när PR:en för 010 är mergad. Visar OG-bilden på R2 (`brand/tb/og-1200x630.png`) eller sample-PDF:en det gamla namnet? Då behövs nya filer från dig — skriv här.
 - [ ] Story 012 (The AI Value Review som ledningens genomgång): gör en tidsbudget för sex intervjuer à 45 min innan första leveransen (panelens CFO: noll marginal vid tio intervjuer och 1 250 kr/h), och avtal/GDPR-underlag för läsåtkomst till användningsdata (panelens jurist).
+- [ ] Story 013 (bokningsknappar): byt titel på Cal.com-eventet (https://cal.com/conny-wadbro-impk9g/architecture-review; URL:en ska vara kvar) till "AI Value Review — scoping call". Ersätter tidigare titelrad för story 010.
+- [ ] Ny provrapport-PDF (beslut 2026-10-17): ett ledningsmemo med den sexgradiga trappan, inte "Architecture Review — Arnold OS" med grundaren som beslutsägare. Lägg den på R2 och skriv URL:en här; länkbytet blir en egen story.
