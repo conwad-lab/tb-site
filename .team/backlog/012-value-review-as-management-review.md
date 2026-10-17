@@ -25,3 +25,4 @@ Conny, 2026-10-17: the review should read as a management review held before Dig
 
 ## Log
 - 2026-10-17 PO: created from Conny's ask; one question asked (framing) → "Ledningens genomgång". First real story through cloud mode (CLOUD.md), Codex started by direct task.
+- 2026-10-17 PO: advisory panel (7 roles) advised not to merge PR #15 as is. Conny decided: strike "regulatory gap analysis" from stage 01; sample PDF is a management memo with the six-rung ladder; no cost data, so cap week 1 at six interviews. Plan rewritten as round 2; same PR.
