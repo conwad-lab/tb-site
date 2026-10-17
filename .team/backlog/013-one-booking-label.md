@@ -3,8 +3,6 @@ id: 013
 title: One booking label — "Book a scoping call" on every booking button
 ---
 
-parked-until: 012
-
 ## Outcome
 Every button that books the intro call says "Book a scoping call", so a visitor sees one action under one name.
 
@@ -24,3 +22,4 @@ Review 012 (N5): after PR #15 the page has three labels for the same Cal.com int
 
 ## Log
 - 2026-10-17 PO: created from ORDER row 013, parked until 012 (PR #15) is merged because it edits the same lines.
+- 2026-10-17 PO: un-parked; 012 merged (PR #15).
