@@ -6,7 +6,7 @@ project: transformationbeyond.se
 models:
   product-owner: claude-fable-5-1
   architect: claude-fable-5-1
-  coder: codex (GPT) — cloud, started by @codex
+  coder: codex (GPT) — cloud, started by a direct Codex task (see .team/CLOUD.md)
   reviewer: claude-fable-5-1 — cloud session per PR
 
 # One seat = one human's subscriptions; every commit carries `Seat: <name>`.

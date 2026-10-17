@@ -8,9 +8,9 @@ The team runs as cloud sessions instead of four local clones. `$TEAM/TEAM.md` an
 
 | Role | Runs as | Writes | Never |
 |---|---|---|---|
-| PO + Architect | **Coordinator**: one Claude cloud session (claude.ai/code; later the Projects coordinator) | `.team/backlog/`, `.team/ORDER.md`, `.team/plans/` on master; the handoff issue and its `@codex` comment | code, reviews |
-| Coder | **Codex** in the cloud, started by an `@codex` comment | code + tests on its own branch, the PR, `.team/reviews/NNN-slug.response.md` | the rulebook, scope, merging |
-| Reviewer | **Reviewer**: a Claude cloud session per PR, not the Coordinator's session | `.team/reviews/NNN-slug.md` on the PR branch, PR comments, `@codex fix` comments | code |
+| PO + Architect | **Coordinator**: one Claude cloud session (claude.ai/code; later the Projects coordinator) | `.team/backlog/`, `.team/ORDER.md`, `.team/plans/` on master; the handoff issue and the Codex task (or `@codex` comment once the bug is fixed) | code, reviews |
+| Coder | **Codex** in the cloud, started by a direct Codex task (step 2) | code + tests on its own branch, the PR, `.team/reviews/NNN-slug.response.md` | the rulebook, scope, merging |
+| Reviewer | **Reviewer**: a Claude cloud session per PR, not the Coordinator's session | `.team/reviews/NNN-slug.md` on the PR branch, PR comments, the fix task (step 5) | code |
 | Human | Conny | ORDER rows, the rulebook, merging | — |
 
 The Reviewer is a separate session so it reads the PR without the planning context — same model family as the Architect, so independence comes from the session, not the vendor. Every GitHub comment from a Claude session is posted under the human's account; sign it per `$TEAM/TEAM.md` (`— Reviewer (Claude) on behalf of Conny Wadbro`).
@@ -18,7 +18,7 @@ The Reviewer is a separate session so it reads the PR without the planning conte
 ## Flow
 
 ```
-ORDER row → story + plan (master) → issue + @codex → Codex PR → review → @codex fix → … → approve → human merges
+ORDER row → story + plan (master) → issue + Codex task → Codex PR → review → fix task → … → approve → human merges
 ```
 
 1. **Coordinator, as PO:** writes `.team/backlog/NNN-slug.md`, ticks the ORDER row. As Architect: reads the code, runs the **Baseline**, writes `.team/plans/NNN-slug.md`. Commits both to master (`team(po): …`, `team(architect): …`) and pushes. Team files are excluded from the site, so this push changes nothing live.
@@ -71,7 +71,7 @@ Read off GitHub, keyed on the `NNN:` in the issue and PR titles:
 | plan, no issue / Codex task | planned | Coordinator (handoff) |
 | issue, no PR | in-progress | Codex |
 | PR, no review file, or commits newer than it | in-review | Reviewer |
-| review says `request-changes` and is newer than the last commit | changes-requested | Codex (after the `@codex fix` comment) |
+| review says `request-changes` and is newer than the last commit | changes-requested | Codex (after the fix task, step 5) |
 | `escalate` | escalated | human, via Operatör |
 | `approve` | approved | human merges |
 | PR merged | done | — |
