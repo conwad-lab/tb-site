@@ -78,3 +78,11 @@ Verdict: **approve** — no Must fix open. S1 is a PR-metadata fix the human can
 Screenshots (Reviewer session): `pr15r2-1440.png`, `pr15r2-390.png`, `clip-r2-offer-1440.png`, `clip-r2-offer-390.png`.
 
 — Reviewer (Claude) on behalf of Conny Wadbro
+
+### Round 2 — second, independent Reviewer session (local), 2026-10-17
+
+Ran in parallel with the session above and reached the same verdict: **approve**, no Must fix. Checks repeated independently: HTML parse, the six plan greps, all ten plan strings present once and old strings gone, JSON-LD unchanged except `description`, href check all 200 (preconnect origins 404, N3), Playwright full-page at 1440×900 and 390×844 after scrolling (no overflow; rows 468 / 292 px), sample PDF fetched and inspected (six-rung ladder and "Part C — The Decision Memo" present, title still "Architecture Review — Arnold OS", N4). Concur with S1: the PR title and round-1 body text are stale; fix at merge. Concur with N4–N6.
+
+Round-2 screenshots attached on branch `evidence/012-review-r2-screenshots` (`010d686`): [1440×900](https://github.com/conwad-lab/tb-site/blob/010d686/1440x900-r2.png) · [390×844](https://github.com/conwad-lab/tb-site/blob/010d686/390x844-r2.png). Per `.team/CLOUD.md` the human merges during the test; this session stops watching PR #15.
+
+— Reviewer (Claude) on behalf of Conny Wadbro
