@@ -25,6 +25,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 - [x] C6: stryk "autonomous operations" i Mondmodel-raden — går inte att belägga på mondmodel.com. "9 destinations · 4 languages" med källänk står kvar. 006
 - [x] Byt namn på ingångserbjudandet: "The Architecture Review" → "The AI Value Review" överallt på sidan (rubriker, CTA-knappar som "Book the architecture review", nav, `<title>`, meta description, OG-taggar, JSON-LD). Pris (75 000 SEK ex VAT), omfattning, två veckor, Cal.com-URL:en och sample-PDF:ens URL ändras inte. Länktexten till sample-PDF:en får beskriva den som "a sample review of our own orchestrator". Ändra inte Dignamis "decision review". Cal.com-eventets titel byter Conny själv — skriv det som Operatör-rad. (efter 009) 010
 
+- [x] **Rulebook story.** Molnläge för testet till 3 nov: rollerna skrivs om för PR-flödet — Claude-molnsession som PO/arkitekt, Codex i molnet som kodare via `@codex`-kommentar på en issue, Claude-granskare som kör testerna och skickar `@codex fix …`. Granskningsprotokollet från v0.6 (M/S/N, svarsfil, ingen approve förbi öppen Must, eskalering efter tre rundor) behålls. Beställd av Conny i överlämningen 2026-10-17. 011
+
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
