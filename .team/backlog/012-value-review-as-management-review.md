@@ -1,20 +1,21 @@
 ---
 id: 012
-title: Present The AI Value Review as a management review that precedes Dignami Assurance
+title: Present The AI Value Review as a management review for the leadership team
 ---
 
 ## Outcome
-A leader reading the offer understands that The AI Value Review is a review for the leadership team — where the AI operation stands, who owns which decision, what management should decide next — and that Dignami Assurance takes those decisions further.
+A leader reading the offer understands that The AI Value Review is a review for the leadership team — where the AI operation stands, who owns which decision, what management should decide next — and that the memo stands on its own: going further, with Dignami Assurance or anyone else, is management's decision.
 
 ## Why
 Conny, 2026-10-17: the review should read as a management review held before Dignami Assurance runs. Today the copy frames it as an architecture-and-maturity assessment answered "to board standard"; the decision owner (the leadership team) and the step after (Assurance) are implicit.
 
 ## Acceptance criteria
 - [ ] Offer section (`#review`): lede, Week 1, Week 2 and "You receive" rows name the leadership team as audience and decision owner, and the memo as a management decision memo. Exact strings in the plan.
-- [ ] A new row in the offer mechanics states that management's decisions are the starting point for Dignami Assurance, using only wording already on the page for Assurance (Understand · Rethink · Rebuild).
-- [ ] Stage 01 · Advise text says "management review" and drops "board-standard answer".
+- [ ] A row in the offer mechanics states that the memo stands on its own and that going further, with Dignami Assurance or anyone else, is management's decision (round 2).
+- [ ] Week 1 is capped: up to six 45-minute interviews booked within week 1, plus read-only access to usage data (round 2).
+- [ ] Stage 01 · Advise text says "management review", drops "board-standard answer" and drops "regulatory gap analysis" (round 2).
 - [ ] JSON-LD `makesOffer.description` matches the new framing; `name`, `price`, `priceCurrency` unchanged.
-- [ ] Unchanged, verified by diff: price line, `<h2>The AI Value Review</h2>`, all CTA texts and `href`s (incl. `CALCOM_URL`, `#book-cta` mailto), sample-PDF link, the six questions, hand-off block, footer, `<title>`, meta/OG descriptions, `CNAME`.
+- [ ] Unchanged, verified by diff: price line, `<h2>The AI Value Review</h2>`, all `href`s and CTA texts except the offer-block button ("Book a scoping call", round 2) (incl. `CALCOM_URL`, `#book-cta` mailto), sample-PDF link, the six questions, hand-off block, footer, `<title>`, meta/OG descriptions, `CNAME`.
 - [ ] No claim of ISO 42001 conformity or any certification; nothing about Dignami beyond what the page already says.
 - [ ] Team settings test passes (HTML parse, screenshots at 1440×900 and 390×844 after scrolling, all `href`s 200 or reported as not checked). Screenshots attached.
 
@@ -26,3 +27,4 @@ Conny, 2026-10-17: the review should read as a management review held before Dig
 ## Log
 - 2026-10-17 PO: created from Conny's ask; one question asked (framing) → "Ledningens genomgång". First real story through cloud mode (CLOUD.md), Codex started by direct task.
 - 2026-10-17 PO: advisory panel (7 roles) advised not to merge PR #15 as is. Conny decided: strike "regulatory gap analysis" from stage 01; sample PDF is a management memo with the six-rung ladder; no cost data, so cap week 1 at six interviews. Plan rewritten as round 2; same PR.
+- 2026-10-17 PO: acceptance criteria updated to round 2 (review N6).
