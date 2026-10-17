@@ -27,6 +27,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] **Rulebook story.** Molnläge för testet till 3 nov: rollerna skrivs om för PR-flödet — Claude-molnsession som PO/arkitekt, Codex i molnet som kodare via `@codex`-kommentar på en issue, Claude-granskare som kör testerna och skickar `@codex fix …`. Granskningsprotokollet från v0.6 (M/S/N, svarsfil, ingen approve förbi öppen Must, eskalering efter tre rundor) behålls. Beställd av Conny i överlämningen 2026-10-17. 011
 
+- [x] Gör om The AI Value Review så att den läses som en ledningens genomgång (management review) för ledningsgruppen, som föregår Dignami Assurance. Beställd av Conny 2026-10-17; inriktning: ledningens genomgång, inte ISO 42001-struktur. Pris, omfattning, två veckor, URL:er och CTA-texter oförändrade. 012
+
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
