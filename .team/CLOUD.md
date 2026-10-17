@@ -31,7 +31,7 @@ ORDER row → story + plan (master) → issue + @codex → Codex PR → review �
    Not an `@codex` comment: as of 2026-10-17 a non-review `@codex` comment gets "To use Codex here, create an environment for this repo" even though the environment exists (known Codex bug, issue #12). Smoke test via a direct task: PR #13, correct on the first try. Switch back to the comment when the bug is fixed. The Coordinator's part ends here. It does not watch the PR.
 3. **Codex** implements, runs the checks it can run (see Checks), opens the PR.
 4. **Reviewer:** a Claude cloud session is started on the PR (by the human, or by the Projects coordinator once it exists). It checks out the PR branch, reads story and plan, reads the whole diff, runs every check it can, tries to break it — per `$TEAM/roles/reviewer.md` steps 1–3 and **Review checks** in Team settings. It writes `.team/reviews/NNN-slug.md` from `$TEAM/templates/review.md`, commits it to the PR branch (`team(reviewer): review NNN`), pushes, and posts the file as a PR comment.
-5. **Request-changes:** the Reviewer posts **one** more comment, exactly (untested — if it hits the same bug as step 2, the same text goes into a direct Codex task on the PR branch instead):
+5. **Request-changes:** the Reviewer posts **one** more comment, exactly (as of 2026-10-17 it hits the same bug as step 2, so the same text goes into a direct Codex task naming the PR branch and saying "push to this branch, do not open a new PR" — tested on PR #13, worked first try):
 
    ```
    @codex fix M1, M2, S1 from .team/reviews/NNN-slug.md on this branch.
@@ -89,7 +89,7 @@ During the test the human merges every PR, whatever `merge:` says: cloud verdict
 
 ## Measured during the test (until 2026-11-03)
 
-1. Does Codex start on an `@codex` comment posted from a Claude session? **No (2026-10-17):** Codex reads it but answers with the missing-environment bug. A direct task works (PR #13). Still open: does `@codex fix` on a PR work?
+1. Does Codex start on an `@codex` comment posted from a Claude session? **No (2026-10-17):** Codex reads it but answers with the missing-environment bug. A direct task works (PR #13). `@codex fix` on a PR: same bug; a direct task on the PR branch works (PR #13, commit cb5b2e9).
 2. Does the loop code → review → fix converge?
 3. Does the Claude review find real faults?
 4. Usage: Claude quota, Codex quota, GitHub Actions minutes.
