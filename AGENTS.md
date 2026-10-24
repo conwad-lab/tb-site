@@ -4,7 +4,7 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 
 **Read `.claude/skills/agent-team/team/TEAM.md` now.** It tells you which role you are, what you own, and how handoffs work. Who the human is and which models run which role: `.team/team.md`.
 
-**Cloud mode is on** (`mode:` in `.team/team.md`): read `.team/CLOUD.md` right after `TEAM.md`. Where they disagree, `CLOUD.md` wins. `AGENTS.md`, `.team/team.md`, `.team/CLOUD.md` and `.team/roles/*` are the rulebook.
+**Cloud mode is on** (`mode:` in `.team/team.md`): read `.claude/skills/agent-team/team/CLOUD.md` right after `TEAM.md`. Where they disagree, `CLOUD.md` wins. `AGENTS.md`, `.team/team.md`, `REVIEW.md` and `.team/roles/*` are the rulebook.
 
 ## Project conventions
 
@@ -36,18 +36,22 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Operator triggers:** every merged PR (it deploys to production — Conny checks the live page); any needed URL the brief says Conny must supply.
 - **Coder extras:** keep `README.md` deploy notes current if hosting details change. Team files (`AGENTS.md`, `CLAUDE.md`, `.team/`, `docs/`, `README.md`) must stay excluded from the published site via `_config.yml`.
 - **Docs to verify:** `README.md`
+- **Adversarial paths:** none
+- **Human-merge paths:** `CNAME`, `_config.yml`, and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
+- **Signal sources:** the live page (https://transformationbeyond.se/ — every `href` 200, screenshots at both widths), the GitHub Pages build for the latest merge, open Dependabot alerts.
+- **Where checks run in the cloud:** `python3 -m html.parser` everywhere; Playwright screenshots and the link check by the Builder and the Judge (a URL the session's network blocks is listed as **not checked**, never as passed). A check the change needs that could not run anywhere becomes an Operatör line before merge.
 
-## If you are Codex, started by a task or an `@codex` comment
+## If you are Codex
 
-You are the **Coder** (`.claude/skills/agent-team/team/roles/coder.md`, with `.team/CLOUD.md` taking precedence). In short:
-
-- The task or comment names a plan in `.team/plans/` and a story in `.team/backlog/`. Read both, this file and `.team/CLOUD.md`. Build exactly what the plan says; anything else you notice goes under **For PO** in the PR body.
-- Run the **Test before commit** checks you can run in your environment. Say in the PR body which ran and which did not, and why. Never claim a check you did not run.
-- PR against `master`, title `NNN: <story title>`, body: what, why, how you tested, deviations from the plan, **For PO**. Link the issue with `Closes #<n>`.
-- On `@codex fix …`: answer every Must and Should fix named in the review file in `.team/reviews/NNN-slug.response.md` on the same branch — `M1: fixed in <sha>` or `M1: disputed — <reason>`. Never edit the review file. Push to the same branch.
-- Never merge, never force-push, never touch the rulebook unless the story's first line is `Rulebook story.`, never cross a hard rail above.
-- Sign PR bodies and commit messages `— Coder (Codex) on behalf of Conny Wadbro`.
+You are the **attacker** in review (`.claude/skills/agent-team/team/CLOUD.md`): the Builder is a Claude thread and the verdict is the Judge's. Follow **Code Review Rules** below. If a task or comment instead asks you to build, you are the Coder (`roles/coder.md`, with `CLOUD.md` winning): build exactly the plan, PR titled `NNN: <story title>`, never merge, never force-push, never cross a hard rail. Sign `— Coder (Codex) on behalf of Conny Wadbro`.
 
 ## Code Review Rules
 
-Codex's automatic PR review is **off** for this repo: the Reviewer is Claude (`.team/CLOUD.md`). If a Codex review appears anyway, it is input for the Reviewer, not a verdict; flag only P0/P1 and check the hard rails above.
+Codex's automatic PR review is **on** for this repo. You are the attacker in this team's review: try to prove the change wrong. Your findings go to the Builder, who answers each one, and to the Judge, who rules on them. You do not give the verdict.
+
+- Number findings `M1…` (Must fix: correctness, a hard rail above, the rulebook, a missing check for a stated behavior), `S1…` (Should fix), `N1…` (nit), each with `file:line`, what, and why it matters. Keep P0/P1 labels too if you use them.
+- Check the diff against the story in `.team/backlog/NNN-*.md`: an acceptance criterion the diff does not meet, or a change the story did not ask for, is a finding.
+- Check every claim in the PR body against the diff, and every factual claim on the page against a source or `.team/briefs/2026-10-site-refresh.md`.
+- Run the **Test before commit** commands if your environment can; say which ran and which did not. Never report a check as passed that you did not run.
+- A request comment may name a focus ("security", "failure paths", "story fit"): stay on it.
+- Flag any change to `AGENTS.md`, `.team/team.md`, `REVIEW.md` or `.team/roles/*` when the story's first line is not `Rulebook story.`

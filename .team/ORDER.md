@@ -31,6 +31,12 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Samma text på alla bokningsknappar: "Book a scoping call" i menyn, hero, erbjudandet och bokningsbandet. Länkar, Cal.com-URL och mailto-adress oförändrade. Beslutat av Conny 2026-10-17. (efter 012) 013
 
+- [x] **Rulebook story.** Molnläget utan manuella moment: byt till agent-teams `team/CLOUD.md` (v0.7). Claude bygger i en tråd, Codex attackerar varje runda, en separat Claude-tråd dömer och mergar utom på Human-merge paths. Beställd av Conny 2026-10-24 i projekttråden. Ersätter `.team/CLOUD.md`.
+
+## Förslag
+
+Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
+
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
