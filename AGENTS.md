@@ -32,7 +32,6 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **CI-only checks:** none (Pages build only).
 - **A plan must name:** every visible copy string that changes (old → new), and whether the change touches the price block, booking CTA or footer.
 - **Review checks:** every factual claim on the page traced to a source or to the brief; compare Dignami-related wording against https://www.dignami.com/en/proof and /en/about; WCAG AA contrast for any colour that changes; screenshots at both widths attached to the PR.
-- **Second-reviewer paths:** none
 - **Operator triggers:** every merged PR (it deploys to production — Conny checks the live page); any needed URL the brief says Conny must supply.
 - **Coder extras:** keep `README.md` deploy notes current if hosting details change. Team files (`AGENTS.md`, `CLAUDE.md`, `.team/`, `docs/`, `README.md`) must stay excluded from the published site via `_config.yml`.
 - **Docs to verify:** `README.md`

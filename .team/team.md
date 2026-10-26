@@ -19,7 +19,7 @@ merge: auto
 mode: cloud — see .claude/skills/agent-team/team/CLOUD.md; the Judge merges on approve except on Human-merge paths (AGENTS.md)
 builder: claude
 
-team: .claude/skills/agent-team @ cb4da55 (v0.7.2, agent-team #8)
+team: .claude/skills/agent-team @ v0.7.3
 <!-- upgrade with /agent-team upgrade, or: git submodule update --remote .claude/skills/agent-team -->
 
 Project specifics go in AGENTS.md § Team settings, not in role overrides: a file in `.team/roles/<role>.md` replaces the whole role and cuts the project off from team upgrades.
