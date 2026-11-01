@@ -33,6 +33,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] **Rulebook story.** Molnläget utan manuella moment: byt till agent-teams `team/CLOUD.md` (v0.7). Claude bygger i en tråd, Codex attackerar varje runda, en separat Claude-tråd dömer och mergar utom på Human-merge paths. Beställd av Conny 2026-10-24 i projekttråden. Ersätter `.team/CLOUD.md`.
 
+- [x] **Rulebook story.** Codex bygger tb-sites stories: `builder: codex` och ompinning till agent-team v0.7.5 (Codex-miljön finns sedan 2026-10-17). Beslutat av Conny 2026-11-01 (beslutskort "Ja, punkt 1–3"). (efter agent-team v0.7.5) 014
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
