@@ -10,6 +10,7 @@ exclude:
   - bin
   - Gemfile
   - Gemfile.lock
+  - workers
 
 # & Beyond, the weekly letter (story 016). index.html has no front matter and is copied as is.
 url: https://transformationbeyond.se
@@ -17,6 +18,7 @@ title: Transformation & Beyond
 description: "& Beyond, ett veckobrev av Conny Wadbro om gränslandet mellan teknik och verksamhet."
 author: Conny Wadbro
 beyond_linkedin_url: ""   # set when the LinkedIn newsletter URL is known
+beyond_signup_url: ""     # story 017: set to the Worker's /subscribe URL when it is live; the form is hidden until then
 
 collections:
   beyond:

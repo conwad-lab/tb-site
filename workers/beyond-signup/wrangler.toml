@@ -1,0 +1,25 @@
+# & Beyond sign-up Worker (story 017). Nothing here is deployed by this repo: Conny runs
+# `wrangler d1 create beyond-subscribers`, fills in database_id, sets the secrets and deploys (README.md).
+name = "beyond-signup"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+routes = [{ pattern = "lista.transformationbeyond.se", custom_domain = true }]
+
+[vars]
+SITE_URL = "https://transformationbeyond.se"
+WORKER_URL = "https://lista.transformationbeyond.se"
+MAIL_FROM = "Conny Wadbro <beyond@transformationbeyond.se>"
+POSTMARK_STREAM = "outbound"
+PENDING_DAYS = "7"
+RESEND_MINUTES = "10"
+MAX_CONFIRMATIONS_PER_HOUR = "50"
+# Secrets (wrangler secret put …): TOKEN_SECRET, POSTMARK_TOKEN, ADMIN_TOKEN
+
+[[d1_databases]]
+binding = "DB"
+database_name = "beyond-subscribers"
+database_id = "FILL-IN-AFTER-wrangler-d1-create"
+
+[triggers]
+crons = ["17 3 * * *"]   # daily purge of unconfirmed addresses

@@ -6,6 +6,9 @@
 {%- if page.collection == "beyond" -%}{%- assign full_title = page_title | append: " — & Beyond vecka " | append: page.week -%}{%- else -%}{%- assign full_title = page_title | append: " — Transformation & Beyond" -%}{%- endif -%}
 {%- assign desc = page.lead | default: page.description -%}
 <title>{{ full_title | escape }}</title>
+{%- if page.noindex %}
+<meta name="robots" content="noindex">
+{%- endif %}
 <meta name="description" content="{{ desc | strip_html | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 <meta property="og:title" content="{{ full_title | escape }}">

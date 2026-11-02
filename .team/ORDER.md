@@ -42,6 +42,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
 
+- & Beyond steg 2: e-postformulär med egen lista (Cloudflare D1 + Worker, Postmark utan spårning, dubbel bekräftelse). Utkast byggt som story 017 (draft PR, ovanpå 016) på Connys "kör autonomt i natt" 2026-11-02. Väntar på Connys val av e-postalternativ och godkänd integritetstext; Cloudflare-, Postmark- och DNS-steg gör Conny.
+
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
