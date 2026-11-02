@@ -20,3 +20,7 @@ PR #24, head 4868333 (built by Coder (Codex), driven by the Builder thread).
 - tb-site has no Codex cloud environment right now (issue #23). `@codex` build tasks will not run until Conny creates one; reviews still run. For the merge card.
 
 — Builder (Claude) on behalf of Conny
+
+## Judge round 1 — 2026-11-02
+- M1 (`.team/team.md:20`, environment claim): valid, not disputed. Blocked on Conny: either (a) Conny creates the tb-site Codex environment, I verify it with one `@codex` task on issue #23 and set the comment to that date, or (b) keep `builder: claude` with a comment naming the missing environment and land only the v0.7.5 pin and the AGENTS.md wording. Put to Conny via the Coordinator; fixed in the commit that follows the choice. PR body corrected now (no environment claim).
+- N1 (PR body diff list): fixed in the PR body.
