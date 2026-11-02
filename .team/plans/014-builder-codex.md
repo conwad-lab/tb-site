@@ -39,3 +39,6 @@ Touches: price block no, booking CTA no, footer no. No visible copy string chang
 
 ## Suggestions for PO
 - The first story after this one is the real test of `builder: codex` here: pick a small copy change.
+
+## Plan attack
+- 2026-11-02: the `@codex` plan attack on issue #23 failed twice with "create an environment for this repo". No findings; the build goes on with the plan as it stands (CLOUD.md v0.7.5 § Builder step 0). Codex review on the PR is unaffected (it does not need an environment). Operatör line added for the tb-site Codex environment.
