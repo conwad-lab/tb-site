@@ -76,6 +76,7 @@ async function subscribe(request, env) {
     await release(env, email, stamp);
     return thanks;
   }
+  const slotId = slot.meta.last_row_id;
 
   const link = await signedLink(env, "confirm", email);
   try {
@@ -84,6 +85,9 @@ async function subscribe(request, env) {
     // Same answer as every other case (no enumeration through a mail outage).
     console.error("confirmation mail failed", err);
     await release(env, email, stamp);
+    // Postmark answered and refused: nothing was sent, so give the budget slot back. A network
+    // error is ambiguous (the mail may have gone out) and keeps the slot.
+    if (err.definitive) await env.DB.prepare("DELETE FROM sends WHERE rowid = ?").bind(slotId).run();
   }
   return thanks;
 }
@@ -91,11 +95,15 @@ async function subscribe(request, env) {
 // Undo a reservation when no mail went out: a row this request created is deleted (no address is
 // kept without a confirmation mail), an older pending row gets its cooldown back so a retry works
 // and its earlier confirm link stays valid.
-async function release(env, email, stamp) {
-  await env.DB.prepare("DELETE FROM subscribers WHERE email = ? AND status = 'pending' AND created_at = ?")
-    .bind(email, stamp).run();
-  await env.DB.prepare("UPDATE subscribers SET confirm_sent_at = ? WHERE email = ? AND status = 'pending'")
-    .bind(new Date(0).toISOString(), email).run();
+// Both statements only touch the row while it still carries this request's reservation
+// (confirm_sent_at = stamp), so a rollback can never clear a newer request's reservation.
+export async function release(env, email, stamp) {
+  await env.DB.prepare(
+    "DELETE FROM subscribers WHERE email = ? AND status = 'pending' AND created_at = ? AND confirm_sent_at = ?"
+  ).bind(email, stamp, stamp).run();
+  await env.DB.prepare(
+    "UPDATE subscribers SET confirm_sent_at = ? WHERE email = ? AND status = 'pending' AND confirm_sent_at = ?"
+  ).bind(new Date(0).toISOString(), email, stamp).run();
 }
 
 function sendConfirmation(env, email, link, site) {
@@ -213,7 +221,11 @@ async function sendMail(env, { to, subject, text: body }) {
       TrackLinks: "None",
     }),
   });
-  if (!res.ok) throw new Error(`Postmark ${res.status}: ${await res.text()}`);
+  if (!res.ok) {
+    const err = new Error(`Postmark ${res.status}: ${await res.text()}`);
+    err.definitive = true; // the provider answered: the mail was not accepted
+    throw err;
+  }
 }
 
 // Constant-time comparison via HMAC of both sides, so length and content leak nothing.

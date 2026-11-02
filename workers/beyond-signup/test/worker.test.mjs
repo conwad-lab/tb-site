@@ -20,7 +20,10 @@ function fakeD1() {
       const stmt = {
         bind: (...a) => ((args = a), stmt),
         first: async () => db.prepare(sql).get(...args) ?? null,
-        run: async () => ({ meta: { changes: Number(db.prepare(sql).run(...args).changes) } }),
+        run: async () => {
+          const r = db.prepare(sql).run(...args);
+          return { meta: { changes: Number(r.changes), last_row_id: Number(r.lastInsertRowid) } };
+        },
         all: async () => ({ results: db.prepare(sql).all(...args) }),
       };
       return stmt;
@@ -174,6 +177,30 @@ test("the hourly cap counts sends, not addresses", async () => {
   await post({ email: "anna@example.se", consent: "yes" });
   await post({ email: "bo@example.se", consent: "yes" });
   assert.equal(mails.length, 2);
+});
+
+test("a rollback does not clear a newer reservation", async () => {
+  // Request A failed and is rolling back with its own stamp; meanwhile B reserved the address.
+  const { release } = await import("../src/index.js");
+  const old = "2026-11-02T20:00:00.000Z";
+  env.DB.raw.prepare("INSERT INTO subscribers (email, status, consent, created_at, confirm_sent_at) VALUES (?, 'pending', 'v', ?, ?)")
+    .run("anna@example.se", old, "2026-11-02T21:00:00.000Z");
+  await release(env, "anna@example.se", old);
+  assert.equal(rows().length, 1);
+  assert.equal(rows()[0].confirm_sent_at, "2026-11-02T21:00:00.000Z");
+});
+
+test("a refused mail gives its hourly slot back; a network error keeps it", async () => {
+  env.MAX_CONFIRMATIONS_PER_HOUR = "1";
+  const orig = console.error;
+  console.error = () => {};
+  globalThis.fetch = async () => new Response("bad token", { status: 401 });
+  await post({ email: "a@example.se", consent: "yes" });
+  assert.equal(env.DB.raw.prepare("SELECT COUNT(*) AS n FROM sends").get().n, 0);
+  globalThis.fetch = async () => { throw new Error("network"); };
+  await post({ email: "b@example.se", consent: "yes" });
+  console.error = orig;
+  assert.equal(env.DB.raw.prepare("SELECT COUNT(*) AS n FROM sends").get().n, 1);
 });
 
 test("address normalisation", () => {
