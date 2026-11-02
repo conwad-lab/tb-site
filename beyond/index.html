@@ -19,7 +19,8 @@ description: "& Beyond är Conny Wadbros veckobrev om gränslandet mellan teknik
       {%- for l in letters %}
       <li>
         <a href="{{ l.url | relative_url }}">
-          <span class="wk">{{ l.year }} · vecka {{ l.week }}</span>
+          {%- assign m = l.date | date: "%-m" | minus: 1 %}
+          <span class="wk">{{ l.year }} · vecka {{ l.week }} · <time datetime="{{ l.date | date: '%Y-%m-%d' }}">{{ l.date | date: "%-d" }} {{ site.data.beyond_months[m] }} {{ l.date | date: "%Y" }}</time></span>
           <span class="t">{{ l.title | escape }}</span>
           {%- if l.lead %}<span class="d">{{ l.lead | escape }}</span>{% endif %}
         </a>

@@ -29,7 +29,7 @@ Add a letter only after Conny has published it and set `status: publicerad` in c
 
     python3 bin/import-beyond.py ../ai-insikter/veckor/2026-V44-publicering.md
 
-The script copies the article section and its images, and refuses drafts, missing images, a missing source list
+The script (Python 3 with PyYAML) copies the article section and its images, and refuses drafts, malformed front matter, missing or unsupported images, a missing source list
 and internal material. Merging the PR publishes the letter. Local build (Pages versions):
 `gem install github-pages -v 232`, a Gemfile with `gem "github-pages", "= 232"`, then
 `LC_ALL=C.UTF-8 PAGES_REPO_NWO=conwad-lab/tb-site bundle exec jekyll build`.

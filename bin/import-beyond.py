@@ -30,18 +30,28 @@ FORBIDDEN = [
     ("granskning-codex", "granskningsfil"),
 ]
 IMG = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
+IMG_START = re.compile(r"!\[")
+HTML_IMG = re.compile(r"<img\b", re.I)
 
 
 def front_matter(text):
+    """Parse the front matter as YAML. Returns (mapping or None if malformed, body)."""
+    try:
+        import yaml
+    except ImportError:
+        sys.exit("PyYAML saknas: pip install pyyaml")
     m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not m:
-        return {}, text
-    fm = {}
-    for line in m.group(1).splitlines():
-        if ":" in line and not line.startswith(" "):
-            k, v = line.split(":", 1)
-            fm[k.strip()] = v.split("#", 1)[0].strip()
-    return fm, text[m.end():]
+        return None, text
+    try:
+        fm = yaml.safe_load(m.group(1))
+    except yaml.YAMLError:
+        return None, text[m.end():]
+    return (fm if isinstance(fm, dict) else None), text[m.end():]
+
+
+def forbidden(text, where):
+    return [f"internt material i {where}: {what} ('{needle}')" for needle, what in FORBIDDEN if needle in text]
 
 
 def article(body):
@@ -78,12 +88,19 @@ def main():
 
     problems = []
     fm, body = front_matter(src.read_text(encoding="utf-8"))
-    status = fm.get("status", "")
+    if fm is None:
+        problems.append("front matter saknas eller är inte giltig YAML")
+        fm = {}
+    status = fm.get("status")
     if status != "publicerad" and not a.allow_draft:
-        problems.append(f"status är '{status or 'saknas'}', inte 'publicerad'")
-    try:
-        pub = dt.date.fromisoformat(fm.get("publiceras", ""))
-    except ValueError:
+        problems.append(f"status är '{status if status is not None else 'saknas'}', inte 'publicerad'")
+    pub = fm.get("publiceras")
+    if isinstance(pub, str):
+        try:
+            pub = dt.date.fromisoformat(pub)
+        except ValueError:
+            pub = None
+    if not isinstance(pub, dt.date) or isinstance(pub, dt.datetime):
         pub = None
         problems.append("publiceras: saknas eller är inget datum (ÅÅÅÅ-MM-DD)")
 
@@ -110,14 +127,18 @@ def main():
     if not src_section or not re.search(r"https?://", src_section.group(1)):
         problems.append("'### Källor' med minst en länk saknas")
 
-    for needle, what in FORBIDDEN:
-        if needle in text:
-            problems.append(f"internt material i texten: {what} ('{needle}')")
+    problems += forbidden(text, "texten")
+
+    # Only plain inline images ![alt](path) are supported; refuse every other form
+    # (titles, reference style, HTML) instead of publishing a broken or unchecked path.
+    if len(IMG_START.findall(text)) != len(IMG.findall(text)) or HTML_IMG.search(text):
+        problems.append("bild i form som inte stöds: använd bara ![alt](grafik/…) utan titel")
 
     slug = f"{pub.isocalendar()[0]}-v{pub.isocalendar()[1]:02d}" if pub else "okand"
     images = []
     for alt, path in IMG.findall(text):
-        if re.match(r"https?://", path):
+        if re.match(r"[a-z]+:", path, re.I) or path.startswith("/"):
+            problems.append(f"bilden ligger inte bredvid brevet: {path}")
             continue
         f = (src.parent / path).resolve()
         if not f.is_file():
@@ -125,6 +146,7 @@ def main():
             continue
         alt_file = f.with_suffix(".alt.txt")
         long_alt = alt_file.read_text(encoding="utf-8").strip() if alt_file.is_file() else alt
+        problems += forbidden(long_alt, f"alt-texten för {f.name}")
         long_alt = " ".join(long_alt.replace("[", "(").replace("]", ")").split())
         images.append((alt, path, f, long_alt))
 
@@ -159,7 +181,7 @@ def main():
         f"date: {pub.isoformat()}",
         f"year: {year}",
         f"week: {week}",
-        f"source: {yaml_str(fm.get('vecka', src.stem))}",
+        f"source: {yaml_str(str(fm.get('vecka', src.stem)))}",
         f"image: {cover}" if cover else None,
         "---",
         "",
