@@ -17,9 +17,9 @@ auth: max-only — ingen API-nyckel i rollernas miljö (bin/check-auth stoppar s
 
 merge: auto
 mode: cloud — see .claude/skills/agent-team/team/CLOUD.md; the Judge merges on approve except on Human-merge paths (AGENTS.md)
-builder: claude
+builder: claude  # stays claude until a @codex task runs in tb-site: no Codex cloud environment on 2026-11-02 (issue #23); the switch is its own story
 
-team: .claude/skills/agent-team @ v0.7.3
+team: .claude/skills/agent-team @ v0.7.5 (93a678a)
 <!-- upgrade with /agent-team upgrade, or: git submodule update --remote .claude/skills/agent-team -->
 
 Project specifics go in AGENTS.md § Team settings, not in role overrides: a file in `.team/roles/<role>.md` replaces the whole role and cuts the project off from team upgrades.
