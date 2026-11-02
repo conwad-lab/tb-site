@@ -24,3 +24,6 @@ PR #24, head 4868333 (built by Coder (Codex), driven by the Builder thread).
 ## Judge round 1 — 2026-11-02
 - M1 (`.team/team.md:20`, environment claim): valid, not disputed. Blocked on Conny: either (a) Conny creates the tb-site Codex environment, I verify it with one `@codex` task on issue #23 and set the comment to that date, or (b) keep `builder: claude` with a comment naming the missing environment and land only the v0.7.5 pin and the AGENTS.md wording. The Coordinator chose (b): `builder: claude` kept with a comment naming the missing environment, `AGENTS.md` back to master, only the v0.7.5 pin lands; the switch to codex becomes its own story once a `@codex` task runs. Fixed in the next commit. PR body corrected.
 - N1 (PR body diff list): fixed in the PR body.
+
+## Codex round 2 — 2026-11-02
+- Review of c4c23de (focus: builder: claude kept, AGENTS.md = master, body matches diff): "Didn't find any major issues." No findings to answer.
