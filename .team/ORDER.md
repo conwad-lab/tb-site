@@ -38,6 +38,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Mall för ensidesofferten "Ordförandens fråga" (guld C15, C20, C24 från idétavlan, beslutad av Conny 2026-11-06). En sida på svenska och engelska i `docs/offert-ordforandens-fraga/` (exkluderad från sajten, publiceras inte), med fält för: kundens fråga ordagrant, styrelsemötets datum, leveransdatum (en vecka före mötet), och en kryssruta för vilket svar som köps: (a) kostnad per utfall för en namngiven process, mätt före ett AI-köp; (b) granskning av ett AI-framtaget underlag som står på styrelsemötets dagordning; (c) hela The AI Value Review. Två prisvägar, fasta: The AI Value Review 75 000 kr ex moms (oförändrat) och licensgenomgången 25 000 kr ex moms (Connys beslut 2026-11-06, B2; står bara i mallen, inte på sajten). Avsändare är alltid Transformation & Beyond, aldrig Dignami. Villkor: en rad "Villkor enligt bifogat avtal" — Conny skriver avtalet själv; agenten skriver inga avtalsvillkor och ingen juridisk text. Ja-rad med behörig firmatecknare, namn och datum. Inga påståenden om kunder, meriter eller siffror. Leverans: mallen plus ett ifyllt exempel med påhittat bolag tydligt märkt "exempel". Pris, Cal.com-länk och kontaktadress på sajten ändras inte. 018
 
+- [x] & Beyond-arkivet på sajten: veckobrevet på transformationbeyond.se/beyond/ med RSS, byggt med Pages egen Jekyll, på svenska. Steg 1 i förslaget från 2026-11-02; e-postformuläret är steg 2 och en egen rad senare. Beslutat av Conny 2026-11-02 (beslutskort "Jekyll på nuvarande Pages"). 016
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
