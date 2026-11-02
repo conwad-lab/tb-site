@@ -84,10 +84,13 @@ async function subscribe(request, env) {
   } catch (err) {
     // Same answer as every other case (no enumeration through a mail outage).
     console.error("confirmation mail failed", err);
-    await release(env, email, stamp);
-    // Postmark answered and refused: nothing was sent, so give the budget slot back. A network
-    // error is ambiguous (the mail may have gone out) and keeps the slot.
-    if (err.definitive) await env.DB.prepare("DELETE FROM sends WHERE rowid = ?").bind(slotId).run();
+    // Postmark answered and refused: nothing was sent, so release the reservation and give the
+    // budget slot back. A network error is ambiguous (the mail may have gone out): keep the pending
+    // row, its cooldown and the slot, so a delivered confirm link still works.
+    if (err.definitive) {
+      await release(env, email, stamp);
+      await env.DB.prepare("DELETE FROM sends WHERE rowid = ?").bind(slotId).run();
+    }
   }
   return thanks;
 }
@@ -120,9 +123,11 @@ function sendConfirmation(env, email, link, site) {
 async function confirm(url, env) {
   const email = await verified(url.searchParams, env, "confirm");
   if (!email) return redirect(`${env.SITE_URL}/beyond/?fel=lank`);
-  await env.DB.prepare(
+  const res = await env.DB.prepare(
     "UPDATE subscribers SET status = 'confirmed', confirmed_at = COALESCE(confirmed_at, ?) WHERE email = ?"
   ).bind(new Date().toISOString(), email).run();
+  // No row (purged after 7 days, or unsubscribed): say the link no longer works instead of "thanks".
+  if (changes(res) !== 1) return redirect(`${env.SITE_URL}/beyond/?fel=lank#prenumerera`);
   return redirect(`${env.SITE_URL}/beyond/bekraftad/`);
 }
 

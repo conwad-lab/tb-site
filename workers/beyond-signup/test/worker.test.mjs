@@ -201,6 +201,15 @@ test("a refused mail gives its hourly slot back; a network error keeps it", asyn
   await post({ email: "b@example.se", consent: "yes" });
   console.error = orig;
   assert.equal(env.DB.raw.prepare("SELECT COUNT(*) AS n FROM sends").get().n, 1);
+  // The mail may have gone out: the pending row stays, so its confirm link still works.
+  assert.deepEqual(rows().map((r) => r.email), ["b@example.se"]);
+  const res = await worker.fetch(new Request(await signedLink(env, "confirm", "b@example.se")), env);
+  assert.equal(res.headers.get("Location"), `${SITE}/beyond/bekraftad/`);
+});
+
+test("a confirm link for an address no longer on the list says so", async () => {
+  const res = await worker.fetch(new Request(await signedLink(env, "confirm", "gone@example.se")), env);
+  assert.match(res.headers.get("Location"), /fel=lank/);
 });
 
 test("address normalisation", () => {
