@@ -36,6 +36,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 - [x] **Rulebook story.** Ompinning till agent-team v0.7.5 (93a678a). Beslutat av Conny 2026-11-01 (beslutskort "Ja, punkt 1–3"). Avgränsad 2026-11-02 till pinnen (domarens anmärkning N2, PR #24). (efter agent-team v0.7.5) 014
 - [ ] **Rulebook story.** Codex bygger tb-sites stories: `builder: codex`. Parkerad tills ett `@codex`-uppdrag går igenom i tb-site (Codex-miljön, se Operatör). (efter 014) → story 015 (parkerad)
 
+- [x] & Beyond-arkivet på sajten: veckobrevet på transformationbeyond.se/beyond/ med RSS, byggt med Pages egen Jekyll, på svenska. Steg 1 i förslaget från 2026-11-02; e-postformuläret är steg 2 och en egen rad senare. Beslutat av Conny 2026-11-02 (beslutskort "Jekyll på nuvarande Pages"). 016
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.

@@ -1,0 +1,27 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="sv">
+  <title>&amp; Beyond</title>
+  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/beyond/' | absolute_url }}" rel="alternate" type="text/html"/>
+  <id>{{ '/beyond/' | absolute_url }}</id>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <author><name>Conny Wadbro</name></author>
+  {%- assign letters = site.beyond | sort: "date" | reverse %}
+  {%- for l in letters limit: 20 %}
+  <entry>
+    <title>{{ l.title | xml_escape }}</title>
+    <link href="{{ l.url | absolute_url }}" rel="alternate" type="text/html"/>
+    <id>{{ l.url | absolute_url }}</id>
+    <published>{{ l.date | date_to_xmlschema }}</published>
+    <updated>{{ l.date | date_to_xmlschema }}</updated>
+    {%- if l.lead %}
+    <summary>{{ l.lead | xml_escape }}</summary>
+    {%- endif %}
+    <content type="html">{{ l.content | xml_escape }}</content>
+  </entry>
+  {%- endfor %}
+</feed>
