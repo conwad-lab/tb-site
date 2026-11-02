@@ -15,7 +15,7 @@ Conny has spare Codex capacity and Claude turns are the scarce resource (decisio
 The next tb-site story after this one merges with its code commits from Codex (issue `NNN:` with a `@codex` task and Codex's PR or diff), with no "Codex failed twice" line in its response file. Read off GitHub.
 
 ## Acceptance criteria
-- [ ] Before the build: a test `@codex` task on a tb-site issue returns a diff or PR (not "create an environment"). Link it in the PR.
+- [ ] Before the build: a test `@codex` task on a tb-site issue runs in the Codex environment and returns a real result (command output, a diff or a PR), not "create an environment". Link it in the PR.
 - [ ] `.team/team.md` says `builder: codex` with a comment naming CLOUD.md § Builder and the Codex environment; the `models:` coder line says Codex builds from a `@codex` task on the story's issue, the Builder thread drives.
 - [ ] `AGENTS.md` § Team settings has a **Builder** line: `builder: codex` per CLOUD.md § Builder (issue `NNN: <story title>` with the `@codex` task, Codex writes code and fixes, the Builder thread runs Test before commit on Codex's head incl. the Playwright screenshots and link check, which Codex's environment may not run; Codex fails twice → the Builder thread builds).
 - [ ] `AGENTS.md` § "If you are Codex" no longer says "the Builder is a Claude thread"; it says Codex builds when a task asks it to, and attacks in review, reviewing its own PRs as if someone else wrote them.
@@ -29,3 +29,4 @@ The next tb-site story after this one merges with its code commits from Codex (i
 ## Log
 - 2026-11-02 PO: created from story 014's Codex part (Judge note N2 on PR #24). Parked until an `@codex` task succeeds in tb-site. Human merge (rulebook story).
 - 2026-11-02 PO: unparked. A Codex environment of the older type (the one GitHub `@codex` reads) was created for conwad-lab/tb-site; the `@codex` test on issue #23 returned `ls` output at 21:30Z. First acceptance criterion met; link: https://github.com/conwad-lab/tb-site/issues/23#issuecomment-6588920658 (reply below it).
+- 2026-11-02 PO: first criterion reworded after the plan attack (issue #26, M4). Its purpose is proof that `@codex` tasks run in tb-site; a diff or PR was never the point. Plan: `.team/plans/015-builder-codex.md`.
