@@ -1,7 +1,6 @@
 ---
 id: 014
 title: "Codex builds tb-site stories (builder: codex, agent-team v0.7.5)"
-parked-until: agent-team v0.7.5 merged (conwad-lab/agent-team, rulebook PR "v0.7.5: Codex builds where a Codex environment exists")
 ---
 
 Rulebook story.
@@ -28,3 +27,4 @@ The next tb-site story after this one merges with its code commits from Codex (i
 
 ## Log
 - 2026-11-01 PO: created, parked until agent-team v0.7.5 is merged. Human merge (rulebook story).
+- 2026-11-02 PO: unparked; agent-team v0.7.5 merged as 93a678a (PR #12). Pin the submodule on 93a678a.

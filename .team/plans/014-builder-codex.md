@@ -5,7 +5,7 @@ verdict: plan
 
 # Plan 014 — Codex builds tb-site stories (builder: codex, agent-team v0.7.5)
 
-Story: `.team/backlog/_014-builder-codex.md` (rename to `014-builder-codex.md` when agent-team v0.7.5 is merged).
+Story: `.team/backlog/014-builder-codex.md` (unparked 2026-11-02; v0.7.5 merge sha: 93a678a).
 
 ## Approach
 Rulebook-only change, no site file. Re-pin the submodule from v0.7.3 (141623c) to the v0.7.5 merge commit, switch `builder:` and align `AGENTS.md`. This story itself is built by the Builder thread (it changes the rule it would run under), and gets a Codex plan attack first (v0.7.5 Flow: rulebook story).
@@ -16,7 +16,7 @@ Touches: price block no, booking CTA no, footer no. No visible copy string chang
 - `.claude/skills/agent-team` — submodule pin → v0.7.5 merge sha.
 - `.team/team.md` — `builder: codex` + comment; `models:` coder line; `team:` line → `v0.7.5 (<short sha>)`.
 - `AGENTS.md` — new **Builder** line after **Where checks run in the cloud**; rewrite the first sentence of "## If you are Codex"; one Code Review Rules bullet "When you review a PR you built yourself, review it as if someone else wrote it."
-- `.team/backlog/_014-builder-codex.md` → `014-builder-codex.md` (the Builder renames when it starts; PO lane exception noted in the PR).
+
 
 ## Steps
 1. Check that agent-team v0.7.5 is merged; read its `team/CLOUD.md` § Builder and use its words for the **Builder** line (do not paraphrase beyond the tb-site specifics).
