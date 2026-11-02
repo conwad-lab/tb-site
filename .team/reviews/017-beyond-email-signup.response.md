@@ -9,3 +9,8 @@
 ## Codex round 2 — 2026-11-02
 - M4 (rollback could clear a newer reservation): fixed in c52cfca. Both rollback statements require `confirm_sent_at = <this request's stamp>`, so they cannot touch a row another request has reserved since. Test `a rollback does not clear a newer reservation`.
 - S1 (refused sends keep consuming the hourly budget): fixed in c52cfca. The slot's row id is kept; when Postmark answers with an error the slot is deleted, while a network error (mail may have gone out) keeps it. Test `a refused mail gives its hourly slot back; a network error keeps it`.
+
+## Codex round 3 — 2026-11-02
+- M5 (network error released a reservation whose mail may have been delivered): fixed in bf6f291. Only a definitive Postmark refusal releases the row and the slot; a network error keeps the pending row, its cooldown and the slot. `confirm` now answers "link no longer valid" when no row was updated, instead of the thank-you page. Tests `a refused mail gives its hourly slot back; a network error keeps it` (extended) and `a confirm link for an address no longer on the list says so`.
+
+Three Codex rounds reached (CLOUD.md § Builder 5): stopping the rounds here. The fix for M5 has not had its own Codex round; the Judge should read it. `@codex security review` (errored on bb877c9) requested once more on this head.
