@@ -8,16 +8,18 @@ verdict: plan
 Story: `.team/backlog/016-and-beyond-archive.md`
 
 ## Approach
-Use the Jekyll that GitHub Pages already runs for this repo (`_config.yml` exists; `index.html` has no front matter, so Jekyll copies it unchanged). Add a Jekyll collection `beyond` with one Markdown file per letter, two layouts, one stylesheet, and the whitelisted `jekyll-feed` plugin for an Atom feed of the collection. No Actions workflow, no Node, no new dependency outside the github-pages gem set.
+Use the Jekyll that GitHub Pages already runs for this repo (`_config.yml` exists; `index.html` has no front matter, so Jekyll copies it unchanged). Add a Jekyll collection `beyond` with one Markdown file per letter, two layouts, one stylesheet and a hand-written Liquid Atom feed (`beyond/feed.xml`). No plugin, no Actions workflow, no Node, no new dependency.
 
 Letters come from the private repo conwad-lab/ai-insikter. Only letters marked `status: publicerad` are copied in, by `bin/import-beyond.py`, which also validates them; drafts and review files never reach this public repo.
 
 URL: the publication week, which is what the cover and the LinkedIn title use (`publiceras: 2026-11-02` → ISO week 45 → `/beyond/2026-v45/`). The source file keeps its Saturday week (`2026-V44`) in front matter as `source`.
 
 ## Files
-- `_config.yml` (Human-merge path): add `url`, `collections.beyond` (`output: true`, `permalink: /beyond/:name/`), `defaults` (layout `beyond-letter`, `lang: sv` for the collection), `plugins: [jekyll-feed]`, `feed.collections.beyond.path: /beyond/feed.xml`, and `bin` + `Gemfile*` to `exclude`. The existing exclude list stays.
-- `_layouts/beyond-base.html` — HTML shell for the two `/beyond/` pages: `lang="sv"`, title, description, canonical, OG tags (cover image when the letter has one), the same Google Fonts link and favicon as `index.html`, `assets/beyond.css`, `{% feed_meta %}`-equivalent `<link rel="alternate" type="application/atom+xml">`, header with the mark linking to `/` and a link to the archive, footer as on the home page.
+- `_config.yml` (Human-merge path): add `url`, `title`, `description`, `author`, `beyond_linkedin_url` (empty), `collections.beyond` (`output: true`, `permalink: /beyond/:name/`), `defaults` (layout `beyond-letter` for the collection), and `bin` + `Gemfile*` to `exclude`. `description` is set so the github-metadata plugin Pages runs does not need the API for it. The existing exclude list stays.
+- `_layouts/beyond-base.html` — HTML shell for the two `/beyond/` pages: `lang="sv"`, title, description, canonical, OG tags (cover image when the letter has one), the same Google Fonts link and favicon as `index.html`, `assets/beyond.css`, `<link rel="alternate" type="application/atom+xml">`, header with the mark linking to `/` and a link to the archive, footer as on the home page.
 - `_layouts/beyond-letter.html` — week label, title, lead, publication date, body (`{{ content }}`), "Alla nummer" link back.
+- `beyond/feed.xml` — Atom feed of the collection, newest 20, full content, `xml:lang="sv"`. (Built in place of `jekyll-feed`, whose collection feed is titled "Transformation & Beyond | Beyond" and which also writes an empty `/feed.xml`.)
+- `_data/beyond_months.yml` — Swedish month names for the letter date.
 - `beyond/index.html` — the archive (front matter, layout `beyond-base`): short intro in Swedish, list of `site.beyond | sort: 'date' | reverse`, RSS link. A LinkedIn follow link only when `site.beyond_linkedin_url` is set (no URL is known yet; Operatör line).
 - `assets/beyond.css` — tokens copied from `index.html` `:root` (no new colours), reading-width typography for long Swedish text, images full width, mobile rules.
 - `_beyond/2026-v45.md` — the first letter, produced by the script, **only once V44 is `status: publicerad` in ai-insikter**. Until then the PR carries no letter and the archive shows an empty state.
@@ -45,7 +47,7 @@ URL: the publication week, which is what the cover and the LinkedIn title use (`
 
 ## Risks / watch out for
 - Pages runs Jekyll 3.x via the github-pages gem; test with that gem, not a newer Jekyll.
-- `jekyll-feed` also writes `/feed.xml` for posts (empty, there are no posts). Harmless; say so in the PR.
+- A local build with the github-pages gem also writes `assets/css/style.css` (the default Primer theme). Nothing links it; same for master, which already has `_config.yml`.
 - The letter text is Conny's published text; the script must not change wording. Only image paths change.
 - Do not touch `CNAME`, the price, Cal.com URL or contact address.
 
