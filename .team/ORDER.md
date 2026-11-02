@@ -34,7 +34,7 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 - [x] **Rulebook story.** Molnläget utan manuella moment: byt till agent-teams `team/CLOUD.md` (v0.7). Claude bygger i en tråd, Codex attackerar varje runda, en separat Claude-tråd dömer och mergar utom på Human-merge paths. Beställd av Conny 2026-10-24 i projekttråden. Ersätter `.team/CLOUD.md`.
 
 - [x] **Rulebook story.** Ompinning till agent-team v0.7.5 (93a678a). Beslutat av Conny 2026-11-01 (beslutskort "Ja, punkt 1–3"). Avgränsad 2026-11-02 till pinnen (domarens anmärkning N2, PR #24). (efter agent-team v0.7.5) 014
-- [ ] **Rulebook story.** Codex bygger tb-sites stories: `builder: codex`. Parkerad tills ett `@codex`-uppdrag går igenom i tb-site (Codex-miljön, se Operatör). (efter 014) → story 015 (parkerad)
+- [ ] **Rulebook story.** Codex bygger tb-sites stories: `builder: codex`. Avparkerad 2026-11-02: `@codex`-test i tb-site gick igenom. (efter 014) 015
 
 ## Förslag
 
@@ -62,4 +62,4 @@ infrastruktur, spend, beslut). Människan tar bort raden när det är gjort.
 - [ ] Story 012 (The AI Value Review som ledningens genomgång): gör en tidsbudget för sex intervjuer à 45 min innan första leveransen (panelens CFO: noll marginal vid tio intervjuer och 1 250 kr/h), och avtal/GDPR-underlag för läsåtkomst till användningsdata (panelens jurist).
 - [ ] Story 013 (bokningsknappar): byt titel på Cal.com-eventet (https://cal.com/conny-wadbro-impk9g/architecture-review; URL:en ska vara kvar) till "AI Value Review — scoping call". Ersätter tidigare titelrad för story 010.
 - [ ] Ny provrapport-PDF (beslut 2026-10-17): ett ledningsmemo med den sexgradiga trappan, inte "Architecture Review — Arnold OS" med grundaren som beslutsägare. Lägg den på R2 och skriv URL:en här; länkbytet blir en egen story.
-- [ ] **Codex-miljö för tb-site (story 015, `builder: codex`, behöver den):** `@codex`-uppdrag i tb-site svarar "create an environment for this repo" (issue #23, 2026-11-02), fast en miljö med namnet tb-site finns i Codex miljöväljare. Öppna den i Codex (Välj miljö → tb-site → Redigera miljö) och kontrollera att repot conwad-lab/tb-site är kopplat och att miljön är publicerad; publicera om vid behov. Säg till koordinatorn när det är gjort. Utan den bygger Claude-tråden själv (Codex misslyckas två gånger → byggaren bygger).
+- [x] **Codex-miljö för tb-site (story 015, `builder: codex`, behöver den):** Löst 2026-11-02 av PO: miljö av den äldre typen (den GitHub `@codex` läser) skapad; testet på #23 gick igenom. `@codex`-uppdrag i tb-site svarar "create an environment for this repo" (issue #23, 2026-11-02), fast en miljö med namnet tb-site finns i Codex miljöväljare. Öppna den i Codex (Välj miljö → tb-site → Redigera miljö) och kontrollera att repot conwad-lab/tb-site är kopplat och att miljön är publicerad; publicera om vid behov. Säg till koordinatorn när det är gjort. Utan den bygger Claude-tråden själv (Codex misslyckas två gånger → byggaren bygger).

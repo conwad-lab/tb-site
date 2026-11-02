@@ -1,7 +1,6 @@
 ---
 id: 015
 title: "Codex builds tb-site stories (builder: codex)"
-parked-until: "an @codex task succeeds in tb-site (Codex environment, see ORDER.md § Operatör)"
 ---
 
 Rulebook story.
@@ -29,3 +28,4 @@ The next tb-site story after this one merges with its code commits from Codex (i
 
 ## Log
 - 2026-11-02 PO: created from story 014's Codex part (Judge note N2 on PR #24). Parked until an `@codex` task succeeds in tb-site. Human merge (rulebook story).
+- 2026-11-02 PO: unparked. A Codex environment of the older type (the one GitHub `@codex` reads) was created for conwad-lab/tb-site; the `@codex` test on issue #23 returned `ls` output at 21:30Z. First acceptance criterion met; link: https://github.com/conwad-lab/tb-site/issues/23#issuecomment-6588920658 (reply below it).
