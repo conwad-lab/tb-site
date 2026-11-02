@@ -3,9 +3,11 @@ id: 014
 verdict: plan
 ---
 
-# Plan 014 — Codex builds tb-site stories (builder: codex, agent-team v0.7.5)
+# Plan 014 — Pin agent-team v0.7.5
 
 Story: `.team/backlog/014-builder-codex.md` (unparked 2026-11-02; v0.7.5 merge sha: 93a678a).
+
+**Scope change 2026-11-02:** the story now covers only the re-pin to 93a678a and the `team:` line (Judge note N2 on PR #24). The `builder: codex` switch and the AGENTS.md edits below moved to story 015 (parked until an `@codex` task succeeds in tb-site); 015 reuses this plan's Files and Steps for those parts.
 
 ## Approach
 Rulebook-only change, no site file. Re-pin the submodule from v0.7.3 (141623c) to the v0.7.5 merge commit, switch `builder:` and align `AGENTS.md`. This story itself is built by the Builder thread (it changes the rule it would run under), and gets a Codex plan attack first (v0.7.5 Flow: rulebook story).

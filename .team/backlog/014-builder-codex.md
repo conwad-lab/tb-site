@@ -1,30 +1,30 @@
 ---
 id: 014
-title: "Codex builds tb-site stories (builder: codex, agent-team v0.7.5)"
+title: "Pin agent-team v0.7.5"
 ---
 
 Rulebook story.
 
 ## Outcome
-tb-site runs on agent-team v0.7.5 with `builder: codex`: Codex writes the code for each story from a `@codex` task on the story's issue, and the Builder thread drives the rest.
+tb-site runs under agent-team v0.7.5 rules: the submodule is pinned on the v0.7.5 merge commit (93a678a). `builder:` stays as it is; the switch to `builder: codex` is story 015.
 
 ## Why
-Conny has spare Codex capacity and Claude turns are the scarce resource (decision card "Ja, punkt 1–3", 2026-11-01). tb-site has had a Codex environment since 2026-10-17, so `@codex` tasks can run here. Mondmodel shows the practice works (issues #851, #862, #871: a buildable diff in about ten minutes). tb-site is also pinned on v0.7.3 and misses v0.7.4's data rule and v0.7.5's Builder rules.
+tb-site is pinned on v0.7.3 (141623c) and misses v0.7.4's data rule and v0.7.5's Builder rules (Codex fallback, plan attack on risky stories). Conny decided the v0.7.5 rollout on 2026-11-01 (decision card "Ja, punkt 1–3"). The Codex switch itself cannot land yet: `@codex` tasks in tb-site answer "create an environment for this repo" (issue #23).
 
 ## Signal
-The next tb-site story after this one merges with its code commits from Codex (issue `NNN:` with a `@codex` task and Codex's PR or diff), with no "Codex failed twice" line in its response file. Read off GitHub.
+The pin is on master, and the next tb-site story's plan and PR follow v0.7.5 (CLOUD.md § Builder). Read off GitHub.
 
 ## Acceptance criteria
-- [ ] `.claude/skills/agent-team` is pinned on the merge commit of agent-team v0.7.5, and `.team/team.md`'s `team:` line names v0.7.5 and that short sha.
-- [ ] `.team/team.md` says `builder: codex` with a comment naming CLOUD.md § Builder and the Codex environment (2026-10-17); the `models:` coder line says Codex builds from a `@codex` task on the story's issue, the Builder thread drives.
-- [ ] `AGENTS.md` § Team settings has a **Builder** line: `builder: codex` per CLOUD.md § Builder (issue `NNN: <story title>` with the `@codex` task, Codex writes code and fixes, the Builder thread runs Test before commit on Codex's head incl. the Playwright screenshots and link check, which Codex's environment may not run; Codex fails twice → the Builder thread builds).
-- [ ] `AGENTS.md` § "If you are Codex" no longer says "the Builder is a Claude thread"; it says Codex builds when a task asks it to, and attacks in review, reviewing its own PRs as if someone else wrote them.
-- [ ] `python3 -m html.parser index.html` exits 0 and `index.html` is unchanged (`git diff master --stat` lists no site file).
+- [ ] `.claude/skills/agent-team` is pinned on 93a678a (the agent-team v0.7.5 merge commit), and `.team/team.md`'s `team:` line names v0.7.5 and that short sha.
+- [ ] `builder:` in `.team/team.md` and AGENTS.md § Team settings are unchanged apart from what the re-pin requires.
+- [ ] `python3 -m html.parser index.html` exits 0 and `index.html` is unchanged (`git diff master --stat` lists only `.claude/skills/agent-team` and `.team/**`).
 
 ## Out of scope
 - Any change to the site itself.
+- `builder: codex`, the AGENTS.md **Builder** line and § "If you are Codex" (story 015).
 - `merge:` and Human-merge paths stay as they are.
 
 ## Log
 - 2026-11-01 PO: created, parked until agent-team v0.7.5 is merged. Human merge (rulebook story).
 - 2026-11-02 PO: unparked; agent-team v0.7.5 merged as 93a678a (PR #12). Pin the submodule on 93a678a.
+- 2026-11-02 PO: scope narrowed to the v0.7.5 pin (Judge note N2 on PR #24). The `@codex` plan attack on issue #23 failed twice with "create an environment for this repo", so the Codex switch moved to story 015, parked until an `@codex` task succeeds in tb-site.
