@@ -20,7 +20,7 @@ function fakeD1() {
       const stmt = {
         bind: (...a) => ((args = a), stmt),
         first: async () => db.prepare(sql).get(...args) ?? null,
-        run: async () => db.prepare(sql).run(...args),
+        run: async () => ({ meta: { changes: Number(db.prepare(sql).run(...args).changes) } }),
         all: async () => ({ results: db.prepare(sql).all(...args) }),
       };
       return stmt;
@@ -144,14 +144,36 @@ test("scheduled purge deletes old unconfirmed rows only", async () => {
   assert.deepEqual(rows().map((r) => r.email), ["anna@example.se"]);
 });
 
-test("Postmark failure is a 500, not a silent success", async () => {
+test("Postmark outage: same answer as for a known address, and the person can retry at once", async () => {
+  await post({ email: "anna@example.se", consent: "yes" });
+  await worker.fetch(new Request(await signedLink(env, "confirm", "anna@example.se")), env);
   globalThis.fetch = async () => new Response("down", { status: 503 });
   const orig = console.error;
   console.error = () => {};
-  const res = await post({ email: "anna@example.se", consent: "yes" });
+  const unknown = await post({ email: "bo@example.se", consent: "yes" });
+  const known = await post({ email: "anna@example.se", consent: "yes" });
   console.error = orig;
-  assert.equal(res.status, 500);
-  assert.equal(rows().length, 0);
+  assert.equal(unknown.status, 303);
+  assert.equal(known.status, 303);
+  assert.equal(unknown.headers.get("Location"), known.headers.get("Location"));
+  globalThis.fetch = async (url, init) => (mails.push({ url, body: JSON.parse(init.body) }), new Response("{}"));
+  await post({ email: "bo@example.se", consent: "yes" });
+  assert.equal(mails.filter((m) => m.body.To === "bo@example.se").length, 1);
+});
+
+test("20 concurrent requests for one address send one mail", async () => {
+  await Promise.all(Array.from({ length: 20 }, () => post({ email: "anna@example.se", consent: "yes" })));
+  assert.equal(mails.length, 1);
+});
+
+test("the hourly cap counts sends, not addresses", async () => {
+  env.MAX_CONFIRMATIONS_PER_HOUR = "2";
+  env.RESEND_MINUTES = "0";
+  await post({ email: "anna@example.se", consent: "yes" });
+  await new Promise((r) => setTimeout(r, 5));
+  await post({ email: "anna@example.se", consent: "yes" });
+  await post({ email: "bo@example.se", consent: "yes" });
+  assert.equal(mails.length, 2);
 });
 
 test("address normalisation", () => {

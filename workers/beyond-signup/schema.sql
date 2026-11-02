@@ -9,3 +9,9 @@ CREATE TABLE IF NOT EXISTS subscribers (
   confirmed_at    TEXT
 );
 CREATE INDEX IF NOT EXISTS subscribers_status ON subscribers (status, created_at);
+
+-- One row per confirmation mail sent, for the hourly cap. Holds no personal data; purged after a day.
+CREATE TABLE IF NOT EXISTS sends (
+  at TEXT NOT NULL                                                  -- ISO 8601 UTC
+);
+CREATE INDEX IF NOT EXISTS sends_at ON sends (at);

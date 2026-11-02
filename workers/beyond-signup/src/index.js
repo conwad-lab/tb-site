@@ -52,32 +52,50 @@ async function subscribe(request, env) {
   if (!email) return redirect(`${site}/beyond/?fel=adress#prenumerera`);
 
   const now = new Date();
-  const row = await env.DB.prepare("SELECT status, confirm_sent_at FROM subscribers WHERE email = ?").bind(email).first();
-  if (row && row.status === "confirmed") return thanks;
-  if (row && minutesSince(row.confirm_sent_at, now) < Number(env.RESEND_MINUTES || 10)) return thanks;
+  const stamp = now.toISOString();
 
-  const sentLastHour = await env.DB.prepare("SELECT COUNT(*) AS n FROM subscribers WHERE confirm_sent_at > ?")
-    .bind(new Date(now.getTime() - 3600_000).toISOString()).first();
-  if (sentLastHour && sentLastHour.n >= Number(env.MAX_CONFIRMATIONS_PER_HOUR || 50)) {
+  // 1. Per-address reservation, also one atomic statement: insert a new pending row, or take over a
+  //    pending row whose last confirmation is older than the cooldown. A confirmed address, or one
+  //    inside the cooldown, changes nothing and gets the same answer.
+  const cooldownStart = new Date(now.getTime() - Number(env.RESEND_MINUTES || 10) * 60_000).toISOString();
+  const reserved = await env.DB.prepare(
+    `INSERT INTO subscribers (email, status, consent, created_at, confirm_sent_at) VALUES (?, 'pending', ?, ?, ?)
+     ON CONFLICT(email) DO UPDATE SET consent = excluded.consent, confirm_sent_at = excluded.confirm_sent_at
+     WHERE subscribers.status = 'pending' AND subscribers.confirm_sent_at < ?`
+  ).bind(email, CONSENT_VERSION, stamp, stamp, cooldownStart).run();
+  if (changes(reserved) !== 1) return thanks;
+
+  // 2. Global cap: reserve one send in the hourly budget, only for a request that will send.
+  //    A single INSERT … SELECT is atomic in D1, so concurrent requests cannot all pass.
+  const hourAgo = new Date(now.getTime() - 3600_000).toISOString();
+  const slot = await env.DB.prepare(
+    "INSERT INTO sends (at) SELECT ? WHERE (SELECT COUNT(*) FROM sends WHERE at > ?) < ?"
+  ).bind(stamp, hourAgo, Number(env.MAX_CONFIRMATIONS_PER_HOUR || 50)).run();
+  if (changes(slot) !== 1) {
     console.warn("confirmation cap reached");
+    await release(env, email, stamp);
     return thanks;
   }
-
-  const stamp = now.toISOString();
-  await env.DB.prepare(
-    `INSERT INTO subscribers (email, status, consent, created_at, confirm_sent_at) VALUES (?, 'pending', ?, ?, ?)
-     ON CONFLICT(email) DO UPDATE SET consent = excluded.consent, confirm_sent_at = excluded.confirm_sent_at`
-  ).bind(email, CONSENT_VERSION, stamp, stamp).run();
 
   const link = await signedLink(env, "confirm", email);
   try {
     await sendConfirmation(env, email, link, site);
   } catch (err) {
-    // Leave no pending row behind, so the person can try again at once.
-    await env.DB.prepare("DELETE FROM subscribers WHERE email = ? AND status = 'pending'").bind(email).run();
-    throw err;
+    // Same answer as every other case (no enumeration through a mail outage).
+    console.error("confirmation mail failed", err);
+    await release(env, email, stamp);
   }
   return thanks;
+}
+
+// Undo a reservation when no mail went out: a row this request created is deleted (no address is
+// kept without a confirmation mail), an older pending row gets its cooldown back so a retry works
+// and its earlier confirm link stays valid.
+async function release(env, email, stamp) {
+  await env.DB.prepare("DELETE FROM subscribers WHERE email = ? AND status = 'pending' AND created_at = ?")
+    .bind(email, stamp).run();
+  await env.DB.prepare("UPDATE subscribers SET confirm_sent_at = ? WHERE email = ? AND status = 'pending'")
+    .bind(new Date(0).toISOString(), email).run();
 }
 
 function sendConfirmation(env, email, link, site) {
@@ -137,6 +155,7 @@ async function exportCsv(request, env) {
 export async function purgePending(env, now = new Date()) {
   const cutoff = new Date(now.getTime() - Number(env.PENDING_DAYS || 7) * 86400_000).toISOString();
   await env.DB.prepare("DELETE FROM subscribers WHERE status = 'pending' AND created_at < ?").bind(cutoff).run();
+  await env.DB.prepare("DELETE FROM sends WHERE at < ?").bind(new Date(now.getTime() - 86400_000).toISOString()).run();
 }
 
 // ---------- helpers ----------
@@ -207,8 +226,9 @@ async function equal(a, b) {
   return d === 0;
 }
 
-function minutesSince(iso, now) {
-  return (now.getTime() - new Date(iso).getTime()) / 60000;
+// D1 reports affected rows as meta.changes.
+function changes(result) {
+  return result?.meta?.changes ?? 0;
 }
 
 function b64url(bytes) {
