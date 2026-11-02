@@ -13,6 +13,27 @@ description: "& Beyond är Conny Wadbros veckobrev om gränslandet mellan teknik
       <a href="{{ '/beyond/feed.xml' | relative_url }}">RSS</a>
     </p>
 
+    {%- if site.beyond_signup_url and site.beyond_signup_url != "" %}
+    <form class="signup" id="prenumerera" method="post" action="{{ site.beyond_signup_url }}">
+      <label for="signup-email">Få brevet som e-post varje måndag</label>
+      <div class="signup-row">
+        <input id="signup-email" name="email" type="email" required autocomplete="email" placeholder="namn@foretag.se" maxlength="254">
+        <button type="submit">Prenumerera</button>
+      </div>
+      <label class="signup-consent"><input type="checkbox" name="consent" value="yes" required> <span>Jag vill få &amp; Beyond via e-post och har läst <a href="{{ '/beyond/integritet/' | relative_url }}">hur adressen hanteras</a>.</span></label>
+      <div class="signup-hp" aria-hidden="true"><label>Lämna tomt <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="signup-note">Du får ett mejl för att bekräfta. Ingen spårning av öppningar eller klick. Avsluta när du vill.</p>
+      <p class="signup-error" id="signup-error" role="alert" hidden></p>
+    </form>
+    <script>
+    (function(){
+      var m={adress:"Adressen ser inte ut att stämma. Försök igen.",samtycke:"Kryssa i rutan för att prenumerera.",lank:"Länken gäller inte längre. Anmäl dig igen här."};
+      var f=new URLSearchParams(location.search).get("fel"), e=document.getElementById("signup-error");
+      if(f&&m[f]&&e){e.textContent=m[f];e.hidden=false;}
+    })();
+    </script>
+    {%- endif %}
+
     {%- assign letters = site.beyond | sort: "date" | reverse %}
     {%- if letters.size > 0 %}
     <ol class="issues">
