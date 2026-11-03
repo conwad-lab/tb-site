@@ -39,10 +39,11 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Human-merge paths:** `CNAME`, `_config.yml`, and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
 - **Signal sources:** the live page (https://transformationbeyond.se/ — every `href` 200, screenshots at both widths), the GitHub Pages build for the latest merge, open Dependabot alerts.
 - **Where checks run in the cloud:** `python3 -m html.parser` everywhere; Playwright screenshots and the link check by the Builder and the Judge (a URL the session's network blocks is listed as **not checked**, never as passed). A check the change needs that could not run anywhere becomes an Operatör line before merge.
+- **Builder:** `builder: codex` per `.claude/skills/agent-team/team/CLOUD.md` § Builder. The Builder thread opens the issue `NNN: <story title>` and posts the `@codex` build task there; Codex writes the code and every fix (`@codex fix Mn` on the PR). The Builder thread drives the rest: it runs **Test before commit** on Codex's head before every review request and before asking for a Judge, including the Playwright screenshots at both widths and the link check, which Codex's environment may not run, and attaches the screenshots to the PR. Codex failing the same task twice (an error reply, no PR or diff within the hour, or a head that fails Test before commit) → the Builder thread builds that task and says so in the response file.
 
 ## If you are Codex
 
-You are the **attacker** in review (`.claude/skills/agent-team/team/CLOUD.md`): the Builder is a Claude thread and the verdict is the Judge's. Follow **Code Review Rules** below. If a task or comment instead asks you to build, you are the Coder (`roles/coder.md`, with `CLOUD.md` winning): build exactly the plan, PR titled `NNN: <story title>`, never merge, never force-push, never cross a hard rail. Sign `— Coder (Codex) on behalf of Conny Wadbro`.
+You have two jobs here (`.claude/skills/agent-team/team/CLOUD.md`). When a `@codex` task on a story issue or a `@codex fix` comment asks you to build, you are the Coder. In review you are the **attacker**, also on a PR you built yourself: review it as if someone else wrote it. The Claude Builder thread drives each PR and the verdict is the Judge's. Follow **Code Review Rules** below. If a task or comment instead asks you to build, you are the Coder (`roles/coder.md`, with `CLOUD.md` winning): build exactly the plan, PR titled `NNN: <story title>`, never merge, never force-push, never cross a hard rail. Sign `— Coder (Codex) on behalf of Conny Wadbro`.
 
 ## Code Review Rules
 
@@ -54,3 +55,4 @@ Codex's automatic PR review is **on** for this repo. You are the attacker in thi
 - Run the **Test before commit** commands if your environment can; say which ran and which did not. Never report a check as passed that you did not run.
 - A request comment may name a focus ("security", "failure paths", "story fit"): stay on it.
 - Flag any change to `AGENTS.md`, `.team/team.md`, `REVIEW.md` or `.team/roles/*` when the story's first line is not `Rulebook story.`
+- When you review a PR you built yourself, review it as if someone else wrote it.
