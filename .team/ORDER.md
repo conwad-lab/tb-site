@@ -36,6 +36,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 - [x] **Rulebook story.** Ompinning till agent-team v0.7.5 (93a678a). Beslutat av Conny 2026-11-01 (beslutskort "Ja, punkt 1–3"). Avgränsad 2026-11-02 till pinnen (domarens anmärkning N2, PR #24). (efter agent-team v0.7.5) 014
 - [ ] **Rulebook story.** Codex bygger tb-sites stories: `builder: codex`. Avparkerad 2026-11-02: `@codex`-test i tb-site gick igenom. (efter 014) 015
 
+- [ ] Mall för ensidesofferten "Ordförandens fråga" (guld C15, C20, C24 från idétavlan, beslutad av Conny 2026-11-06). En sida på svenska och engelska i `docs/offert-ordforandens-fraga/` (exkluderad från sajten, publiceras inte), med fält för: kundens fråga ordagrant, styrelsemötets datum, leveransdatum (en vecka före mötet), och en kryssruta för vilket svar som köps: (a) kostnad per utfall för en namngiven process, mätt före ett AI-köp; (b) granskning av ett AI-framtaget underlag som står på styrelsemötets dagordning; (c) hela The AI Value Review. Två prisvägar, fasta: The AI Value Review 75 000 kr ex moms (oförändrat) och licensgenomgången 25 000 kr ex moms (Connys beslut 2026-11-06, B2; står bara i mallen, inte på sajten). Avsändare är alltid Transformation & Beyond, aldrig Dignami. Villkor: en rad "Villkor enligt bifogat avtal" — Conny skriver avtalet själv; agenten skriver inga avtalsvillkor och ingen juridisk text. Ja-rad med behörig firmatecknare, namn och datum. Inga påståenden om kunder, meriter eller siffror. Leverans: mallen plus ett ifyllt exempel med påhittat bolag tydligt märkt "exempel". Pris, Cal.com-länk och kontaktadress på sajten ändras inte.
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
@@ -43,6 +45,8 @@ Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en r
 ## Väntar på människan
 
 Beslut 2026-10-12 (Conny): C5 — "available on request" står kvar, ingen publik URL. C6 och design review — se Kö.
+
+- [ ] Idétavlan T&B, guld C15/C20/C24 (2026-11-06): skriv ned upp till tre ordförande eller ledamöter du känner i bolag med styrelsemöte inom 4–10 veckor; fråga själv "Vilken fråga om AI vill du att vd svarar på inför ert möte den [datum]?" och skicka samma dag ensidesofferten (mallen ovan) med frågan ordagrant och ditt eget avtal som bilaga. Kontakten tas alltid av Transformation & Beyond.
 
 ## Operatör
 
