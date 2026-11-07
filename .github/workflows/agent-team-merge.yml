@@ -113,7 +113,7 @@ jobs:
           # Only when this comment's pinned head was merged after the comment was posted (this run's merge).
           sha=$(printf '%s\n' "$BODY" | tr -d '\r' | sed -n 's/^agent-team-merge: \([0-9a-f]\{40\}\)[[:space:]]*$/\1/p' | head -n 1)
           [ -n "$sha" ] || { echo "no pinned sha: no Pages build"; exit 0; }
-          read -r merged head merged_at < <(gh api "repos/$REPO/pulls/$PR" --jq '"\(.merged) \(.head.sha) \(.merged_at // "-")"') || { echo "could not read the PR: no Pages build"; exit 0; }
+          read -r merged head merged_at < <(gh api "repos/$REPO/pulls/$PR" --jq '"\(.merged) \(.head.sha) \(.merged_at // "-")"') || { gh api -X POST "repos/$REPO/issues/$PR/comments" -f body="agent-team-merge could not read this PR after the merge step, so it did not request a GitHub Pages build; check whether the live site shows the merge." >/dev/null || true; exit 1; }
           { [ "$merged" = true ] && [ "$head" = "$sha" ] && [[ "$merged_at" > "$ASKED_AT" || "$merged_at" == "$ASKED_AT" ]]; } || { echo "not merged by this run: no Pages build"; exit 0; }
           if gh api -X POST "repos/$REPO/pages/builds" >/dev/null; then
             echo "Pages build requested"
