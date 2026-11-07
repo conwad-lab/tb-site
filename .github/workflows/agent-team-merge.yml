@@ -55,6 +55,8 @@ jobs:
             board:*)
               # A board PR skips the review-file and Codex checks (CLOUD.md § Walls, Board PRs), so it may only touch board files.
               bfiles=$(gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[] | .filename, (.previous_filename // empty)') || refuse "could not list the PR's files"
+              nchanged=$(jq -r '.changed_files // 0' <<<"$pr")
+              [ "$nchanged" -lt 3000 ] || refuse "a board: PR with $nchanged changed files cannot be checked (GitHub lists at most 3000)"
               bad=$(grep -vE '^\.team/(backlog/.+|plans/.+|ORDER\.md|PAPERCUTS\.md)$' <<<"$bfiles" | grep -v '^$' | head -n 3 | tr '\n' ' ' || true)
               [ -z "$bad" ] || refuse "a board: PR may only change board files (.team/backlog, .team/plans, .team/ORDER.md, .team/PAPERCUTS.md); also changes: $bad"
               ;;
