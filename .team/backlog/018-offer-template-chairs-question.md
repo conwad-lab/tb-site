@@ -15,11 +15,11 @@ Not readable on the site (the template is excluded from publication). Seen when 
 ## Acceptance criteria
 - [ ] `docs/offert-ordforandens-fraga/` holds a Swedish template, an English template, one filled-in Swedish example and a short README (how to fill in and save as PDF). Each page prints to exactly one A4 page.
 - [ ] Every template has these fields: the customer's question word for word; board meeting date; delivery date (one week before the meeting, stated as a rule next to the field); a checkbox for which answer is bought: (a) cost per outcome for a named process, measured before an AI purchase; (b) review of an AI-produced document on the board meeting's agenda; (c) the whole AI Value Review.
-- [ ] Prices, fixed and only these two: The AI Value Review 75 000 kr ex moms (unchanged) and the licence review route 25 000 kr ex moms. Which price sits next to (a) and (b) follows the decision recorded in the plan.
+- [ ] No price figure anywhere on the pages (Conny 2026-11-07: prices are not written out on the page; everything is ex moms and the price lives in Conny's attached agreement).
 - [ ] Sender is Transformation & Beyond on every page; the word "Dignami" does not appear in the folder.
 - [ ] Terms are one line only: "Villkor enligt bifogat avtal" / "Terms as per the attached agreement". No other contract, legal or liability text.
 - [ ] A yes line for the customer: authorised signatory, name (printed), date.
-- [ ] No claims about customers, credentials or numbers beyond the two prices and the dates.
+- [ ] No claims about customers, credentials or numbers; the only figures are the dates.
 - [ ] The example uses a made-up company and is marked "EXEMPEL" visibly on the page and in the file name.
 - [ ] `index.html`, `CNAME`, `_config.yml`: unchanged (diff shows only `docs/offert-ordforandens-fraga/**`). `docs` stays in `_config.yml` `exclude`, so nothing is published.
 
@@ -30,4 +30,5 @@ Not readable on the site (the template is excluded from publication). Seen when 
 - An English example.
 
 ## Log
-- 2026-11-07 PO: created from the ORDER row (idea board gold C15/C20/C24). Open point for Conny: which fixed price goes with answers (a) and (b) — see plan § Decision. Note: 016 (PR #25) and 017 (PR #28) are still open; start the Builder when the repo's one-story rule allows, or on Conny's say.
+- 2026-11-07 PO: created from the ORDER row (idea board gold C15/C20/C24). Open point on prices for (a) and (b), resolved below. Note: 016 (PR #25) and 017 (PR #28) are still open; start the Builder when the repo's one-story rule allows, or on Conny's say.
+- 2026-11-07 PO: Conny decided no prices on the page ("Allt är ex moms … Jag vill inte skriva ut priserna direkt på sidan"). Price criterion replaced; the 75 000 / 25 000 routes live in Conny's agreement, not in the template.
