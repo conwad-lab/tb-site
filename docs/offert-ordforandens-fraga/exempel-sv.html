@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EXEMPEL — Ordförandens fråga — Transformation &amp; Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#F7F5F0; --ink:#1C2022; --bronze:#7A5729; --hair:#E3DFD5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#d9d6cf; color:var(--ink); font:11pt/1.35 "Hanken Grotesk",Arial,sans-serif; }
+  .page { width:210mm; min-height:297mm; margin:0 auto; padding:18mm; background:var(--paper); display:flex; flex-direction:column; }
+  .masthead { display:flex; justify-content:space-between; align-items:baseline; gap:10mm; border-bottom:1px solid var(--ink); padding-bottom:5mm; }
+  .brand { font:500 18pt/1 "Newsreader",Georgia,serif; white-space:nowrap; }
+  .brand b { color:var(--bronze); font:500 12pt "JetBrains Mono",monospace; }
+  .email { font-size:9pt; }
+  .eyebrow, .label, .delivery-note { font-family:"JetBrains Mono",monospace; }
+  .eyebrow { color:var(--bronze); font-size:8pt; letter-spacing:.14em; text-transform:uppercase; margin:12mm 0 2mm; }
+  h1 { font:400 30pt/1.1 "Newsreader",Georgia,serif; margin:0 0 10mm; }
+  .label { display:block; color:var(--bronze); font-size:8pt; text-transform:uppercase; letter-spacing:.07em; margin-bottom:2mm; }
+  .question { border-left:2px solid var(--bronze); padding:2mm 0 2mm 5mm; font:400 16pt/1.25 "Newsreader",Georgia,serif; min-height:22mm; margin-bottom:8mm; }
+  [contenteditable] { outline:none; }
+  [contenteditable]:focus { background:#eee6d8; }
+  .details { display:grid; grid-template-columns:1fr 1fr; column-gap:10mm; row-gap:5mm; margin-bottom:10mm; }
+  .value { display:block; border-bottom:1px solid var(--hair); min-height:6mm; }
+  .delivery-note { font-size:7.5pt; color:var(--bronze); margin-top:1mm; }
+  h2 { font:500 14pt "Newsreader",Georgia,serif; margin:0 0 3mm; }
+  .choice { display:grid; grid-template-columns:7mm 1fr auto; gap:3mm; align-items:start; border-top:1px solid var(--hair); padding:3mm 0; font-size:10.5pt; }
+  .choice:last-child { border-bottom:1px solid var(--hair); }
+  .box { font-size:15pt; line-height:1; cursor:text; }
+  .price { white-space:nowrap; font-size:9.5pt; padding-left:4mm; }
+  .terms { margin:8mm 0 6mm; font-size:10pt; }
+  .yes { margin:0 0 6mm; font-weight:600; }
+  .signature { display:grid; grid-template-columns:1.5fr 1fr .65fr; gap:6mm; }
+  .signature div { border-top:1px solid var(--ink); padding-top:2mm; font-size:8pt; }
+  footer { border-top:1px solid var(--hair); margin-top:auto; padding-top:3mm; font-size:8pt; }
+  .example-band { background:var(--bronze); color:white; padding:2mm 3mm; font:500 8pt "JetBrains Mono",monospace; letter-spacing:.08em; }
+  @page { size:A4; margin:18mm; }
+  @media print {
+    body { background:var(--paper); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page { width:auto; min-height:0; height:260mm; margin:0; padding:0; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="example-band">EXEMPEL — påhittat bolag</div>
+  <header class="masthead"><div class="brand">Transformation <b>&amp;</b> Beyond</div><div class="email">contact@transformationbeyond.se</div></header>
+  <p class="eyebrow">Offert</p>
+  <h1>Ordförandens fråga</h1>
+  <section><span class="label">Er fråga, ordagrant</span><div class="question" contenteditable="true">Vad har våra Copilot-licenser gett i kronor, och ska vi förnya dem i mars?</div></section>
+  <section class="details">
+    <div><span class="label">Bolag</span><span class="value" contenteditable="true">Exempelbolaget Fjällsta AB</span></div>
+    <div><span class="label">Mottagare</span><span class="value" contenteditable="true">Anna Exempel, styrelseordförande</span></div>
+    <div><span class="label">Styrelsemöte</span><span class="value" contenteditable="true">2027-02-18</span></div>
+    <div><span class="label">Leverans</span><span class="value" contenteditable="true">2027-02-11</span><div class="delivery-note">en vecka före mötet</div></div>
+  </section>
+  <section>
+    <h2>Vilket svar köps</h2>
+    <div class="choice"><span class="box" contenteditable="true">☑</span><span>Kostnad per utfall för en namngiven process, mätt före ett AI-köp</span><span class="price">25 000 kr ex moms</span></div>
+    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Granskning av ett AI-framtaget underlag som står på styrelsemötets dagordning</span><span class="price">25 000 kr ex moms</span></div>
+    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Hela The AI Value Review</span><span class="price">75 000 kr ex moms</span></div>
+  </section>
+  <p class="terms">Villkor enligt bifogat avtal</p>
+  <p class="yes">Ja. Vi beställer det kryssade svaret.</p>
+  <div class="signature"><div>Behörig firmatecknare (underskrift)</div><div>Namnförtydligande</div><div>Datum</div></div>
+  <footer>Transformation &amp; Beyond · contact@transformationbeyond.se</footer>
+</main>
+</body>
+</html>
