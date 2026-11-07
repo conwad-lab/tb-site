@@ -52,7 +52,12 @@ jobs:
           [ "$draft" = false ] || refuse "the PR is a draft"
           [ "$head" = "$sha" ] || refuse "the head is $head, not the pinned $sha; a new head needs a new verdict"
           case "$title" in
-            board:*) ;;
+            board:*)
+              # A board PR skips the review-file and Codex checks (CLOUD.md § Walls, Board PRs), so it may only touch board files.
+              bfiles=$(gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[] | .filename, (.previous_filename // empty)') || refuse "could not list the PR's files"
+              bad=$(grep -vE '^\.team/(backlog/.+|plans/.+|ORDER\.md|PAPERCUTS\.md)$' <<<"$bfiles" | grep -v '^$' | head -n 3 | tr '\n' ' ' || true)
+              [ -z "$bad" ] || refuse "a board: PR may only change board files (.team/backlog, .team/plans, .team/ORDER.md, .team/PAPERCUTS.md); also changes: $bad"
+              ;;
             *)
               has_team=""
               if team_out=$(gh api "repos/$REPO/contents/.team?ref=$base" 2>&1); then has_team=1
