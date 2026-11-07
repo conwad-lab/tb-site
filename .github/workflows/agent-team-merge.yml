@@ -13,6 +13,7 @@ permissions:
   contents: write
   pull-requests: write
   actions: write
+  pages: write
 concurrency:
   group: agent-team-merge-${{ github.event.issue.number }}
   cancel-in-progress: false
@@ -92,3 +93,20 @@ jobs:
           done
           say "Merged by agent-team-merge: head $sha, as asked in $COMMENT_URL"
           # --- end agent-team-merge script
+      # tb-site only (not in the agent-team asset): the site publishes from master with
+      # GitHub Pages, and a merge made with GITHUB_TOKEN starts no Pages build, so ask for one.
+      - name: Request a GitHub Pages build after the merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.issue.number }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          [ "$(gh api "repos/$REPO/pulls/$PR" --jq .merged)" = true ] || { echo "PR not merged: no Pages build"; exit 0; }
+          if gh api -X POST "repos/$REPO/pages/builds" >/dev/null; then
+            echo "Pages build requested"
+          else
+            gh api -X POST "repos/$REPO/issues/$PR/comments" -f body="agent-team-merge merged this PR but could not request a GitHub Pages build; the live site may still show the previous version." >/dev/null || true
+            exit 1
+          fi
