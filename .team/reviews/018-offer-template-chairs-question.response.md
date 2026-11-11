@@ -1,0 +1,14 @@
+# Response 018 — Offer template "Ordförandens fråga"
+
+## Round 1 — 2026-11-11
+- M1: fixed in d23d405 — removed all price spans, the `.price` rule, the third grid column, and the README price mapping after merging current `master`.
+- M2: fixed — rewrote PR #32's body to match the price-free pages and current plan.
+- S1: disputed — generated the two required site screenshots and three A4 offer previews in `/tmp/tb018-evidence/`; AGENTS.md assigns attaching screenshots to the Builder thread, which has access to its own test environment. I have flagged that handoff on PR #32.
+- S2: disputed — this Coder session requests one `@codex review` on the fixed head; CLOUD.md assigns marking the draft ready after the review round to the Builder thread. The response file is now present.
+
+— Coder (Codex) on behalf of Conny Wadbro
+
+## Round 2 — 2026-11-11
+- S3: fixed — marked PR #32 ready for review with `gh pr ready 32`.
+
+— Coder (Codex) on behalf of Conny Wadbro

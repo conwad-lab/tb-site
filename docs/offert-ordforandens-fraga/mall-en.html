@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The chair's question — Transformation &amp; Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#F7F5F0; --ink:#1C2022; --bronze:#7A5729; --hair:#E3DFD5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#d9d6cf; color:var(--ink); font:11pt/1.35 "Hanken Grotesk",Arial,sans-serif; }
+  .page { width:210mm; min-height:297mm; margin:0 auto; padding:18mm; background:var(--paper); display:flex; flex-direction:column; }
+  .masthead { display:flex; justify-content:space-between; align-items:baseline; gap:10mm; border-bottom:1px solid var(--ink); padding-bottom:5mm; }
+  .brand { font:500 18pt/1 "Newsreader",Georgia,serif; white-space:nowrap; }
+  .brand b { color:var(--bronze); font:500 12pt "JetBrains Mono",monospace; }
+  .email { font-size:9pt; }
+  .eyebrow, .label, .delivery-note { font-family:"JetBrains Mono",monospace; }
+  .eyebrow { color:var(--bronze); font-size:8pt; letter-spacing:.14em; text-transform:uppercase; margin:12mm 0 2mm; }
+  h1 { font:400 30pt/1.1 "Newsreader",Georgia,serif; margin:0 0 10mm; }
+  .label { display:block; color:var(--bronze); font-size:8pt; text-transform:uppercase; letter-spacing:.07em; margin-bottom:2mm; }
+  .question { border-left:2px solid var(--bronze); padding:2mm 0 2mm 5mm; font:400 16pt/1.25 "Newsreader",Georgia,serif; min-height:22mm; margin-bottom:8mm; }
+  [contenteditable] { outline:none; }
+  [contenteditable]:focus { background:#eee6d8; }
+  .details { display:grid; grid-template-columns:1fr 1fr; column-gap:10mm; row-gap:5mm; margin-bottom:10mm; }
+  .value { display:block; border-bottom:1px solid var(--hair); min-height:6mm; }
+  .delivery-note { font-size:7.5pt; color:var(--bronze); margin-top:1mm; }
+  h2 { font:500 14pt "Newsreader",Georgia,serif; margin:0 0 3mm; }
+  .choice { display:grid; grid-template-columns:7mm 1fr; gap:3mm; align-items:start; border-top:1px solid var(--hair); padding:3mm 0; font-size:10.5pt; }
+  .choice:last-child { border-bottom:1px solid var(--hair); }
+  .box { font-size:15pt; line-height:1; cursor:text; }
+  .terms { margin:8mm 0 6mm; font-size:10pt; }
+  .yes { margin:0 0 6mm; font-weight:600; }
+  .signature { display:grid; grid-template-columns:1.5fr 1fr .65fr; gap:6mm; }
+  .signature div { border-top:1px solid var(--ink); padding-top:2mm; font-size:8pt; }
+  footer { border-top:1px solid var(--hair); margin-top:auto; padding-top:3mm; font-size:8pt; }
+  @page { size:A4; margin:18mm; }
+  @media print {
+    body { background:var(--paper); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page { width:auto; min-height:0; height:260mm; margin:0; padding:0; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="masthead"><div class="brand">Transformation <b>&amp;</b> Beyond</div><div class="email">contact@transformationbeyond.se</div></header>
+  <p class="eyebrow">Offer</p>
+  <h1>The chair's question</h1>
+  <section><span class="label">Your question, word for word</span><div class="question" contenteditable="true">[Customer's question word for word]</div></section>
+  <section class="details">
+    <div><span class="label">Company</span><span class="value" contenteditable="true">[Company]</span></div>
+    <div><span class="label">Recipient</span><span class="value" contenteditable="true">[Recipient, role]</span></div>
+    <div><span class="label">Board meeting</span><span class="value" contenteditable="true">[YYYY-MM-DD]</span></div>
+    <div><span class="label">Delivery</span><span class="value" contenteditable="true">[YYYY-MM-DD]</span><div class="delivery-note">one week before the meeting</div></div>
+  </section>
+  <section>
+    <h2>Which answer you are buying</h2>
+    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Cost per outcome for a named process, measured before an AI purchase</span></div>
+    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Review of an AI-produced document on the board meeting's agenda</span></div>
+    <div class="choice"><span class="box" contenteditable="true">☐</span><span>The whole AI Value Review</span></div>
+  </section>
+  <p class="terms">Terms as per the attached agreement</p>
+  <p class="yes">Yes. We order the answer ticked above.</p>
+  <div class="signature"><div>Authorised signatory (signature)</div><div>Name in print</div><div>Date</div></div>
+  <footer>Transformation &amp; Beyond · contact@transformationbeyond.se</footer>
+</main>
+</body>
+</html>
