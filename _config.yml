@@ -7,3 +7,24 @@ exclude:
   - docs
   - .team
   - .claude
+  - bin
+  - Gemfile
+  - Gemfile.lock
+
+# & Beyond, the weekly letter (story 016). index.html has no front matter and is copied as is.
+url: https://transformationbeyond.se
+title: Transformation & Beyond
+description: "& Beyond, ett veckobrev av Conny Wadbro om gränslandet mellan teknik och verksamhet."
+author: Conny Wadbro
+beyond_linkedin_url: ""   # set when the LinkedIn newsletter URL is known
+
+collections:
+  beyond:
+    output: true
+    permalink: /beyond/:name/
+
+defaults:
+  - scope:
+      type: beyond
+    values:
+      layout: beyond-letter
