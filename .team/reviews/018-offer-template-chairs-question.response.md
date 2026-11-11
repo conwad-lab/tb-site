@@ -7,3 +7,8 @@
 - S2: disputed — this Coder session requests one `@codex review` on the fixed head; CLOUD.md assigns marking the draft ready after the review round to the Builder thread. The response file is now present.
 
 — Coder (Codex) on behalf of Conny Wadbro
+
+## Round 2 — 2026-11-11
+- S3: fixed — marked PR #32 ready for review with `gh pr ready 32`.
+
+— Coder (Codex) on behalf of Conny Wadbro
