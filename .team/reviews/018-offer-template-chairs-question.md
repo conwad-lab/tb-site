@@ -1,6 +1,6 @@
 ---
 id: 018
-verdict: request-changes
+verdict: approve
 ---
 
 # Review 018 — Offer template "Ordförandens fråga"
@@ -87,5 +87,51 @@ M1 and M2 from round 1 are fixed and verified. Codex reviewed `f979b0e` with no 
 - tried to break: merge-tree against `origin/master` → no conflict; bronze `#7A5729` on paper `#F7F5F0` ≈ 6.0:1 and white on bronze ≈ 6.5:1 (AA for the 7.5–8 pt labels and the example band); the band is in the page flow so it prints; no new font host (same Google Fonts URL as `index.html`); no script on the pages.
 - scope vs story: diff is the four planned files plus the two review-lane files. No Human-merge path touched, not a Rulebook story, so the Judge merges once S3 is done.
 - Not mine to do: marking the PR ready (Builder step).
+
+— Reviewer (Fable 5.1) on behalf of Conny Wadbro
+
+---
+
+# Round 3 — 2026-11-11 · head `b09ac60`
+
+S3 is done: the PR was marked ready at 07:27:20Z (timeline `ready_for_review`, conwad-lab). No Must or Should fix is open. The only commit since round 2 is the Coder's response file (`b09ac60`, `.team/reviews/**` only), so the Codex review of `f979b0e` still covers the last commit that changed anything outside the review lane; the Codex summary comment was refreshed after the ready transition (updated 07:28:30Z, `status: completed`, `has_any_findings: false`). I re-ran every check on this head anyway. **Verdict: approve.** `merge: auto`, no Human-merge path, not a Rulebook story → the Judge merges.
+
+## Round 2 answers
+- **S3** fixed (response file, round 2: `gh pr ready 32`) — verified: `gh pr view 32` → `isDraft: false`, `state: OPEN`, `mergeable: MERGEABLE`, `mergeStateStatus: CLEAN`. Closed.
+
+## Must fix
+- none
+
+## Should fix
+- none
+
+## Nits
+- Nit (carried, not blocking): `.box` is `contenteditable` with `cursor:text`; a click toggle would save a keystroke.
+
+## Evidence
+| Acceptance criterion | Shown by (test, command + output, screenshot) | Result |
+|---|---|---|
+| Folder holds SV template, EN template, filled SV example, short README; each prints to one A4 | `git diff --name-only origin/master...HEAD` outside `.team/reviews/` = exactly `README.md`, `exempel-sv.html`, `mall-en.html`, `mall-sv.html` under `docs/offert-ordforandens-fraga/`; Playwright 1.58.2 chromium `page.pdf({format:'A4', printBackground:true})` + `pdfinfo` on this head: mall-sv Pages 1, mall-en Pages 1, exempel-sv Pages 1 (595.92×842.88 pt); with fonts.googleapis.com/gstatic.com blocked: 1 page each. README is 5 lines. | pass |
+| Fields: question word for word; board meeting date; delivery date with the one-week rule next to it; checkboxes (a)(b)(c) | Read all three files in full (`mall-sv.html:48-59`, `mall-en.html:48-59`, `exempel-sv.html:50-61`): question block, Bolag/Company, Mottagare/Recipient, Styrelsemöte/Board meeting, Leverans/Delivery with "en vecka före mötet" / "one week before the meeting" directly under it, three ☐ rows with the story's (a)(b)(c) wording; renders in `/tmp/rev018r3/*.png` and the committed `.team/reviews/018-offer-template-chairs-question/*-screen.jpg` | pass |
+| No price figure anywhere on the pages | `grep -E -i -w "kr\|SEK\|moms\|VAT\|[0-9]{2} ?000" docs/offert-ordforandens-fraga/*` → no match (rc 1); digit scan of the templates finds only font-weight values inside the Google Fonts URL | pass |
+| Sender is Transformation & Beyond on every page; "Dignami" absent from the folder | masthead (`:45`) and footer (`:64`) "Transformation & Beyond · contact@transformationbeyond.se" on all three pages; `grep -ri dignami docs/offert-ordforandens-fraga/` → no match (rc 1) | pass |
+| Terms one line only | `grep -c "Villkor enligt bifogat avtal"` → 1 in mall-sv and exempel-sv; `grep -c "Terms as per the attached agreement"` → 1 in mall-en; no other contract, legal or liability text (read in full) | pass |
+| Yes line: authorised signatory, printed name, date | `mall-sv.html:62-63` "Ja. Vi beställer det kryssade svaret." + "Behörig firmatecknare (underskrift) · Namnförtydligande · Datum"; `mall-en.html:62-63` "Yes. We order the answer ticked above." + "Authorised signatory (signature) · Name in print · Date" | pass |
+| No claims about customers, credentials or numbers; only figures are dates | Read all three pages: no customer, credential or result claim. The only figures on any page: 2027-02-18 and 2027-02-11 in the example | pass |
+| Example uses a made-up company, marked "EXEMPEL" on the page and in the file name | `exempel-sv.html:46` bronze band "EXEMPEL — påhittat bolag" in the page flow (prints; `textHasExempel=true` in the rendered page); `<title>` starts with "EXEMPEL"; company "Exempelbolaget Fjällsta AB", recipient "Anna Exempel"; file name `exempel-sv.html` | pass |
+| `index.html`, `CNAME`, `_config.yml` unchanged; `docs` stays excluded | `git diff --stat origin/master...HEAD -- index.html CNAME _config.yml` → empty; `_config.yml` `exclude` lists `docs` | pass |
+
+## Codex findings
+- Codex review on `f979b0e` (manual request 06:59, completed 07:00:52Z): "Didn't find any major issues"; summary state refreshed 07:28:30Z after ready: `status: completed`, `has_any_findings: false`. No automatic review posted a finding after the ready transition. Nothing to rule on.
+- No Builder disputes this round.
+
+## What I checked
+- tests run: `python3 -m html.parser` on `index.html` and the three offer pages (all OK). Playwright 1.58.2 chromium on head `b09ac60`: A4 PDF per offer page with `pdfinfo` page count (1 each, with and without web fonts); `index.html` full-page screenshots at 1440×900 and 390×844 after scrolling to the bottom, scrollWidth = innerWidth at both; link check on every `href` in `index.html`: transformationbeyond.se, the Google Fonts stylesheet, dignami.com/en, /en/proof, /en/proof#status-table, the r2.dev sample PDF, mondmodel.com, the cal.com booking URL all 200; `assets/favicon.svg` and the five section anchors exist. Pre-existing and not from this PR: the two `preconnect` bare hosts return 404 and the logo `href="#"` has no target.
+- checks: `gh pr checks 32` → no checks reported; `master` has no branch protection and no rulesets, so no required check exists. GitHub reports the PR `MERGEABLE` / `CLEAN` against `master`.
+- tried to break: nothing in the offer pages changed since round 2 (`git diff 5519779..HEAD` = the response file only); re-read all three pages and the README in full on this head (Codex-built PR). No script tag, one external host (fonts.googleapis.com, same URL as `index.html`), no new host.
+- scope vs story: the four planned files plus the review-lane files. No Human-merge path, not a Rulebook story.
+
+## Merge
+`merge: auto` → `gh pr merge 32 --squash --delete-branch` (see the PR for the result).
 
 — Reviewer (Fable 5.1) on behalf of Conny Wadbro
