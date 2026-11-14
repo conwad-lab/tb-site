@@ -6,7 +6,7 @@ Builder (Claude). Rulebook story outside the story flow, no backlog file.
 
 | Finding | Answer | Commit |
 |---|---|---|
-| M1 `.team/PAPERCUTS.md:7` — the blocked external link check is reported only in the PR body, not as a papercut line as the new `AGENTS.md` § Papercuts requires | valid — fixed. Re-ran the link check with `curl -L` on every external `href` in `index.html` and logged the result as one `open` line. | see below |
+| M1 `.team/PAPERCUTS.md:7` — the blocked external link check is reported only in the PR body, not as a papercut line as the new `AGENTS.md` § Papercuts requires | valid — fixed. Re-ran the link check with `curl -L` on every external `href` in `index.html` and logged the result as one `open` line. | ee3a126 |
 
 ## Outcome
 
