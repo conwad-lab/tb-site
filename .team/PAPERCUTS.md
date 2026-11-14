@@ -6,6 +6,8 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 
 ## Lines
 
+2026-11-14 | Builder (Claude) | link check: 7 external hrefs (mondmodel.com, the r2.dev sample PDF, transformationbeyond.se, dignami.com/en, /en/proof ×2) return curl 000 from the cloud session (network policy); the fonts.googleapis.com CSS URL returns 200 | listed as **not checked** in the PR; the live-page Operatör check after merge covers them | open
+
 ## Retro
 
 <!-- The routine appends one line per week: YYYY-Www | Codex fixed <n> | Judge fixed <n> | failed @codex tasks <n> | escalations <n> | papercuts open <n> | cards <n> | human wait <h> h
