@@ -51,3 +51,21 @@ Rulebook story outside the story flow (no backlog file or plan, like #30). Judge
 2026-11-14 | reviewer | external link check: 6 site URLs return curl 000 from the cloud session | listed as not checked; the live-page Operatör check covers them | open
 
 — Judge (Claude) on behalf of Conny
+
+## Re-review 2026-11-14 (head b2a46e3)
+
+verdict stays **approve**, with one exception for the human (CLOUD.md § Human approval H1): no finished Codex review on the last commit outside `.team/reviews/**` (3c678bb). Both requests (09:24Z, retry 10:25Z) hit the Codex usage limit; the summary state is `failed` on 3c678bb. So this PR does not merge on agreement (J10c); it needs a card.
+
+What changed since 52b2c4c, all checked:
+- `bd8b7c3` merges master (14acd27, #35): the sync gate now holds (`git merge-base --is-ancestor origin/master b2a46e3` true). The merge brings only #35's own files; `git diff --stat origin/master..b2a46e3` lists the same seven PR files as before plus the two review files.
+- `3c678bb` pins agent-team 58fb481 → 6e34726 (v0.8.3, on agent-team `main`) and updates the pin line in `.team/team.md`. 58fb481..6e34726 changes only the merge workflow asset (the #35 decode fix), its test and the project-instructions version line. `team/CLOUD.md` is unchanged (3 488 words), so C1 holds. tb-site's workflow still matches the v0.8.3 asset plus its own board-path check and Pages step; `.claude/settings.json` still equals the asset.
+- `b2a46e3` logs the failed Codex round in the response file (B7).
+- Test before commit: `python3 -m html.parser index.html` exit 0; no site file changed (`index.html`, `assets/`, `_config.yml`, `CNAME` empty in the diff), so the screenshots and anchor check from the first round stand. No check runs on the head. `master` now has a ruleset (PR only, squash, no deletion, no force-push; no required checks), so the "no main ruleset" note in round 1 is out of date.
+
+Nits added:
+- N4 PR title and body — Nit: they still say v0.8.2 and "7dd938e → 58fb481"; the head pins v0.8.3 (6e34726). Update before the card goes out so the card describes what merges.
+
+## Papercuts (re-review)
+2026-11-14 | reviewer | Codex usage limit: no review possible on 3c678bb | exception to the human on a card (H1) | open
+
+— Judge (Claude) on behalf of Conny
