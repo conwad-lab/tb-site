@@ -24,6 +24,7 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - Do not change the price, the Cal.com booking URL or the contact address without an ORDER row saying so.
 - Do not touch `CNAME`.
 - Do not add third-party scripts, trackers or fonts from new hosts.
+- Cloud mode: `master` takes changes only by PR, board files too (`.claude/skills/agent-team/team/CLOUD.md` § Walls). Never push to `master`, never force-push, never `gh pr merge --admin`, never change branch protection or rulesets.
 
 ## Team settings
 
@@ -36,10 +37,17 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Coder extras:** keep `README.md` deploy notes current if hosting details change. Team files (`AGENTS.md`, `CLAUDE.md`, `.team/`, `docs/`, `README.md`) must stay excluded from the published site via `_config.yml`.
 - **Docs to verify:** `README.md`
 - **Adversarial paths:** none
-- **Human-merge paths:** `CNAME`, `_config.yml`, `.github/workflows/agent-team-merge.yml` (the merge workflow, CLOUD.md § Walls), and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
+- **Data changes:** none (a static page; no production data store, no content export)
+- **Stories in flight:** 1
+- **Human-merge paths:** `CNAME`, `_config.yml`, `.github/workflows/agent-team-merge.yml` (the merge workflow, CLOUD.md § Walls), `.claude/settings.json` (the deny list, CLOUD.md § Walls), and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
+- **Human-only paths:** none
 - **Signal sources:** the live page (https://transformationbeyond.se/ — every `href` 200, screenshots at both widths), the GitHub Pages build for the latest merge, open Dependabot alerts.
 - **Where checks run in the cloud:** `python3 -m html.parser` everywhere; Playwright screenshots and the link check by the Builder and the Judge (a URL the session's network blocks is listed as **not checked**, never as passed). A check the change needs that could not run anywhere becomes an Operatör line before merge.
-- **Builder:** `builder: codex` per `.claude/skills/agent-team/team/CLOUD.md` § Builder. The Builder thread opens the issue `NNN: <story title>` and posts the `@codex` build task there; Codex writes the code and every fix (`@codex fix Mn` on the PR). The Builder thread drives the rest: it runs **Test before commit** on Codex's head before every review request and before asking for a Judge, including the Playwright screenshots at both widths and the link check, which Codex's environment may not run, and attaches the screenshots to the PR. Codex failing the same task twice (an error reply, no PR or diff within the hour, or a head that fails Test before commit) → the Builder thread builds that task and says so in the response file.
+- **Builder:** each plan's `## Estimate` names its builder (`.claude/skills/agent-team/team/CLOUD.md` [T2]); `builder: codex` in `.team/team.md` is the fallback for a plan without one. With codex, per CLOUD.md § Builder: the Builder thread opens the issue `NNN: <story title>` and posts the `@codex` build task there; Codex writes the code and every fix (`@codex fix Mn` on the PR). The Builder thread drives the rest: it runs **Test before commit** on Codex's head before every review request and before asking for a Judge, including the Playwright screenshots at both widths and the link check, which Codex's environment may not run, and attaches the screenshots to the PR. Codex failing the same task twice (an error reply, no PR or diff within the hour, or a head that fails Test before commit) → the Builder thread builds that task and says so in the response file.
+
+## Papercuts
+
+When you build (as Coder or Builder, including Codex from a build task) and a step fails or needs a workaround (a tool error, a blocked command, a retry, a rule that did not fit the case), append one line to `.team/PAPERCUTS.md` in the same commit as the work: `YYYY-MM-DD | role | what failed | workaround | open`. The weekly retro turns repeated papercuts into proposals; never edit or remove other lines. As an attacker (a GitHub review) you write no files: say in the review which check you could not run and why. The Judge logs its papercuts in its review file (`roles/reviewer.md`).
 
 ## If you are Codex
 
