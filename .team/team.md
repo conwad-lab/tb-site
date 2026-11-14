@@ -24,7 +24,7 @@ runner: github
 # cloud only: the GitHub login the agents act as (CLOUD.md § Walls); none = the human's login, signed "on behalf of".
 agent-account: none
 
-team: .claude/skills/agent-team @ v0.8.2 (58fb481; tag not pushed, pinned by commit)
+team: .claude/skills/agent-team @ v0.8.3 (6e34726; tag not pushed, pinned by commit)
 <!-- upgrade with /agent-team upgrade, or: git submodule update --remote .claude/skills/agent-team -->
 
 Project specifics go in AGENTS.md § Team settings, not in role overrides: a file in `.team/roles/<role>.md` replaces the whole role and cuts the project off from team upgrades.
