@@ -32,6 +32,10 @@ FORBIDDEN = [
 IMG = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
 IMG_START = re.compile(r"!\[")
 HTML_IMG = re.compile(r"<img\b", re.I)
+# The body is written inside {% raw %}…{% endraw %} so Jekyll's Liquid pass leaves
+# text such as {{ … }} or {% … %} exactly as written; a letter that closes the raw
+# block itself cannot be kept verbatim and is refused.
+ENDRAW = re.compile(r"\{%-?\s*endraw\s*-?%\}")
 
 
 def front_matter(text):
@@ -128,6 +132,8 @@ def main():
         problems.append("'### Källor' med minst en länk saknas")
 
     problems += forbidden(text, "texten")
+    if ENDRAW.search(text):
+        problems.append("texten innehåller '{% endraw %}', som inte kan publiceras ordagrant")
 
     # Only plain inline images ![alt](path) are supported; refuse every other form
     # (titles, reference style, HTML) instead of publishing a broken or unchecked path.
@@ -172,6 +178,7 @@ def main():
     # Bare URLs (the source list) become autolinks; the text itself is unchanged.
     body_text = re.sub(r"(?<![(<\[])(https?://[^\s<>)]+[^\s<>).,;:])", r"<\1>", body_text)
     body_text = re.sub(r"\n{3,}", "\n\n", body_text).strip() + "\n"
+    body_text = "{% raw %}\n" + body_text + "{% endraw %}\n"
 
     year, week = pub.isocalendar()[0], pub.isocalendar()[1]
     head = [
@@ -183,6 +190,7 @@ def main():
         f"week: {week}",
         f"source: {yaml_str(str(fm.get('vecka', src.stem)))}",
         f"image: {cover}" if cover else None,
+        'excerpt_separator: ""',  # no excerpt: it would cut the raw block open
         "---",
         "",
     ]

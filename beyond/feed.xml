@@ -2,7 +2,7 @@
 layout: null
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="sv">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="sv" xml:base="{{ site.url }}/">
   <title>&amp; Beyond</title>
   <subtitle>{{ site.description | xml_escape }}</subtitle>
   <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml"/>
