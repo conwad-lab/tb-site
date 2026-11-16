@@ -41,6 +41,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
+- Retro: molnsessionen når inte sajtens egna och länkade adresser (curl 000), så länkkollen och läsningen av sidan live blir "not checked" → länkkollen och Signal-läsningen av https://transformationbeyond.se/ körs från minin (eller målvärdarna läggs i molnmiljöns nätverkspolicy) in `AGENTS.md` § Team settings (**Where checks run in the cloud**, **Signal sources**) — [Builder-papercut 2026-11-14](https://github.com/conwad-lab/tb-site/blob/master/.team/PAPERCUTS.md), [Judge-papercut i pr34](https://github.com/conwad-lab/tb-site/blob/master/.team/reviews/pr34-agent-team-v0.8.2.md), rutinen 2026-11-16: `curl https://transformationbeyond.se/` → 000. (rutinen 2026-11-16)
+- Retro: card that decided nothing (Codex-kvoten slut → "Merga?"-kort som Conny besvarade som rekommenderat, två gånger på två dagar) → en reservgranskare när Codex svarar "usage limits", i stället för kort (story G, `plan-G-gemini-reservgranskare.md` i projektmappen) in agent-team `team/CLOUD.md` § Human approval — [#35 kortlogg](https://github.com/conwad-lab/tb-site/pull/35#issuecomment-6875140518), [#34 kortlogg](https://github.com/conwad-lab/tb-site/pull/34#issuecomment-6897184457), [agent-team #24 kortlogg](https://github.com/conwad-lab/agent-team/pull/24#issuecomment-6875139846). (rutinen 2026-11-16)
 
 ## Väntar på människan
 

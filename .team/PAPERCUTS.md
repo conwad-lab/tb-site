@@ -6,9 +6,10 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 
 ## Lines
 
-2026-11-14 | Builder (Claude) | link check: 7 external hrefs (mondmodel.com, the r2.dev sample PDF, transformationbeyond.se, dignami.com/en, /en/proof ×2) return curl 000 from the cloud session (network policy); the fonts.googleapis.com CSS URL returns 200 | listed as **not checked** in the PR; the live-page Operatör check after merge covers them | open
+2026-11-14 | Builder (Claude) | link check: 7 external hrefs (mondmodel.com, the r2.dev sample PDF, transformationbeyond.se, dignami.com/en, /en/proof ×2) return curl 000 from the cloud session (network policy); the fonts.googleapis.com CSS URL returns 200 | listed as **not checked** in the PR; the live-page Operatör check after merge covers them | proposed 2026-11-16
 
 ## Retro
 
 <!-- The routine appends one line per week: YYYY-Www | Codex fixed <n> | Judge fixed <n> | failed @codex tasks <n> | escalations <n> | papercuts open <n> | cards <n> | human wait <h> h
      `cards` and `human wait` come from the card log on the PRs (CLOUD.md § Human approval 1); `human wait` is the hours inside that week of cards on Judge-approved PRs. -->
+2026-W46 | Codex fixed 1 | Judge fixed 3 | failed @codex tasks 5 | escalations 0 | papercuts open 0 | cards 2 | human wait ≥0.1 h (#34: kortloggen saknar kortets starttid)
