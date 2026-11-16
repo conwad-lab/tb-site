@@ -6,3 +6,6 @@
 ## Outcome
 built-by: claude
 missed: nothing (rulebook bump without a plan or Estimate). Stories in flight stays 1 until tb-site has the strict ruleset (plan J, After merge step 2).
+
+## Judge round 1 — 2026-11-16
+- M1 `.github/workflows/agent-team-merge.yml.orig` (leftover from `patch`): valid, removed with `git rm`. No other `.orig`/`.rej` file in the tree.
