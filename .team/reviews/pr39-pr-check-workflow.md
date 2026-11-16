@@ -1,6 +1,6 @@
 ---
 id: pr39
-verdict: request-changes
+verdict: approve
 ---
 
 # Review pr39 — ci: always-running pr-check job for the strict ruleset
@@ -46,3 +46,10 @@ Opened outside the story flow (no backlog file, plan or ORDER row), as groundwor
 - 2026-11-16 | reviewer | `gh pr view` refused (GraphQL 403 in cloud sessions) | REST `gh api repos/…/pulls/39` | open
 
 — Judge (Claude) on behalf of Conny
+
+## Round 2 — 2026-11-16, head `77ca9ed4e6755d7de2e04cca1bc16dda8660e428`
+- M1: valid — fixed. PR body now says "Workflow and script only", names the AGENTS.md change as a later Rulebook story and says no card is needed.
+- M2 (Codex M3): valid — fixed in dbebfc2. `handle_startendtag` errors on a non-void tag unless an `svg`/`math` element is open. Checked: `<div><span/></div>` exit 1, `<svg><path d="x"/></svg>` exit 0, `<svg><path/></svg><div/>` exit 1 (the svg scope ends with `</svg>`), `<br/><img src=x />` exit 0, the four repo pages exit 0.
+- Codex on 77ca9ed: finished, "Didn't find any major issues" (comment 6921499613).
+- `pr-check` on 77ca9ed: completed, success. Sync gate: master a5c3267 is an ancestor of the head. Mergeable: true.
+- Verdict: **approve**, no Must or Should fix open. Route: `merge: auto`, no Human-merge path, no rulebook file → on my word (CLOUD.md § Judge 5 [J9]).
