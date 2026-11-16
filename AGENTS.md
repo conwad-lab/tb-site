@@ -38,7 +38,7 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Docs to verify:** `README.md`
 - **Adversarial paths:** none
 - **Data changes:** none (a static page; no production data store, no content export)
-- **Stories in flight:** 1
+- **Stories in flight:** 2
 - **Human-merge paths:** `CNAME`, `_config.yml`, `.github/workflows/agent-team-merge.yml` (the merge workflow, CLOUD.md § Walls), `.claude/settings.json` (the deny list, CLOUD.md § Walls), and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
 - **Human-only paths:** none
 - **Signal sources:** the live page (https://transformationbeyond.se/ — every `href` 200, screenshots at both widths), the GitHub Pages build for the latest merge, open Dependabot alerts.
