@@ -30,7 +30,7 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 
 - **Test before commit:** `python3 -m html.parser index.html` must not error; open `index.html` with Playwright at 1440×900 and 390×844, take full-page screenshots after scrolling to the bottom (reveal animations), and check every `href` returns 200 (`mailto:` excluded).
 - **Baseline:** the same screenshot + link check on `master` before planning.
-- **CI-only checks:** none (Pages build only).
+- **CI-only checks:** `pr-check` (`.github/workflows/pr-check.yml`: every `*.html` outside `.claude/` passes `.github/scripts/check_html.py`); it is the `master` ruleset's required check (strict, up to date before merge).
 - **A plan must name:** every visible copy string that changes (old → new), and whether the change touches the price block, booking CTA or footer.
 - **Review checks:** every factual claim on the page traced to a source or to the brief; compare Dignami-related wording against https://www.dignami.com/en/proof and /en/about; WCAG AA contrast for any colour that changes; screenshots at both widths attached to the PR.
 - **Operator triggers:** every merged PR (it deploys to production — Conny checks the live page); any needed URL the brief says Conny must supply.
@@ -38,8 +38,8 @@ This repo is worked on by an agent team. The team's rulebook, roles and template
 - **Docs to verify:** `README.md`
 - **Adversarial paths:** none
 - **Data changes:** none (a static page; no production data store, no content export)
-- **Stories in flight:** 1
-- **Human-merge paths:** `CNAME`, `_config.yml`, `.github/workflows/agent-team-merge.yml` (the merge workflow, CLOUD.md § Walls), `.claude/settings.json` (the deny list, CLOUD.md § Walls), and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
+- **Stories in flight:** 2
+- **Human-merge paths:** `CNAME`, `_config.yml`, `.github/workflows/agent-team-merge.yml` (the merge workflow, CLOUD.md § Walls), `.claude/settings.json` (the deny list, CLOUD.md § Walls), `.github/workflows/pr-check.yml` and `.github/scripts/check_html.py` (the check the ruleset requires), and any diff that changes the price, the Cal.com booking URL, the contact address or a claim about the founder (the hard rails above).
 - **Human-only paths:** none
 - **Signal sources:** the live page (https://transformationbeyond.se/ — every `href` 200, screenshots at both widths), the GitHub Pages build for the latest merge, open Dependabot alerts.
 - **Where checks run in the cloud:** `python3 -m html.parser` everywhere; Playwright screenshots and the link check by the Builder and the Judge (a URL the session's network blocks is listed as **not checked**, never as passed). A check the change needs that could not run anywhere becomes an Operatör line before merge.
