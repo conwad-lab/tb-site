@@ -1,0 +1,20 @@
+# Always-running PR check for the strict main ruleset (agent-team SETUP.md steps 6 and 9).
+# Runs on every PR to the default branch (no path filter, so board-only diffs get it too).
+# The ruleset names the job `pr-check` as its one required status check.
+name: pr-check
+on:
+  pull_request:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  pr-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: HTML parses
+        run: |
+          set -euo pipefail
+          find . -name '*.html' -not -path './.claude/*' -not -path './.git/*' -print0 \
+            | xargs -0 -n1 python3 -m html.parser >/dev/null
