@@ -16,7 +16,9 @@ class Checker(HTMLParser):
         if tag not in VOID and tag not in OPTIONAL:
             self.stack.append((tag, self.getpos()[0]))
     def handle_startendtag(self, tag, attrs):
-        pass
+        foreign = any(t in ("svg", "math") for t, _ in self.stack)
+        if tag not in VOID and not foreign:
+            self.errors.append(f"line {self.getpos()[0]}: <{tag}/> is not a void element")
     def handle_endtag(self, tag):
         if tag in VOID or tag in OPTIONAL:
             return
