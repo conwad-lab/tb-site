@@ -6,9 +6,11 @@ layout: null
   <url><loc>https://transformationbeyond.se/</loc></url>
 {%- for p in site.pages %}
 {%- if p.url == "/" or p.url == "/404.html" or p.sitemap == false %}{% continue %}{% endif %}
-{%- unless p.url contains ".xml" or p.url contains ".txt" %}
+{%- assign last = p.url | slice: -1, 1 %}
+{%- assign tail = p.url | slice: -5, 5 %}
+{%- if last == "/" or tail == ".html" %}
   <url><loc>https://transformationbeyond.se{{ p.url }}</loc></url>
-{%- endunless %}
+{%- endif %}
 {%- endfor %}
 {%- for d in site.beyond %}
   <url><loc>https://transformationbeyond.se{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
