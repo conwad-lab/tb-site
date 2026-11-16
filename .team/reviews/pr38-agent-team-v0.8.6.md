@@ -1,6 +1,6 @@
 ---
 id: pr38
-verdict: request-changes
+verdict: approve
 ---
 
 # Review pr38 — Rulebook story. Upgrade agent-team to v0.8.6
@@ -41,6 +41,13 @@ Rulebook story outside the story flow (no backlog file or plan, like #34, #37). 
 - tried to break: whether the v0.8.6 changes to `assets/root/AGENTS.md` (Stories in flight comment) or SETUP.md ask anything of tb-site now (no: tb-site's own AGENTS.md text, and 2 waits for the ruleset Operatör row); whether the card-line regex accepts another head, a quoted line or placeholders (tests 29–31 refuse them).
 - scope vs story: the `.orig` file is outside it (M1).
 - Remove: nothing, because this PR only applies the rulebook in a product repo; CLOUD.md shrank upstream (3 486 → 3 485).
+
+## Round 2 — 2026-11-16, head `05c8669d8b9ddcdb2a12682cf5085fa6282028a5`
+- M1: valid — fixed in 05c8669 (`.orig` removed; `.github/workflows/` holds only `agent-team-merge.yml`). Response file answers it.
+- Codex on 05c8669 (the last commit outside `.team/reviews/**`): finished, receipt "Didn't find any major issues" (comment 6917462204). Its task summary comment (6917462265) describes a commit 62231a9 and a follow-up PR in its own environment; neither exists on GitHub (open PRs: #25, #38), nothing to act on.
+- Whole PR vs master 728bc60: submodule b25d713, `.team/team.md` pin, workflow (asset + tb-site board check), review/response files. Sync gate: compare 728bc60...05c8669 ahead 5, behind 0. No required checks.
+- Verdict: **approve**, no Must or Should fix open.
+- Merge route: not on agreement. I ruled Codex's P1 (word count) `not valid`, a disagreement under CLOUD.md § Human approval [H1], so this goes to Conny on one decision card (§ Judge 5 [J7]).
 
 ## Papercuts
 - none
