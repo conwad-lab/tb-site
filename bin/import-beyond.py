@@ -74,6 +74,23 @@ def article(body):
     return "\n".join(out).strip("\n")
 
 
+# Spans whose text must stay exactly as written: fenced code, inline code, HTML
+# anchors (with their text) and any other HTML tag (attributes hold URLs too).
+KEEP = re.compile(r"```.*?```|~~~.*?~~~|(`+).*?\1|<a\b[^>]*>.*?</a\s*>|<[^>\n]+>", re.S | re.I)
+BARE_URL = re.compile(r"(?<![(<\[\"'=])(https?://[^\s<>)\"'`]+[^\s<>).,;:\"'`])")
+
+
+def autolink(text):
+    """Wrap bare URLs in <…> outside code and HTML; everything else is left as written."""
+    out, pos = [], 0
+    for m in KEEP.finditer(text):
+        out.append(BARE_URL.sub(r"<\1>", text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(BARE_URL.sub(r"<\1>", text[pos:]))
+    return "".join(out)
+
+
 def yaml_str(s):
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
@@ -179,7 +196,7 @@ def main():
         cover = cover or web
         body_text = body_text.replace(f"![{alt}]({path})", f"![{long_alt}]({web})", 1)
     # Bare URLs (the source list) become autolinks; the text itself is unchanged.
-    body_text = re.sub(r"(?<![(<\[])(https?://[^\s<>)]+[^\s<>).,;:])", r"<\1>", body_text)
+    body_text = autolink(body_text)
     body_text = re.sub(r"\n{3,}", "\n\n", body_text).strip() + "\n"
     body_text = "{% raw %}\n" + body_text + "{% endraw %}\n"
 
