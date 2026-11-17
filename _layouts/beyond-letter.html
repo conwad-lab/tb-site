@@ -1,0 +1,19 @@
+---
+layout: beyond-base
+---
+<article class="letter">
+  <div class="wrap">
+    <header class="letter-head">
+      <p class="eyebrow">&amp; Beyond · {{ page.year }} vecka {{ page.week }}</p>
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.lead %}
+      <p class="lead">{{ page.lead | escape }}</p>
+      {%- endif %}
+      <p class="meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% assign m = page.date | date: "%-m" | minus: 1 %}{{ page.date | date: "%-d" }} {{ site.data.beyond_months[m] }} {{ page.date | date: "%Y" }}</time> · Conny Wadbro</p>
+    </header>
+    <div class="prose">
+{{ content }}
+    </div>
+    <p class="back"><a href="{{ '/beyond/' | relative_url }}">← Alla nummer av &amp; Beyond</a></p>
+  </div>
+</article>
