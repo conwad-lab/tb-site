@@ -18,6 +18,10 @@ description: "& Beyond, ett veckobrev av Conny Wadbro om gränslandet mellan tek
 author: Conny Wadbro
 beyond_linkedin_url: ""   # set when the LinkedIn newsletter URL is known
 
+# A letter is imported once Conny marks it publicerad, often before its Monday:
+# publish it on merge, so the archive and feed never link a page Jekyll held back.
+future: true
+
 collections:
   beyond:
     output: true

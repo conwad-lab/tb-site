@@ -153,6 +153,9 @@ def main():
         alt_file = f.with_suffix(".alt.txt")
         long_alt = alt_file.read_text(encoding="utf-8").strip() if alt_file.is_file() else alt
         problems += forbidden(long_alt, f"alt-texten för {f.name}")
+        # The sidecar text is put inside the raw block too, so it gets the same check.
+        if ENDRAW.search(long_alt):
+            problems.append(f"alt-texten för {f.name} innehåller '{{% endraw %}}', som inte kan publiceras ordagrant")
         long_alt = " ".join(long_alt.replace("[", "(").replace("]", ")").split())
         images.append((alt, path, f, long_alt))
 
