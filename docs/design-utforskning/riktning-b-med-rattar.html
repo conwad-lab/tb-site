@@ -11,12 +11,13 @@
 :root{
   --blue:#1535D6; --red:#FF4A1C; --black:#0B0B0C; --white:#FFFFFF; --fog:#ECEDEF; --grey:#5B5F66;
   --f:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --blue:#0E4D3A; --red:#FF7A59; --fog:#E8EEEA; --em:#0E4D3A; /* Connys val 2026-11-17: Skog och korall */
   --on-blue:#FFFFFF; --on-red:#0B0B0C;
   --hero-bg:var(--blue); --hero-fg:var(--on-blue); --amp-c:var(--red);
-  --hf:var(--f); --bf:var(--f); --hw:600; --hs:1; --ht:-.04em; --hlh:.95; --base:18px;
+  --hf:var(--f); --bf:var(--f); --hw:500; --hs:1; --ht:-.04em; --hlh:.95; --base:18px;
   --pm:1; --sp:1; --lw:3px; --r:0px;
   --as:1; --ax:0px; --ay:-54%; --ar:0deg; --ao:1;
-  --bs:1; --bp:1; --ps:1; --qz:1; --ls:1;
+  --bs:1; --bp:1; --ps:.7; --qz:1; --ls:1;
   --pad:max(16px,calc(clamp(20px,4.4vw,64px)*var(--pm)));
 }
 *{box-sizing:border-box}
@@ -27,7 +28,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--white);color:var(--black);font-family:var(--bf);font-size:var(--base);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--red);color:var(--on-red)}
 a{color:inherit}
-a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+a:focus-visible{outline:3px solid var(--white);outline-offset:2px;box-shadow:0 0 0 8px var(--black)}
 .w{padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
 h1,h2,h3{margin:0;font-weight:var(--hw);letter-spacing:var(--ht);line-height:var(--hlh);text-wrap:balance}
 h1,h2,h3,.gap > div,.band,.qs li,.price,.hand p:first-child{font-family:var(--hf)}
@@ -38,7 +39,7 @@ h1,h2,h3,.gap > div,.band,.qs li,.price,.hand p:first-child{font-family:var(--hf
 .top nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 .top nav a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .15s}
 .top nav a:hover{border-color:var(--red)}
-@media(max-width:860px){.top nav a:not(.keep){display:none}}
+@media(max-width:860px){.top{flex-wrap:wrap;height:auto;padding-top:16px;gap:4px 20px}.top nav{gap:20px;font-size:14px}.top nav a{padding:8px 0}.top nav a:not(.keep){display:none}}
 
 /* hero: blått fält, rött et-tecken */
 .hero{position:relative;background:var(--hero-bg);color:var(--hero-fg);min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(24px,4vh,48px);overflow:hidden}
@@ -105,7 +106,7 @@ section{padding-top:calc(clamp(64px,9vw,140px)*var(--sp));padding-bottom:calc(cl
 .qs .tag::before{background:var(--on-blue)}
 .qs ol{list-style:none;margin:0;padding:0;counter-reset:q}
 .qs li{counter-increment:q;display:grid;grid-template-columns:clamp(54px,8vw,130px) 1fr;align-items:baseline;border-top:var(--lw) solid var(--on-blue);padding:clamp(14px,1.8vw,26px) 0;font-size:calc(clamp(24px,3.6vw,56px)*var(--qz));font-weight:var(--hw);letter-spacing:calc(var(--ht)*.9);line-height:1.02}
-.qs li::before{content:counter(q);color:var(--red);font-weight:700}
+.qs li::before{content:counter(q);font-weight:700}
 .qs li:last-child{border-bottom:var(--lw) solid var(--on-blue)}
 
 /* skåne */
@@ -143,7 +144,8 @@ section{padding-top:calc(clamp(64px,9vw,140px)*var(--sp));padding-bottom:calc(cl
 .end h2{font-size:calc(clamp(44px,9.4vw,160px)*var(--hs));max-width:11ch;margin-bottom:clamp(40px,6vw,88px)}
 .end .tag::before{background:var(--on-blue)}
 .end-sub{color:var(--white);display:flex;flex-wrap:wrap;gap:8px 40px;justify-content:space-between;padding-top:20px;padding-bottom:20px;font-size:16px;font-weight:500;background:var(--black)}
-footer{background:var(--black);color:#C6C8CC;font-size:14px;display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;padding-top:22px;padding-bottom:40px;border-top:1px solid #2a2b2e}
+footer a,.end-sub a,.src a{display:inline-block;padding:6px 0}
+footer{background:var(--black);color:#C6C8CC;font-size:14px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 32px;justify-content:space-between;padding-top:22px;padding-bottom:40px;border-top:1px solid #2a2b2e}
 
 /* ---------- rattar ---------- */
 body.caps h1,body.caps h2,body.caps h3,body.caps .band,body.caps .gap > div,body.caps .qs li{text-transform:uppercase}
@@ -155,6 +157,30 @@ body.no-hover .band .arr{transition:none}body.no-hover .band:hover .arr{transfor
 body.no-arrows .band .arr{display:none}
 body.short-hero .hero{min-height:0;padding-top:clamp(120px,16vw,220px)}
 body.center-bands .band{justify-content:center;text-align:center}
+.btn-in{display:none}
+body.few-bands .band.rep{display:none}
+body.few-bands .btn-in{display:inline-block;margin:0 0 22px;background:var(--red);color:var(--on-red);font-family:var(--hf);font-weight:700;font-size:18px;padding:15px 24px;text-decoration:none}
+body.few-bands .btn-in:hover{background:var(--white);color:var(--black)}
+body.q-matrix .qs{background:var(--fog);color:var(--black)}
+body.q-matrix .qs .tag::before{background:var(--red)}
+body.q-matrix .qs ol{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,64px)}
+body.q-matrix .qs li{grid-template-columns:34px 1fr;font-size:calc(clamp(19px,1.9vw,26px)*var(--qz));font-weight:500;letter-spacing:-.01em;line-height:1.25;border-top:1px solid var(--black);padding:18px 0}
+body.q-matrix .qs li::before{font-size:14px;color:var(--em)}
+body.q-matrix .qs li:last-child{border-bottom:0}
+body.offer-sheet .offer{background:var(--white);color:var(--black);border-top:var(--lw) solid var(--black);border-bottom:var(--lw) solid var(--black)}
+body.offer-sheet .offer .tag{color:var(--black)}
+body.offer-sheet .price{font-size:calc(clamp(40px,4.6vw,58px)*var(--ps));color:var(--black);letter-spacing:var(--ht);line-height:1;margin:14px 0 6px}
+body.offer-sheet .offer h2{font-size:calc(clamp(34px,4.6vw,66px)*var(--hs))}
+body.offer-sheet .o-lede b{color:var(--em)}
+body.offer-sheet .mrow{border-top:1px solid var(--black)}
+body.offer-sheet .btn-in:hover{background:var(--black);color:var(--white)}
+body.gap-calm .gap > div{background:var(--white);color:var(--black);font-size:calc(clamp(20px,2vw,26px)*var(--hs));font-weight:500;letter-spacing:-.01em;line-height:1.3}
+body.gap-calm .gap .l{border-right:1px solid var(--black)}
+body.gap-calm .gap .mid{font-size:calc(clamp(28px,3.4vw,46px)*var(--hs));font-weight:var(--hw);letter-spacing:var(--ht);line-height:1.08;border-top:1px solid var(--black);border-bottom:var(--lw) solid var(--black);max-width:none}
+body.layers-calm .layer{background:var(--white);color:var(--black);border:0;border-top:1px solid var(--black);align-items:start}
+body.layers-calm .layer h3{font-size:calc(clamp(28px,3vw,36px)*var(--ls));letter-spacing:var(--ht);line-height:1;border-left:6px solid var(--blue);padding-left:14px}
+body.layers-calm .l3{border-bottom:var(--lw) solid var(--black)}
+@media(max-width:760px){body.q-matrix .qs ol{grid-template-columns:1fr}body.gap-calm .gap .l{border-right:0;border-bottom:1px solid var(--black)}}
 #tw-open{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;font:700 14px/1 system-ui,sans-serif;background:#111;color:#fff;border:2px solid #fff;border-radius:999px;padding:13px 18px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3)}
 #tw{position:fixed;right:16px;top:16px;bottom:16px;width:310px;z-index:21;background:#16181b;color:#e9eaec;font:13px/1.35 system-ui,-apple-system,sans-serif;letter-spacing:0;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:flex;flex-direction:column;overflow:hidden}
 #tw header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #2c3035;font-weight:700;font-size:14px;gap:8px}
@@ -181,7 +207,7 @@ body.center-bands .band{justify-content:center;text-align:center}
 
 <header class="top w">
   <a class="name" href="#">Transformation &amp; Beyond</a>
-  <nav aria-label="Huvudmeny"><a href="#praktiken">Vad vi gör</a><a href="#arbetssatt">Arbetssätt</a><a href="#review">Genomlysningen</a><a href="#grundaren">Vem du får</a><a class="keep" href="/beyond/">&amp; Beyond</a></nav>
+  <nav aria-label="Huvudmeny"><a href="#praktiken">Vad vi gör</a><a href="#arbetssatt">Arbetssätt</a><a class="keep" href="#review">Genomlysningen</a><a class="keep" href="#grundaren">Vem du får</a><a class="keep" href="/beyond/">&amp; Beyond</a></nav>
 </header>
 
 <main>
@@ -254,7 +280,7 @@ body.center-bands .band{justify-content:center;text-align:center}
     <div class="o-grid">
       <div>
         <p class="o-lede">En tvåveckors genomlysning för er ledningsgrupp: <b>var står er AI-verksamhet egentligen, vem äger vilket beslut och vad bör ledningen besluta härnäst?</b> Avgränsad till de sex frågorna ovan. Ingen implementation och ingen leverantörsteater.</p>
-        <a class="sample" href="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/architecture-review-sample.pdf" target="_blank" rel="noopener">Läs först ett exempel på beslutsunderlag (på engelska): vår egen orkestrerare på den sexstegade trappan, med luckorna kvar →</a>
+        <a class="btn-in" href="#kontakt">Boka ett inledande samtal</a><br><a class="sample" href="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/architecture-review-sample.pdf" target="_blank" rel="noopener">Läs först ett exempel på beslutsunderlag (på engelska): vår egen orkestrerare på den sexstegade trappan, med luckorna kvar →</a>
       </div>
       <div>
         <div class="mrow"><b>Vecka 1</b><span>Upp till sex intervjuer à 45 minuter med ledningsgruppen, bokade under vecka 1, och läsåtkomst till er användningsdata. En bedömning av er agentiska mognad: var automatiseringen står i dag, mätt på vem som faktiskt använder vad och inte på vad som är licensierat, och vem som äger varje AI-beslut. Placerad på en trappa med sex steg.</span></div>
@@ -265,7 +291,7 @@ body.center-bands .band{justify-content:center;text-align:center}
       </div>
     </div>
   </section>
-  <a class="band w" href="#kontakt"><span>Boka ett inledande samtal</span><span class="arr" aria-hidden="true">→</span></a>
+  <a class="band rep w" href="#kontakt"><span>Boka ett inledande samtal</span><span class="arr" aria-hidden="true">→</span></a>
 
   <section class="who w" id="grundaren">
     <p class="tag">Vem du får</p>
@@ -300,7 +326,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   <header><span>Rattar <small id="tw-n"></small></span><button type="button" id="tw-close">Stäng</button></header>
   <div class="sc" id="tw-sc"></div>
   <textarea id="tw-out" hidden readonly rows="3" aria-label="Inställningar att kopiera"></textarea>
-  <footer><button type="button" id="tw-rand">Slumpa</button><button type="button" id="tw-reset">Återställ</button><button type="button" id="tw-copy">Kopiera</button></footer>
+  <footer><button type="button" id="tw-calm">Lugnare</button><button type="button" id="tw-rand">Slumpa</button><button type="button" id="tw-reset">Återställ</button><button type="button" id="tw-copy">Kopiera</button></footer>
 </aside>
 <script>
 (function(){
@@ -327,12 +353,12 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   var HERO=['Fältfärg','Svart','Vitt','Accent'];
   var C=[
     ['h','Palett'],
-    ['pal','pal','Palett',P,'Kobolt och cinnober'],
+    ['pal','pal','Palett',P,'Skog och korall'],
     ['sel','hero','Första skärmen',HERO,'Fältfärg'],
     ['h','Typsnitt'],
     ['sel','hf','Rubriker',Object.keys(F),'Familjen Grotesk'],
     ['sel','bf','Brödtext',Object.keys(F),'Familjen Grotesk'],
-    ['rng','hw','Rubrikvikt',400,900,100,600,''],
+    ['rng','hw','Rubrikvikt',400,900,100,500,''],
     ['rng','hs','Rubrikstorlek',.6,1.4,.05,1,'×'],
     ['rng','ht','Spärrning',-.07,.03,.005,-.04,'em'],
     ['rng','hlh','Radavstånd rubrik',.8,1.2,.01,.95,''],
@@ -352,7 +378,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['rng','bp','Bandens höjd',.4,2.2,.1,1,'×'],
     ['chk','arrows','Pilar i banden',true],
     ['chk','centerbands','Centrerad bandtext',false],
-    ['rng','ps','Prisets storlek',.4,1.15,.05,1,'×'],
+    ['rng','ps','Prisets storlek',.4,1.15,.05,.7,'×'],
     ['rng','qz','Frågornas storlek',.5,1.3,.05,1,'×'],
     ['rng','ls','Affär · Juridik · Teknik',.4,1.3,.05,1,'×'],
     ['h','Luft och form'],
@@ -361,6 +387,12 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['rng','lw','Linjetjocklek',1,8,.5,3,'px'],
     ['rng','r','Rundning på markörer',0,7,1,0,'px'],
     ['chk','shorthero','Låg första skärm',false],
+    ['h','Lugnare lägen (Codex förslag)'],
+    ['chk','fewbands','Färre bokningsband',false],
+    ['chk','offersheet','Erbjudandet som faktablad',false],
+    ['chk','qmatrix','Frågorna i två kolumner',false],
+    ['chk','gapcalm','Glappet utan färgfält',false],
+    ['chk','layerscalm','Disciplinerna som tabell',false],
     ['h','Rörelse'],
     ['chk','ampanim','&-tecknet glider in',true],
     ['chk','par','&-tecknet följer scrollen',false],
@@ -369,7 +401,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   ];
   var def={}, st={}, els={}, n=0;
   C.forEach(function(c){ if(c[0]==='h')return; n++; def[c[1]]= c[0]==='chk'?c[3] : c[0]==='rng'?c[6] : c[4]; });
-  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b')||'{}'); }catch(e){ st={}; }
+  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b2')||'{}'); }catch(e){ st={}; }
   for(var k in def) if(!(k in st) || (k==='pal'&&!P[st[k]])) st[k]=def[k];
   document.getElementById('tw-n').textContent=n+' reglage';
 
@@ -386,10 +418,10 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     s.setProperty('--bs',st.bs); s.setProperty('--bp',st.bp); s.setProperty('--ps',st.ps); s.setProperty('--qz',st.qz); s.setProperty('--ls',st.ls);
     s.setProperty('--sp',st.sp); s.setProperty('--pm',st.pm); s.setProperty('--lw',st.lw+'px'); s.setProperty('--r',st.r+'px');
     s.scrollBehavior= st.smooth?'smooth':'auto';
-    var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'short-hero':st.shorthero};
+    var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'few-bands':st.fewbands,'offer-sheet':st.offersheet,'q-matrix':st.qmatrix,'gap-calm':st.gapcalm,'layers-calm':st.layerscalm,'short-hero':st.shorthero};
     for(var c in t) B.classList.toggle(c,!!t[c]);
     par();
-    try{ localStorage.setItem('tb-rattar-b',JSON.stringify(st)); }catch(e){}
+    try{ localStorage.setItem('tb-rattar-b2',JSON.stringify(st)); }catch(e){}
   }
   var amp=document.querySelector('.amp'), still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function par(){ if(!amp)return; amp.style.translate = (st.par&&!still) ? '0 '+Math.round(window.scrollY*.28)+'px' : ''; if(st.par&&!still) amp.style.animation='none'; else amp.style.animation=''; }
@@ -423,12 +455,17 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   document.getElementById('tw-close').onclick=function(){tw.hidden=true;op.hidden=false;};
   document.getElementById('tw-reset').onclick=function(){for(var k in def)st[k]=def[k];apply();sync();};
   document.getElementById('tw-rand').onclick=function(){
-    var keep={smooth:1,amp:1,par:1,ampanim:1,hover:1,ax:1,ao:1};
+    var keep={smooth:1,amp:1,par:1,ampanim:1,hover:1,ax:1,ao:1,fewbands:1,offersheet:1,qmatrix:1,gapcalm:1,layerscalm:1};
     C.forEach(function(c){ if(c[0]==='h'||keep[c[1]])return; var k=c[1];
       if(c[0]==='chk') st[k]=Math.random()<.4;
       else if(c[0]==='rng'){ var lo=c[3]+(c[4]-c[3])*.2, hi=c[4]-(c[4]-c[3])*.2, m=Math.round((hi-lo)/c[5]); st[k]=+(Math.round((lo+Math.floor(Math.random()*(m+1))*c[5])/c[5])*c[5]).toFixed(3); }
       else { var ks=c[0]==='sel'?c[3]:Object.keys(c[3]); st[k]=ks[Math.floor(Math.random()*ks.length)]; }
     }); st.arrows=true; apply();sync();
+  };
+  document.getElementById('tw-calm').onclick=function(){
+    for(var k in def)st[k]=def[k];
+    st.hero='Vitt'; st.as=.5; st.ay=-50; st.hs=.85; st.ps=.7; st.bs=.6; st.bp=.6; st.sp=.75; st.ampanim=false;
+    st.fewbands=st.offersheet=st.qmatrix=st.gapcalm=st.layerscalm=true; apply();sync();
   };
   document.getElementById('tw-copy').onclick=function(){
     var d={}; for(var k in st) if(st[k]!==def[k]) d[k]=st[k];

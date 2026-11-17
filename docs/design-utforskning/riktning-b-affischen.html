@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--white);color:var(--black);font-family:var(--f);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--red);color:var(--black)}
 a{color:inherit}
-a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+a:focus-visible{outline:3px solid var(--white);outline-offset:2px;box-shadow:0 0 0 8px var(--black)}
 .w{padding-left:var(--pad);padding-right:var(--pad)}
 h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.04em;line-height:.95;text-wrap:balance}
 
@@ -28,7 +28,7 @@ h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.04em;line-height:.95;text-wra
 .top nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 .top nav a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .15s}
 .top nav a:hover{border-color:var(--red)}
-@media(max-width:860px){.top nav a:not(.keep){display:none}}
+@media(max-width:860px){.top{flex-wrap:wrap;height:auto;padding-top:16px;gap:4px 20px}.top nav{gap:20px;font-size:14px}.top nav a{padding:8px 0}.top nav a:not(.keep){display:none}}
 
 /* hero: blått fält, rött et-tecken */
 .hero{position:relative;background:var(--blue);color:var(--white);min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(24px,4vh,48px);overflow:hidden}
@@ -95,7 +95,7 @@ section{padding-top:clamp(64px,9vw,140px);padding-bottom:clamp(64px,9vw,140px)}
 .qs .tag::before{background:var(--white)}
 .qs ol{list-style:none;margin:0;padding:0;counter-reset:q}
 .qs li{counter-increment:q;display:grid;grid-template-columns:clamp(54px,8vw,130px) 1fr;align-items:baseline;border-top:3px solid var(--white);padding:clamp(14px,1.8vw,26px) 0;font-size:clamp(24px,3.6vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1.02}
-.qs li::before{content:counter(q);color:var(--red);font-weight:700}
+.qs li::before{content:counter(q);font-weight:700}
 .qs li:last-child{border-bottom:3px solid var(--white)}
 
 /* skåne */
@@ -132,12 +132,13 @@ section{padding-top:clamp(64px,9vw,140px);padding-bottom:clamp(64px,9vw,140px)}
 .end{background:var(--blue);color:var(--white);padding-bottom:0}
 .end h2{font-size:clamp(44px,9.4vw,160px);max-width:11ch;margin-bottom:clamp(40px,6vw,88px)}
 .end-sub{display:flex;flex-wrap:wrap;gap:8px 40px;justify-content:space-between;padding-top:20px;padding-bottom:20px;font-size:16px;font-weight:500;background:var(--black)}
-footer{background:var(--black);color:#C6C8CC;font-size:14px;display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;padding-top:22px;padding-bottom:40px;border-top:1px solid #2a2b2e}
+footer a,.end-sub a,.src a{display:inline-block;padding:6px 0}
+footer{background:var(--black);color:#C6C8CC;font-size:14px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 32px;justify-content:space-between;padding-top:22px;padding-bottom:40px;border-top:1px solid #2a2b2e}
 </style>
 
 <header class="top w">
   <a class="name" href="#">Transformation &amp; Beyond</a>
-  <nav aria-label="Huvudmeny"><a href="#praktiken">Vad vi gör</a><a href="#arbetssatt">Arbetssätt</a><a href="#review">Genomlysningen</a><a href="#grundaren">Vem du får</a><a class="keep" href="/beyond/">&amp; Beyond</a></nav>
+  <nav aria-label="Huvudmeny"><a href="#praktiken">Vad vi gör</a><a href="#arbetssatt">Arbetssätt</a><a class="keep" href="#review">Genomlysningen</a><a class="keep" href="#grundaren">Vem du får</a><a class="keep" href="/beyond/">&amp; Beyond</a></nav>
 </header>
 
 <main>
