@@ -179,6 +179,14 @@ permalink: /sv/
   .revealed .stage:nth-child(3){transition-delay:120ms}
 .amp-dev{font-family:var(--mono);font-weight:500;font-size:.78em;margin:0 .16em}.amp-dev.own{color:var(--bronze)}
 .mat-band{margin:0;border-top:1px solid #1C2022;border-bottom:1px solid #1C2022}.mat-band img{width:100%;height:280px;object-fit:cover;display:block}
+  /* ---- latest & Beyond letter (story 021) ---- */
+  .latest-letter{border-top:1px solid var(--hair);padding:56px 0 64px}
+  .ll-meta{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted);margin:0 0 10px}
+  .ll-title{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.25;margin:0 0 18px;max-width:30ch}
+  .ll-links{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;font-weight:500;margin:0}
+  .ll-links a{color:var(--bronze-deep)}
+  .ll-links a:last-child{color:var(--muted)}
+  @media(max-width:760px){.nav-r a.nav-beyond{display:inline}}
 </style>
 
 <header>
@@ -186,6 +194,7 @@ permalink: /sv/
     <a class="mark" href="/sv/">Transformation <span>&amp;</span> Beyond</a>
     <nav class="nav-r" aria-label="Huvudmeny">
       <a href="#praktiken">Vad vi gör</a><a href="#arbetssatt">Arbetssätt</a><a href="#review">Genomlysningen</a><a href="#grundaren">Vem du får</a>
+      <a class="nav-beyond" href="/beyond/">&amp; Beyond</a>
       <a class="cta" href="#kontakt">Boka ett inledande samtal</a>
     </nav>
   </div>
@@ -379,6 +388,8 @@ permalink: /sv/
     </div>
   </section>
 
+  {% include latest-letter.html lang="sv" %}
+
   <figure class="mat-band"><!-- duotone raw material: Max van den Oetelaar / Unsplash --><img src="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/strata-duotone.jpg" alt="Bergskikt i lager, i bronston"></figure>
   <section class="dark" id="kontakt" data-rule>
     <span class="r-rule-top" aria-hidden="true"></span>
@@ -399,6 +410,7 @@ permalink: /sv/
   <div class="wrap foot">
     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-4px"><g fill="#1C2022"><rect x="12" y="6" width="4" height="18"/><rect x="4" y="12" width="18" height="6"/></g><rect x="22" y="12" width="6" height="6" fill="#8A6430"/></svg>&ensp;© 2026 Transformation &amp; Beyond AB</span>
     <span class="mono">org.nr 559411-1634 · Lomma, Skåne</span>
+    <span><a href="/beyond/" lang="sv">&amp; Beyond — veckobrev</a></span>
     <span><a href="https://www.dignami.com/en" target="_blank" rel="noopener">Assurance &amp; plattform → Dignami ↗</a></span>
     <span><a href="/" hreflang="en" lang="en">In English</a></span>
   </div>

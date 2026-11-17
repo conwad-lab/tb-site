@@ -14,3 +14,4 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
      `cards` and `human wait` come from the card log on the PRs (CLOUD.md § Human approval 1); `human wait` is the hours inside that week of cards on Judge-approved PRs. -->
 2026-W46 | Codex fixed 1 | Judge fixed 3 | failed @codex tasks 5 | escalations 0 | papercuts open 0 | cards 2 | human wait ≥0.1 h (#34: kortloggen saknar kortets starttid)
 2026-11-17 | builder | `gh pr view` fails (GraphQL 403 in cloud sessions) | REST `gh api repos/…/pulls/25` | open
+2026-11-17 | builder | @codex build task on issue #49 got no reply or reaction in an hour (story 021) | built it myself | open
