@@ -74,21 +74,45 @@ def article(body):
     return "\n".join(out).strip("\n")
 
 
-# Spans whose text must stay exactly as written: fenced code, inline code, HTML
-# anchors (with their text) and any other HTML tag (attributes hold URLs too).
-KEEP = re.compile(r"```.*?```|~~~.*?~~~|(`+).*?\1|<a\b[^>]*>.*?</a\s*>|<[^>\n]+>", re.S | re.I)
-BARE_URL = re.compile(r"(?<![(<\[\"'=])(https?://[^\s<>)\"'`]+[^\s<>).,;:\"'`])")
+# Only the source list ("### Källor" up to the next heading) gets autolinks; the rest
+# of the letter is left exactly as written. Inside it, these spans are copied as is:
+# fenced and inline code, Markdown links and images (label and target), HTML elements
+# whose content is raw or a link (<a>, <pre>, <code>, <script>, <style>) and any other tag.
+KEEP = re.compile(
+    r"```.*?```|~~~.*?~~~|(`+).*?\1"
+    r"|!?\[(?:[^\[\]\n]|\[[^\[\]\n]*\])*\]\((?:[^()\s]|\([^()\s]*\))*(?:\s+\"[^\"\n]*\")?\)"
+    r"|<(a|pre|code|script|style)\b[^>]*>.*?</\2\s*>|<[^>\n]+>",
+    re.S | re.I,
+)
+# A URL may hold balanced parentheses (…/wiki/AI_(disambiguation)); trailing
+# sentence punctuation and an unbalanced ")" stay outside the link.
+BARE_URL = re.compile(r"(?<![(<\[\"'=])https?://(?:[^\s<>()\"'`]|\([^\s<>()\"'`]*\))+")
+SOURCES = re.compile(r"^### Källor[ \t]*$.*?(?=^#{1,6} |\Z)", re.M | re.S)
+
+
+def _link_urls(text):
+    def wrap(m):
+        url = m.group(0)
+        tail = ""
+        while url[-1] in ".,;:!?":
+            url, tail = url[:-1], url[-1] + tail
+        return f"<{url}>{tail}"
+    return BARE_URL.sub(wrap, text)
+
+
+def _autolink_span(text):
+    out, pos = [], 0
+    for m in KEEP.finditer(text):
+        out.append(_link_urls(text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(_link_urls(text[pos:]))
+    return "".join(out)
 
 
 def autolink(text):
-    """Wrap bare URLs in <…> outside code and HTML; everything else is left as written."""
-    out, pos = [], 0
-    for m in KEEP.finditer(text):
-        out.append(BARE_URL.sub(r"<\1>", text[pos:m.start()]))
-        out.append(m.group(0))
-        pos = m.end()
-    out.append(BARE_URL.sub(r"<\1>", text[pos:]))
-    return "".join(out)
+    """Wrap bare URLs in <…> in the source list only, outside code, links and HTML."""
+    return SOURCES.sub(lambda m: _autolink_span(m.group(0)), text)
 
 
 def yaml_str(s):
@@ -195,7 +219,7 @@ def main():
         web = f"/assets/beyond/{slug}/{f.name}"
         cover = cover or web
         body_text = body_text.replace(f"![{alt}]({path})", f"![{long_alt}]({web})", 1)
-    # Bare URLs (the source list) become autolinks; the text itself is unchanged.
+    # Bare URLs in the source list become autolinks; the text itself is unchanged.
     body_text = autolink(body_text)
     body_text = re.sub(r"\n{3,}", "\n\n", body_text).strip() + "\n"
     body_text = "{% raw %}\n" + body_text + "{% endraw %}\n"
