@@ -88,9 +88,9 @@ KEEP = re.compile(
     re.S | re.I | re.M,
 )
 # A URL may hold balanced parentheses (…/wiki/AI_(disambiguation)); trailing
-# sentence punctuation and an unbalanced ")" stay outside the link. A "(" right
+# sentence punctuation (an apostrophe inside a URL stays, a closing one does not) and an unbalanced ")" stay outside the link. A "(" right
 # before a URL is plain text here: Markdown link targets are already in KEEP.
-BARE_URL = re.compile(r"(?<![<\[\"'=])https?://(?:[^\s<>()\[\]\"'`]|\([^\s<>()\[\]\"'`]*\))+")
+BARE_URL = re.compile(r"(?<![<\[\"'=])https?://(?:[^\s<>()\[\]\"`]|\([^\s<>()\[\]\"`]*\))+")
 SOURCES = re.compile(r"^### Källor[ \t]*$.*?(?=^#{1,6} |\Z)", re.M | re.S)
 
 
@@ -98,7 +98,7 @@ def _link_urls(text):
     def wrap(m):
         url = m.group(0)
         tail = ""
-        while url[-1] in ".,;:!?":
+        while url[-1] in ".,;:!?'":
             url, tail = url[:-1], url[-1] + tail
         return f"<{url}>{tail}"
     return BARE_URL.sub(wrap, text)
@@ -114,9 +114,23 @@ def _autolink_span(text):
     return "".join(out)
 
 
+FENCE = re.compile(r"^[ ]{0,3}(```|~~~).*?^[ ]{0,3}\1[^\n]*$", re.M | re.S)
+
+
 def autolink(text):
-    """Wrap bare URLs in <…> in the source list only, outside code, links and HTML."""
-    return SOURCES.sub(lambda m: _autolink_span(m.group(0)), text)
+    """Wrap bare URLs in <…> in the source list only, outside code, links and HTML.
+
+    A "### Källor" line inside a fenced code block is not a heading, so fenced
+    blocks are set aside before the section is looked up and put back unchanged."""
+    fences = []
+
+    def hide(m):
+        fences.append(m.group(0))
+        return f"\0FENCE{len(fences) - 1}\0"
+
+    hidden = FENCE.sub(hide, text)
+    linked = SOURCES.sub(lambda m: _autolink_span(m.group(0)), hidden)
+    return re.sub(r"\0FENCE(\d+)\0", lambda m: fences[int(m.group(1))], linked)
 
 
 def yaml_str(s):
