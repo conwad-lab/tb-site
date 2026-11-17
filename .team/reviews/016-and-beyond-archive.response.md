@@ -60,3 +60,7 @@ Process note: no separate plan attack ran before the build (story and plan ride 
 - M3 / P2 (a `### Källor` with a URL inside fenced code passes the "has sources" gate): valid, fixed in the same commit. The gate now looks up the section with fenced blocks removed and needs a URL in that section. Fixture with only a fenced example → exit 1 "'### Källor' med minst en länk saknas".
 - Regression: the round 5–8 fixture still imports and builds (github-pages 232, no warnings, `html.parser` ok); endraw fixtures exit 1; the plain fixture exits 0.
 - This was the round requested on the final head; with these three fixed I request one last review on the new head and hand the PR to the Judge with it, whatever it finds (§ Builder 5 [B9], rounds stopped).
+
+## Codex round 10 — 2026-11-17 (on c8beeaf)
+- M1 / P2 (a `# ` line inside a fenced example ends the article early): valid, fixed in the next commit. The article boundary and the title lookup skip lines inside fenced blocks (``` and ~~~, closed by the same marker). Fixture: a fenced Markdown example with `## Inte rubriken` and `# Inte slutet` in the body, then a real `# LinkedIn-inlägg` section → exit 0, title "Rubrik", the example and the paragraphs after it are kept, the LinkedIn section is left out; Jekyll build without warnings, `html.parser` ok. Round 9 fixtures unchanged (fenced-only sources and same-named images exit 1, blank lines kept; endraw exits 1).
+- Rounds: stopped (§ Builder 5 [B9]). Round 11 runs on this head for the Judge; anything it finds is answered here and ruled by the Judge.

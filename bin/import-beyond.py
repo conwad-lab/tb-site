@@ -58,17 +58,37 @@ def forbidden(text, where):
     return [f"internt material i {where}: {what} ('{needle}')" for needle, what in FORBIDDEN if needle in text]
 
 
+# A line that opens or closes a fenced code block; "# " inside one is not a heading.
+FENCE_LINE = re.compile(r"^[ ]{0,3}(```|~~~)")
+
+
+def outside_fences(lines):
+    """Indexes of lines that are not inside a fenced code block."""
+    keep, fence = [], None
+    for i, line in enumerate(lines):
+        m = FENCE_LINE.match(line)
+        if m:
+            fence = None if fence == m.group(1) else (fence or m.group(1))
+            continue
+        if fence is None:
+            keep.append(i)
+    return keep
+
+
 def article(body):
     lines = body.splitlines()
     try:
         start = lines.index(ARTICLE_HEADING) + 1
     except ValueError:
         return None
-    out = []
+    out, fence = [], None
     for line in lines[start:]:
-        if line.startswith("# "):
+        if fence is None and line.startswith("# "):
             break
         out.append(line)
+        m = FENCE_LINE.match(line)
+        if m:
+            fence = None if fence == m.group(1) else (fence or m.group(1))
     while out and out[-1].strip() in ("", "---"):
         out.pop()
     return "\n".join(out).strip("\n")
@@ -173,7 +193,7 @@ def main():
         text = ""
 
     lines = text.splitlines()
-    title_i = next((i for i, l in enumerate(lines) if l.startswith("## ")), None)
+    title_i = next((i for i in outside_fences(lines) if lines[i].startswith("## ")), None)
     title = lines[title_i][3:].strip() if title_i is not None else ""
     if not title:
         problems.append("rubrik (## …) saknas")
