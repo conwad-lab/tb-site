@@ -76,17 +76,21 @@ def article(body):
 
 # Only the source list ("### Källor" up to the next heading) gets autolinks; the rest
 # of the letter is left exactly as written. Inside it, these spans are copied as is:
-# fenced and inline code, Markdown links and images (label and target), HTML elements
+# fenced and inline code, Markdown links and images (inline, reference, shortcut, and
+# definition lines), any [bracketed] text, HTML elements
 # whose content is raw or a link (<a>, <pre>, <code>, <script>, <style>) and any other tag.
 KEEP = re.compile(
     r"```.*?```|~~~.*?~~~|(`+).*?\1"
-    r"|!?\[(?:[^\[\]\n]|\[[^\[\]\n]*\])*\]\((?:[^()\s]|\([^()\s]*\))*(?:\s+\"[^\"\n]*\")?\)"
+    r"|^[ ]{0,3}\[[^\]\n]+\]:[^\n]*"
+    r"|!?\[(?:[^\[\]\n]|\[[^\[\]\n]*\])*\]"
+    r"(?:\((?:[^()\s]|\([^()\s]*\))*(?:\s+\"[^\"\n]*\")?\)|\[[^\[\]\n]*\])?"
     r"|<(a|pre|code|script|style)\b[^>]*>.*?</\2\s*>|<[^>\n]+>",
-    re.S | re.I,
+    re.S | re.I | re.M,
 )
 # A URL may hold balanced parentheses (…/wiki/AI_(disambiguation)); trailing
-# sentence punctuation and an unbalanced ")" stay outside the link.
-BARE_URL = re.compile(r"(?<![(<\[\"'=])https?://(?:[^\s<>()\"'`]|\([^\s<>()\"'`]*\))+")
+# sentence punctuation and an unbalanced ")" stay outside the link. A "(" right
+# before a URL is plain text here: Markdown link targets are already in KEEP.
+BARE_URL = re.compile(r"(?<![<\[\"'=])https?://(?:[^\s<>()\[\]\"'`]|\([^\s<>()\[\]\"'`]*\))+")
 SOURCES = re.compile(r"^### Källor[ \t]*$.*?(?=^#{1,6} |\Z)", re.M | re.S)
 
 
