@@ -134,6 +134,7 @@ def _autolink_span(text):
     return "".join(out)
 
 
+INLINE_CODE = re.compile(r"(`+)(?!`).*?(?<!`)\1(?!`)", re.S)
 FENCE = re.compile(r"^[ ]{0,3}(```|~~~).*?^[ ]{0,3}\1[^\n]*$", re.M | re.S)
 
 
@@ -223,6 +224,12 @@ def main():
 
     slug = f"{pub.isocalendar()[0]}-v{pub.isocalendar()[1]:02d}" if pub else "okand"
     images = []
+    # Image syntax shown inside code would be rewritten as a real image; it cannot be
+    # kept verbatim, so it is refused like every other form this script cannot keep.
+    code = [m.group(0) for m in FENCE.finditer(text)]
+    code += [m.group(0) for m in INLINE_CODE.finditer(FENCE.sub("", text))]
+    if any("![" in c for c in code):
+        problems.append("bildsyntax i kod stöds inte: ta bort ![…](…) ur kodexemplet")
     for alt, path in IMG.findall(text):
         if re.match(r"[a-z]+:", path, re.I) or path.startswith("/"):
             problems.append(f"bilden ligger inte bredvid brevet: {path}")
@@ -288,7 +295,8 @@ def main():
     out = out_root / "_beyond" / f"{slug}.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(h for h in head if h is not None) + body_text, encoding="utf-8")
-    print(f"skrev {out.relative_to(out_root)} och {len(images)} bilder i {img_dir.relative_to(out_root)}")
+    files = len({f for _, _, f, _ in images})
+    print(f"skrev {out.relative_to(out_root)} och {files} bilder i {img_dir.relative_to(out_root)}")
 
 
 if __name__ == "__main__":
