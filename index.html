@@ -1,3 +1,5 @@
+---
+---
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -175,6 +177,14 @@
   .revealed .stage:nth-child(3){transition-delay:120ms}
 .amp-dev{font-family:var(--mono);font-weight:500;font-size:.78em;margin:0 .16em}.amp-dev.own{color:var(--bronze)}
 .mat-band{margin:0;border-top:1px solid #1C2022;border-bottom:1px solid #1C2022}.mat-band img{width:100%;height:280px;object-fit:cover;display:block}
+  /* ---- latest & Beyond letter (story 021) ---- */
+  .latest-letter{border-top:1px solid var(--hair);padding:56px 0 64px}
+  .ll-meta{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted);margin:0 0 10px}
+  .ll-title{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.25;margin:0 0 18px;max-width:30ch}
+  .ll-links{display:flex;gap:28px;flex-wrap:wrap;font-size:15px;font-weight:500;margin:0}
+  .ll-links a{color:var(--bronze-deep)}
+  .ll-links a:last-child{color:var(--muted)}
+  @media(max-width:760px){.nav-r a.nav-beyond{display:inline}}
 </style>
 
 <header>
@@ -182,6 +192,7 @@
     <a class="mark" href="#">Transformation <span>&amp;</span> Beyond</a>
     <nav class="nav-r" aria-label="Primary">
       <a href="#praktiken">What we do</a><a href="#arbetssatt">How we work</a><a href="#review">The review</a><a href="#grundaren">Who you get</a>
+      <a class="nav-beyond" href="/beyond/">&amp; Beyond</a>
       <a class="cta" href="#kontakt">Book a scoping call</a>
     </nav>
   </div>
@@ -364,6 +375,8 @@
       </div>
     </div>
   </section>
+
+  {% include latest-letter.html lang="en" %}
 
   <figure class="mat-band"><!-- duotone raw material: Max van den Oetelaar / Unsplash --><img src="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/strata-duotone.jpg" alt="Layered rock strata in bronze duotone"></figure>
   <section class="dark" id="kontakt" data-rule>
