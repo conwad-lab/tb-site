@@ -1,0 +1,18 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://transformationbeyond.se/</loc></url>
+{%- for p in site.pages %}
+{%- if p.url == "/" or p.url == "/404.html" or p.sitemap == false %}{% continue %}{% endif %}
+{%- assign last = p.url | slice: -1, 1 %}
+{%- assign tail = p.url | slice: -5, 5 %}
+{%- if last == "/" or tail == ".html" %}
+  <url><loc>https://transformationbeyond.se{{ p.url }}</loc></url>
+{%- endif %}
+{%- endfor %}
+{%- for d in site.beyond %}
+  <url><loc>https://transformationbeyond.se{{ d.url }}</loc><lastmod>{{ d.date | date: "%Y-%m-%d" }}</lastmod></url>
+{%- endfor %}
+</urlset>
