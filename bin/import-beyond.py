@@ -186,8 +186,10 @@ def main():
                     lead = m.group(1).strip()
                 break
 
-    src_section = re.search(r"^### Källor\s*$(.*)", text, re.M | re.S)
-    if not src_section or not re.search(r"https?://", src_section.group(1)):
+    # A "### Källor" or a URL inside fenced code (an example) does not count.
+    unfenced = FENCE.sub("", text)
+    src_section = SOURCES.search(unfenced)
+    if not src_section or not re.search(r"https?://", src_section.group(0)):
         problems.append("'### Källor' med minst en länk saknas")
 
     problems += forbidden(text, "texten")
@@ -217,6 +219,12 @@ def main():
             problems.append(f"alt-texten för {f.name} innehåller '{{% endraw %}}', som inte kan publiceras ordagrant")
         long_alt = " ".join(long_alt.replace("[", "(").replace("]", ")").split())
         images.append((alt, path, f, long_alt))
+    # Images are published flat under assets/beyond/<slug>/: two different files with
+    # the same name would overwrite each other.
+    by_name = {}
+    for _, path, f, _ in images:
+        if by_name.setdefault(f.name, f) != f:
+            problems.append(f"två olika bilder heter {f.name}: byt namn på den ena")
 
     if problems:
         print(f"{src.name}: publiceras inte.", file=sys.stderr)
@@ -239,7 +247,8 @@ def main():
         body_text = body_text.replace(f"![{alt}]({path})", f"![{long_alt}]({web})", 1)
     # Bare URLs in the source list become autolinks; the text itself is unchanged.
     body_text = autolink(body_text)
-    body_text = re.sub(r"\n{3,}", "\n\n", body_text).strip() + "\n"
+    # No whitespace normalisation: blank lines inside code or HTML are part of the text.
+    body_text = body_text.strip("\n") + "\n"
     body_text = "{% raw %}\n" + body_text + "{% endraw %}\n"
 
     year, week = pub.isocalendar()[0], pub.isocalendar()[1]
