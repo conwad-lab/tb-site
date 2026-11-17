@@ -134,7 +134,8 @@ def _autolink_span(text):
     return "".join(out)
 
 
-INLINE_CODE = re.compile(r"(`+)(?!`).*?(?<!`)\1(?!`)", re.S)
+# An inline code span: not opened by an escaped backtick, never across a blank line.
+INLINE_CODE = re.compile(r"(?<![\\`])(`+)(?!`)(?:(?!\n[ \t]*\n).)*?(?<!`)\1(?!`)", re.S)
 FENCE = re.compile(r"^[ ]{0,3}(```|~~~).*?^[ ]{0,3}\1[^\n]*$", re.M | re.S)
 
 
