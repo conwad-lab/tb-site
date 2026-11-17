@@ -388,9 +388,9 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['rng','r','Rundning på markörer',0,7,1,0,'px'],
     ['chk','shorthero','Låg första skärm',false],
     ['h','Lugnare lägen (Codex förslag)'],
-    ['chk','fewbands','Färre bokningsband',false],
-    ['chk','offersheet','Erbjudandet som faktablad',false],
-    ['chk','qmatrix','Frågorna i två kolumner',false],
+    ['chk','fewbands','Färre bokningsband',true],
+    ['chk','offersheet','Erbjudandet som faktablad',true],
+    ['chk','qmatrix','Frågorna i två kolumner',true],
     ['chk','gapcalm','Glappet utan färgfält',false],
     ['chk','layerscalm','Disciplinerna som tabell',false],
     ['h','Rörelse'],
@@ -401,7 +401,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   ];
   var def={}, st={}, els={}, n=0;
   C.forEach(function(c){ if(c[0]==='h')return; n++; def[c[1]]= c[0]==='chk'?c[3] : c[0]==='rng'?c[6] : c[4]; });
-  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b2')||'{}'); }catch(e){ st={}; }
+  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b3')||'{}'); }catch(e){ st={}; }
   for(var k in def) if(!(k in st) || (k==='pal'&&!P[st[k]])) st[k]=def[k];
   document.getElementById('tw-n').textContent=n+' reglage';
 
@@ -421,7 +421,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'few-bands':st.fewbands,'offer-sheet':st.offersheet,'q-matrix':st.qmatrix,'gap-calm':st.gapcalm,'layers-calm':st.layerscalm,'short-hero':st.shorthero};
     for(var c in t) B.classList.toggle(c,!!t[c]);
     par();
-    try{ localStorage.setItem('tb-rattar-b2',JSON.stringify(st)); }catch(e){}
+    try{ localStorage.setItem('tb-rattar-b3',JSON.stringify(st)); }catch(e){}
   }
   var amp=document.querySelector('.amp'), still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function par(){ if(!amp)return; amp.style.translate = (st.par&&!still) ? '0 '+Math.round(window.scrollY*.28)+'px' : ''; if(st.par&&!still) amp.style.animation='none'; else amp.style.animation=''; }
