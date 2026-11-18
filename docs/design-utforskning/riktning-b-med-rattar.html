@@ -493,7 +493,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     s.scrollBehavior= st.smooth?'smooth':'auto';
     var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'few-bands':st.fewbands,'offer-sheet':st.offersheet,'q-matrix':st.qmatrix,'no-figanim':!st.figanim,'no-film':!st.film,'gap-fig':st.gapfig,'show-letter':st.letter,'show-portrait':st.portrait,'gap-calm':st.gapcalm,'layers-calm':st.layerscalm,'short-hero':st.shorthero};
     for(var c in t) B.classList.toggle(c,!!t[c]);
-    var fv=document.querySelector('.film'), src=V[st.video]||''; B.classList.toggle('has-video',!!src); s.setProperty('--fo',st.fo);
+    var fv=document.querySelector('.film'), src=V[st.video]||''; B.classList.toggle('has-video',!!src && !(fv && fv.error && fv.getAttribute('src')===src)); s.setProperty('--fo',st.fo);
     if(fv && fv.getAttribute('src')!==src){ if(src){fv.setAttribute('src',src);fv.play&&fv.play().catch(function(){});} else {fv.removeAttribute('src');fv.load();} }
     par();
     try{ localStorage.setItem('tb-rattar-b5',JSON.stringify(st)); }catch(e){}
