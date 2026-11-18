@@ -7,8 +7,9 @@
 
 ## Codex round 1 — 2026-11-18
 - No finished review on bd05e73: request 14:28Z and the one retry 14:29Z both got usage-limit replies (`Codex usage limits for code reviews`). Per [B7]/[H1] the head waits for the quota; the routine re-requests a `codex-quota` head once per run. No findings to answer yet.
+- 21:13Z (quota refilled): review on d662f33 finished, "Didn't find any major issues" (https://github.com/conwad-lab/tb-site/pull/56#issuecomment-6991831666). No P0/P1, M or S to answer.
 
 ## Outcome
 built-by: codex-cli
 model: claude-opus-5-5
-missed: nothing in the estimate (1 file, S plain, order needed no correction); the Codex review quota, not the build, holds the PR.
+missed: nothing in the estimate (1 file, S plain, 1 Codex round, order needed no correction); the Codex review quota held the PR ~7 h.
