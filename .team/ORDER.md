@@ -44,7 +44,11 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] **Rulebook story.** Ompinning till agent-team v0.8.7 (1d13b7c, agent-team #28: vakten hoppar över parkerade PR:er och grenar som redan finns i main). Bara submodulen och pinraden i `.team/team.md`; ingen workflowändring. `model: light`. Begärd av koordinatorn 2026-11-17 efter merge av #28. 020
 
-- [ ] & Beyond på startsidan: länk i menyn på `/` och `/sv/`, sidfotslänken på `/sv/`, och ett block "Senaste brevet" som Jekyll bygger ur samlingen. Ur Förslag "Mål 2/3" på koordinatorns uppdrag 2026-11-17 (mål-läsningen; vaultens `Transformation & Beyond innehall/mal.md`). Rör inte pris, bokningsknapp, Cal.com-URL eller kontaktadress. `model: light`. Vad blir publikt: menylänk och (när ett brev finns) senaste brevets rubrik och datum. 021
+- [x] & Beyond på startsidan: länk i menyn på `/` och `/sv/`, sidfotslänken på `/sv/`, och ett block "Senaste brevet" som Jekyll bygger ur samlingen. Ur Förslag "Mål 2/3" på koordinatorns uppdrag 2026-11-17 (mål-läsningen; vaultens `Transformation & Beyond innehall/mal.md`). Rör inte pris, bokningsknapp, Cal.com-URL eller kontaktadress. `model: light`. Vad blir publikt: menylänk och (när ett brev finns) senaste brevets rubrik och datum. 021
+
+- [x] **Rulebook story.** Ompinning till agent-team v0.8.9 (230dee6, agent-team #30: `builder: codex-cli`, Astra via Codex CLI-pollern på värd-Macen) och en **Test before commit**-rad som pollern kan köra: bara `pr-check`-kommandot i backticks, Playwright och länkkollen som prosa för Builder och Judge. Dagens rad blir `python3 -m html.parser index.html && index.html && href && mailto:` i pollern och studsar varje körning. `model: light`. Begärd av koordinatorn 2026-11-18 inför första Astra-bygget. 022
+
+- [x] En 404-sida i & Beyond-stilen med länkar tillbaka till `/`, `/sv/` och `/beyond/`, i stället för GitHubs egen sida utan väg tillbaka. Första storyn med `builder: codex-cli`. Ingen copy som kräver Conny (inga påståenden, befintliga länktexter). `model: strongest` enligt Connys modellprincip (Fable skriver arbetsordern, Astra bygger). Vad blir publikt: en sida som bara visas för adresser som inte finns, `noindex`. Begärd av koordinatorn 2026-11-18. (efter 022) 023
 
 ## Förslag
 
