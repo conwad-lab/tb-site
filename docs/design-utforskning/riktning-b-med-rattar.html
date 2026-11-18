@@ -6,15 +6,15 @@
 <title>Riktning B med rattar · Affischen — Transformation & Beyond (designskiss)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Sofia+Sans:wght@400;500;600;700;800&family=Sofia+Sans+Extra+Condensed:wght@500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Sofia+Sans:wght@400;500;600;700;800&family=Sofia+Sans+Extra+Condensed:wght@500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
 <style>
 :root{
   --blue:#1535D6; --red:#FF4A1C; --black:#0B0B0C; --white:#FFFFFF; --fog:#ECEDEF; --grey:#5B5F66;
   --f:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
-  --blue:#0E4D3A; --red:#FF7A59; --fog:#E8EEEA; --em:#0E4D3A; /* Connys val 2026-11-17: Skog och korall */
-  --on-blue:#FFFFFF; --on-red:#0B0B0C;
+  --blue:#0C2233; --red:#CF2318; --fog:#F6E6DA; --em:#B01C13; --black:#14181B; --white:#F8F6F1; /* 2026-11-18: Marin och rött, efter sajterna besökarna läser */
+  --on-blue:#F8F6F1; --on-red:#FFFFFF; --aw:500; --ai:normal;
   --hero-bg:var(--blue); --hero-fg:var(--on-blue); --amp-c:var(--red);
-  --hf:var(--f); --bf:var(--f); --hw:500; --hs:1; --ht:-.04em; --hlh:.95; --base:18px;
+  --hf:"Newsreader",Georgia,serif; --bf:var(--f); --hw:500; --hs:1; --ht:-.02em; --hlh:1; --base:18px;
   --pm:1; --sp:1; --lw:3px; --r:0px;
   --as:1; --ax:0px; --ay:-54%; --ar:0deg; --ao:1;
   --bs:1; --bp:1; --ps:.7; --qz:1; --ls:1;
@@ -43,7 +43,7 @@ h1,h2,h3,.gap > div,.band,.qs li,.price,.hand p:first-child{font-family:var(--hf
 
 /* hero: blått fält, rött et-tecken */
 .hero{position:relative;background:var(--hero-bg);color:var(--hero-fg);min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(24px,4vh,48px);overflow:hidden}
-.amp{position:absolute;right:calc(-.06em + var(--ax));top:50%;transform:translateY(var(--ay)) rotate(var(--ar));opacity:var(--ao);font-family:var(--hf);font-size:calc(clamp(360px,74vw,1180px)*var(--as));font-weight:700;line-height:.7;color:var(--amp-c);letter-spacing:-.05em;pointer-events:none;user-select:none}
+.amp{position:absolute;right:calc(-.06em + var(--ax));top:50%;transform:translateY(var(--ay)) rotate(var(--ar));opacity:var(--ao);font-family:var(--hf);font-size:calc(clamp(360px,74vw,1180px)*var(--as));font-weight:var(--aw);font-style:var(--ai);line-height:.7;color:var(--amp-c);letter-spacing:-.05em;pointer-events:none;user-select:none}
 .hero h1{position:relative;font-size:calc(clamp(40px,7vw,122px)*var(--hs));max-width:16ch}
 .nb{white-space:nowrap}
 .hero-foot{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 56px;margin-top:clamp(28px,5vh,56px);padding-top:22px;border-top:var(--lw) solid var(--hero-fg);font-size:clamp(17px,1.5vw,21px);line-height:1.4}
@@ -158,6 +158,18 @@ body.no-arrows .band .arr{display:none}
 body.short-hero .hero{min-height:0;padding-top:clamp(120px,16vw,220px)}
 body.center-bands .band{justify-content:center;text-align:center}
 .btn-in{display:none}
+.fig{display:none}
+body.gap-fig .gap .l,body.gap-fig .gap .r{display:none}
+body.gap-fig .fig{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px clamp(24px,5vw,80px);align-items:center;margin:0;padding-top:clamp(40px,6vw,88px);padding-bottom:clamp(40px,6vw,88px);border-top:var(--lw) solid var(--black)}
+.fig .say{position:relative;padding-top:26px}
+.fig .say::before{content:"";position:absolute;left:0;top:0;width:56px;height:8px;background:var(--red)}
+.fig .say p{font-family:var(--hf);font-weight:var(--hw);font-size:calc(clamp(24px,2.6vw,40px)*var(--hs));letter-spacing:var(--ht);line-height:1.12;margin:0 0 .6em}
+.fig figcaption{font-size:14px;color:var(--grey);margin-top:18px}
+.fig svg{width:100%;height:auto;display:block;max-width:640px;justify-self:end}
+.fig text{font-family:var(--bf);font-size:16px;fill:var(--black)}
+.fig .ax{stroke:var(--black);stroke-width:1.5;fill:none}
+.fig .gr{stroke:var(--black);stroke-opacity:.14;stroke-width:1}
+@media(max-width:760px){body.gap-fig .fig{grid-template-columns:1fr}.fig svg{justify-self:start}}
 body.few-bands .band.rep{display:none}
 body.few-bands .btn-in{display:inline-block;margin:0 0 22px;background:var(--red);color:var(--on-red);font-family:var(--hf);font-weight:700;font-size:18px;padding:15px 24px;text-decoration:none}
 body.few-bands .btn-in:hover{background:var(--white);color:var(--black)}
@@ -225,6 +237,18 @@ body.layers-calm .l3{border-bottom:var(--lw) solid var(--black)}
   <a class="band w" href="#kontakt"><span>Boka ett inledande samtal</span><span class="arr" aria-hidden="true">→</span></a>
   <a class="band thin w" href="https://www.dignami.com/en/proof" target="_blank" rel="noopener"><span>Granska bevisen först</span><span class="arr" aria-hidden="true">→</span></a>
 
+  <figure class="fig w">
+    <div class="say"><p>De stora konsultbolagen förstår er verksamhet men bygger inte tekniken.</p><p>AI-labben bygger tekniken men förstår inte er verksamhet.</p><figcaption>Principskiss, inga mätvärden.</figcaption></div>
+    <svg viewBox="0 0 520 360" role="img" aria-label="Principskiss med två axlar: förstår er verksamhet och bygger tekniken. De stora konsultbolagen ligger högt på den första och lågt på den andra, AI-labben tvärtom, Transformation &amp; Beyond högt på båda.">
+      <path class="gr" d="M60 170H500M280 20V320"/>
+      <path class="ax" d="M60 20V320H500"/>
+      <text x="60" y="348">Förstår er verksamhet →</text>
+      <text transform="translate(44 320) rotate(-90)">Bygger tekniken →</text>
+      <circle cx="170" cy="95" r="9" fill="#8B8F94"/><text x="188" y="100">AI-labben</text>
+      <circle cx="390" cy="245" r="9" fill="#8B8F94"/><text x="300" y="282">De stora konsultbolagen</text>
+      <circle cx="390" cy="95" r="15" style="fill:var(--red)"/><text x="312" y="62" style="font-weight:700">Transformation &amp; Beyond</text>
+    </svg>
+  </figure>
   <div class="gap" id="darfor">
     <div class="l">De stora konsultbolagen förstår er verksamhet men bygger inte tekniken.</div>
     <div class="r">AI-labben bygger tekniken men förstår inte er verksamhet.</div>
@@ -337,10 +361,13 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     'Sofia Sans':'"Sofia Sans","Helvetica Neue",Arial,sans-serif',
     'Sofia Extra Condensed':'"Sofia Sans Extra Condensed","Arial Narrow",sans-serif',
     'Source Serif 4':'"Source Serif 4",Georgia,serif',
+    'Newsreader':'"Newsreader",Georgia,serif',
     'Systemets sans':'system-ui,-apple-system,"Segoe UI",sans-serif'
   };
   // fält, text på fält, accent, text på accent, svart, vitt, dimma, betoning på vitt
   var P={
+    'Marin och rött':['#0C2233','#F8F6F1','#CF2318','#FFFFFF','#14181B','#F8F6F1','#F6E6DA','#B01C13'],
+    'Papper och rött':['#F8F6F1','#14181B','#CF2318','#FFFFFF','#14181B','#F8F6F1','#F6E6DA','#B01C13'],
     'Kobolt och cinnober':['#1535D6','#FFFFFF','#FF4A1C','#0B0B0C','#0B0B0C','#FFFFFF','#ECEDEF','#1535D6'],
     'Skog och korall':['#0E4D3A','#FFFFFF','#FF7A59','#0B0B0C','#0B0B0C','#FFFFFF','#E8EEEA','#0E4D3A'],
     'Signalgult':['#FFD400','#0B0B0C','#E5231B','#FFFFFF','#0B0B0C','#FFFFFF','#EFEFEA','#C01B14'],
@@ -353,15 +380,15 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   var HERO=['Fältfärg','Svart','Vitt','Accent'];
   var C=[
     ['h','Palett'],
-    ['pal','pal','Palett',P,'Skog och korall'],
+    ['pal','pal','Palett',P,'Marin och rött'],
     ['sel','hero','Första skärmen',HERO,'Fältfärg'],
     ['h','Typsnitt'],
-    ['sel','hf','Rubriker',Object.keys(F),'Familjen Grotesk'],
+    ['sel','hf','Rubriker',Object.keys(F),'Newsreader'],
     ['sel','bf','Brödtext',Object.keys(F),'Familjen Grotesk'],
     ['rng','hw','Rubrikvikt',400,900,100,500,''],
     ['rng','hs','Rubrikstorlek',.6,1.4,.05,1,'×'],
-    ['rng','ht','Spärrning',-.07,.03,.005,-.04,'em'],
-    ['rng','hlh','Radavstånd rubrik',.8,1.2,.01,.95,''],
+    ['rng','ht','Spärrning',-.07,.03,.005,-.02,'em'],
+    ['rng','hlh','Radavstånd rubrik',.8,1.2,.01,1,''],
     ['rng','base','Textstorlek',15,22,.5,18,'px'],
     ['chk','caps','Versala rubriker',false],
     ['h','&-tecknet'],
@@ -371,6 +398,8 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['rng','ay','I höjdled',-90,-20,1,-54,'%'],
     ['rng','ar','Lutning',-30,30,1,0,'°'],
     ['rng','ao','Styrka',.1,1,.05,1,''],
+    ['rng','aw','Tjocklek',400,700,100,500,''],
+    ['chk','ampital','Kursivt',false],
     ['chk','ampline','Bara kontur',false],
     ['chk','ampfront','Framför rubriken',false],
     ['h','Band och storlekar'],
@@ -391,6 +420,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['chk','fewbands','Färre bokningsband',true],
     ['chk','offersheet','Erbjudandet som faktablad',true],
     ['chk','qmatrix','Frågorna i två kolumner',true],
+    ['chk','gapfig','Glappet som figur',true],
     ['chk','gapcalm','Glappet utan färgfält',false],
     ['chk','layerscalm','Disciplinerna som tabell',false],
     ['h','Rörelse'],
@@ -401,7 +431,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   ];
   var def={}, st={}, els={}, n=0;
   C.forEach(function(c){ if(c[0]==='h')return; n++; def[c[1]]= c[0]==='chk'?c[3] : c[0]==='rng'?c[6] : c[4]; });
-  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b3')||'{}'); }catch(e){ st={}; }
+  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b4')||'{}'); }catch(e){ st={}; }
   for(var k in def) if(!(k in st) || (k==='pal'&&!P[st[k]])) st[k]=def[k];
   document.getElementById('tw-n').textContent=n+' reglage';
 
@@ -414,14 +444,14 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     s.setProperty('--hf',F[st.hf]); s.setProperty('--bf',F[st.bf]);
     s.setProperty('--hw',st.hw); s.setProperty('--hs',st.hs); s.setProperty('--ht',st.ht+'em'); s.setProperty('--hlh',st.hlh);
     s.setProperty('--base',st.base+'px');
-    s.setProperty('--as',st.as); s.setProperty('--ax',(-st.ax)+'px'); s.setProperty('--ay',st.ay+'%'); s.setProperty('--ar',st.ar+'deg'); s.setProperty('--ao',st.ao);
+    s.setProperty('--as',st.as); s.setProperty('--ax',(-st.ax)+'px'); s.setProperty('--ay',st.ay+'%'); s.setProperty('--ar',st.ar+'deg'); s.setProperty('--ao',st.ao); s.setProperty('--aw',st.aw); s.setProperty('--ai',st.ampital?'italic':'normal');
     s.setProperty('--bs',st.bs); s.setProperty('--bp',st.bp); s.setProperty('--ps',st.ps); s.setProperty('--qz',st.qz); s.setProperty('--ls',st.ls);
     s.setProperty('--sp',st.sp); s.setProperty('--pm',st.pm); s.setProperty('--lw',st.lw+'px'); s.setProperty('--r',st.r+'px');
     s.scrollBehavior= st.smooth?'smooth':'auto';
-    var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'few-bands':st.fewbands,'offer-sheet':st.offersheet,'q-matrix':st.qmatrix,'gap-calm':st.gapcalm,'layers-calm':st.layerscalm,'short-hero':st.shorthero};
+    var t={caps:st.caps,'amp-off':!st.amp,'amp-line':st.ampline,'amp-front':st.ampfront,'no-amp-anim':!st.ampanim,'no-hover':!st.hover,'no-arrows':!st.arrows,'center-bands':st.centerbands,'few-bands':st.fewbands,'offer-sheet':st.offersheet,'q-matrix':st.qmatrix,'gap-fig':st.gapfig,'gap-calm':st.gapcalm,'layers-calm':st.layerscalm,'short-hero':st.shorthero};
     for(var c in t) B.classList.toggle(c,!!t[c]);
     par();
-    try{ localStorage.setItem('tb-rattar-b3',JSON.stringify(st)); }catch(e){}
+    try{ localStorage.setItem('tb-rattar-b4',JSON.stringify(st)); }catch(e){}
   }
   var amp=document.querySelector('.amp'), still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function par(){ if(!amp)return; amp.style.translate = (st.par&&!still) ? '0 '+Math.round(window.scrollY*.28)+'px' : ''; if(st.par&&!still) amp.style.animation='none'; else amp.style.animation=''; }
@@ -455,7 +485,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   document.getElementById('tw-close').onclick=function(){tw.hidden=true;op.hidden=false;};
   document.getElementById('tw-reset').onclick=function(){for(var k in def)st[k]=def[k];apply();sync();};
   document.getElementById('tw-rand').onclick=function(){
-    var keep={smooth:1,amp:1,par:1,ampanim:1,hover:1,ax:1,ao:1,fewbands:1,offersheet:1,qmatrix:1,gapcalm:1,layerscalm:1};
+    var keep={smooth:1,amp:1,par:1,ampanim:1,hover:1,ax:1,ao:1,fewbands:1,offersheet:1,qmatrix:1,gapcalm:1,gapfig:1,layerscalm:1,aw:1};
     C.forEach(function(c){ if(c[0]==='h'||keep[c[1]])return; var k=c[1];
       if(c[0]==='chk') st[k]=Math.random()<.4;
       else if(c[0]==='rng'){ var lo=c[3]+(c[4]-c[3])*.2, hi=c[4]-(c[4]-c[3])*.2, m=Math.round((hi-lo)/c[5]); st[k]=+(Math.round((lo+Math.floor(Math.random()*(m+1))*c[5])/c[5])*c[5]).toFixed(3); }
@@ -465,7 +495,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   document.getElementById('tw-calm').onclick=function(){
     for(var k in def)st[k]=def[k];
     st.hero='Vitt'; st.as=.5; st.ay=-50; st.hs=.85; st.ps=.7; st.bs=.6; st.bp=.6; st.sp=.75; st.ampanim=false;
-    st.fewbands=st.offersheet=st.qmatrix=st.gapcalm=st.layerscalm=true; apply();sync();
+    st.fewbands=st.offersheet=st.qmatrix=st.gapcalm=st.layerscalm=true; st.gapfig=false; apply();sync();
   };
   document.getElementById('tw-copy').onclick=function(){
     var d={}; for(var k in st) if(st[k]!==def[k]) d[k]=st[k];
