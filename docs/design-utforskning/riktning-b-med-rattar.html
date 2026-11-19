@@ -16,7 +16,7 @@
   --hero-bg:var(--blue); --hero-fg:var(--on-blue); --amp-c:var(--red);
   --hf:"Newsreader",Georgia,serif; --bf:var(--f); --hw:500; --hs:1; --ht:-.02em; --hlh:1; --base:18px;
   --pm:1; --sp:1; --lw:3px; --r:0px;
-  --as:1; --ax:0px; --ay:-54%; --ar:0deg; --ao:1;
+  --as:.8; --ax:0px; --ay:-54%; --ar:0deg; --ao:1;
   --bs:1; --bp:1; --ps:.7; --qz:1; --ls:1;
   --pad:max(16px,calc(clamp(20px,4.4vw,64px)*var(--pm)));
 }
@@ -430,7 +430,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     ['chk','caps','Versala rubriker',false],
     ['h','&-tecknet'],
     ['chk','amp','Visa &-tecknet',true],
-    ['rng','as','Storlek',.3,1.6,.05,1,'×'],
+    ['rng','as','Storlek',.3,1.6,.05,.8,'×'],
     ['rng','ax','I sidled',-600,300,10,0,'px'],
     ['rng','ay','I höjdled',-90,-20,1,-54,'%'],
     ['rng','ar','Lutning',-30,30,1,0,'°'],
@@ -474,7 +474,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
   ];
   var def={}, st={}, els={}, n=0;
   C.forEach(function(c){ if(c[0]==='h')return; n++; def[c[1]]= c[0]==='chk'?c[3] : c[0]==='rng'?c[6] : c[4]; });
-  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b8')||'{}'); }catch(e){ st={}; }
+  try{ st=JSON.parse(localStorage.getItem('tb-rattar-b9')||'{}'); }catch(e){ st={}; }
   for(var k in def) if(!(k in st) || (k==='pal'&&!P[st[k]]) || (k==='video'&&!(st[k] in V))) st[k]=def[k];
   document.getElementById('tw-n').textContent=n+' reglage';
 
@@ -496,7 +496,7 @@ var b=document.getElementById('book-cta'); if(b){b.href=CALCOM_URL;b.target='_bl
     var fv=document.querySelector('.film'), src=V[st.video]||''; B.classList.toggle('has-video',!!src && !(fv && fv.error && fv.getAttribute('src')===src)); s.setProperty('--fo',st.fo);
     if(fv && fv.getAttribute('src')!==src){ if(src){fv.setAttribute('src',src);fv.play&&fv.play().catch(function(){});} else {fv.removeAttribute('src');fv.load();} }
     par();
-    try{ localStorage.setItem('tb-rattar-b8',JSON.stringify(st)); }catch(e){}
+    try{ localStorage.setItem('tb-rattar-b9',JSON.stringify(st)); }catch(e){}
   }
   var amp=document.querySelector('.amp'), still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function par(){ if(!amp)return; amp.style.translate = (st.par&&!still) ? '0 '+Math.round(window.scrollY*.28)+'px' : ''; if(st.par&&!still) amp.style.animation='none'; else amp.style.animation=''; }
