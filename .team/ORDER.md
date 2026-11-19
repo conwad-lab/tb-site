@@ -50,6 +50,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] En 404-sida i & Beyond-stilen med länkar tillbaka till `/`, `/sv/` och `/beyond/`, i stället för GitHubs egen sida utan väg tillbaka. Första storyn med `builder: codex-cli`. Ingen copy som kräver Conny (inga påståenden, befintliga länktexter). `model: strongest` enligt Connys modellprincip (Fable skriver arbetsordern, Astra bygger). Vad blir publikt: en sida som bara visas för adresser som inte finns, `noindex`. Begärd av koordinatorn 2026-11-18. (efter 022) 023
 
+- [x] **Rulebook story.** Ompinning till agent-team v0.8.11 (7ed9768, agent-team #32: byggaren kör en plans oberoende delar som parallella subagenter, `team/PARTS.md`, `bin/part-check`; med v0.8.10 `bin/runner-install`). Bara submodulen och pinraden i `.team/team.md`; ingen workflowändring. `model: light`. Begärd av koordinatorn 2026-11-19 efter merge av #32. 024
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
