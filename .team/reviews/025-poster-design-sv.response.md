@@ -202,6 +202,9 @@ Visible text, master `/sv/` → branch `/sv/` (both built by Jekyll; branch with
 > →
 ```
 
+## Codex round 1 — 2026-11-20
+- No findings ("Didn't find any major issues", reviewed `027384a`, focus: copy, head/JSON-LD, hosts, hard rails, build notes).
+
 ## Outcome
 built-by: claude
 model: claude-opus-5-5
