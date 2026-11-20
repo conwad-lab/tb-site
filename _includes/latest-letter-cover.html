@@ -1,0 +1,8 @@
+{%- comment -%}Latest & Beyond letter as a cover, for the Swedish home page (story 025). Renders nothing while there are no letters.{%- endcomment -%}
+{%- assign latest = site.beyond | sort: "date" | last -%}
+{%- if latest -%}
+  <section class="brev w" id="beyond">
+    <a class="cover" href="{{ latest.url | relative_url }}" aria-label="Senaste brevet: {{ latest.title | escape }}"><span class="ca" aria-hidden="true">&amp;</span><span class="ct">&amp; Beyond · {{ latest.date | date: '%Y' }}</span><span class="ch" lang="sv">{{ latest.title | escape }}</span>{% if latest.lead %}<span class="cs">{{ latest.lead | escape }}</span>{% endif %}<span class="cm">Transformation &amp; Beyond</span></a>
+    <div><p class="tag">Senaste brevet</p><h2 lang="sv">{{ latest.title | escape }}</h2>{% if latest.lead %}<p>{{ latest.lead | escape }}</p>{% endif %}<p class="lk"><a href="{{ latest.url | relative_url }}">Läs brevet →</a><a href="{{ '/beyond/' | relative_url }}">Alla nummer</a></p></div>
+  </section>
+{%- endif -%}

@@ -16,3 +16,4 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 2026-11-17 | builder | `gh pr view` fails (GraphQL 403 in cloud sessions) | REST `gh api repos/…/pulls/25` | open
 2026-11-17 | builder | @codex build task on issue #49 got no reply or reaction in an hour (story 021) | built it myself | open
 2026-11-18 | Builder | `git fetch origin <branch>` in the cloud's shallow single-branch clone did not create `origin/<branch>` | fetch with an explicit refspec `+refs/heads/<b>:refs/remotes/origin/<b>` | open
+2026-11-20 | Builder | full-page Playwright shot at scroll 0 shows the figure without dots and labels (scroll-driven fade-in, `animation-timeline: view()`) | extra screenshot with the figure scrolled into view | open
