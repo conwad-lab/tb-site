@@ -1,8 +1,13 @@
-{%- comment -%}Latest & Beyond letter as a cover, for the Swedish home page (story 025). Renders nothing while there are no letters.{%- endcomment -%}
+{%- comment -%}Latest & Beyond letter as a cover, for both home pages (stories 025, 026). lang: "sv" (default) or "en"; the letters are Swedish, so their title and lead keep lang="sv". Renders nothing while there are no letters.{%- endcomment -%}
 {%- assign latest = site.beyond | sort: "date" | last -%}
 {%- if latest -%}
+  {%- if include.lang == "en" -%}
+    {%- assign aria = "Latest letter" -%}{%- assign heading = "Latest letter (in Swedish)" -%}{%- assign cta = "Read the letter" -%}{%- assign all = "All letters" -%}{%- assign leadlang = ' lang="sv"' -%}
+  {%- else -%}
+    {%- assign aria = "Senaste brevet" -%}{%- assign heading = "Senaste brevet" -%}{%- assign cta = "Läs brevet" -%}{%- assign all = "Alla nummer" -%}{%- assign leadlang = "" -%}
+  {%- endif -%}
   <section class="brev w" id="beyond">
-    <a class="cover" href="{{ latest.url | relative_url }}" aria-label="Senaste brevet: {{ latest.title | escape }}"><span class="ca" aria-hidden="true">&amp;</span><span class="ct">&amp; Beyond · {{ latest.date | date: '%Y' }}</span><span class="ch" lang="sv">{{ latest.title | escape }}</span>{% if latest.lead %}<span class="cs">{{ latest.lead | escape }}</span>{% endif %}<span class="cm">Transformation &amp; Beyond</span></a>
-    <div><p class="tag">Senaste brevet</p><h2 lang="sv">{{ latest.title | escape }}</h2>{% if latest.lead %}<p>{{ latest.lead | escape }}</p>{% endif %}<p class="lk"><a href="{{ latest.url | relative_url }}">Läs brevet →</a><a href="{{ '/beyond/' | relative_url }}">Alla nummer</a></p></div>
+    <a class="cover" href="{{ latest.url | relative_url }}" aria-label="{{ aria }}: {{ latest.title | escape }}"><span class="ca" aria-hidden="true">&amp;</span><span class="ct">&amp; Beyond · {{ latest.date | date: '%Y' }}</span><span class="ch" lang="sv">{{ latest.title | escape }}</span>{% if latest.lead %}<span class="cs"{{ leadlang }}>{{ latest.lead | escape }}</span>{% endif %}<span class="cm">Transformation &amp; Beyond</span></a>
+    <div><p class="tag">{{ heading }}</p>{% if include.lang == "en" %}<p>Week {{ latest.week }} · <time datetime="{{ latest.date | date: '%Y-%m-%d' }}">{{ latest.date | date: "%-d %B %Y" }}</time></p>{% endif %}<h2 lang="sv">{{ latest.title | escape }}</h2>{% if latest.lead %}{% if include.lang == "en" %}<p lang="sv">{% else %}<p>{% endif %}{{ latest.lead | escape }}</p>{% endif %}<p class="lk"><a href="{{ latest.url | relative_url }}">{{ cta }} →</a><a href="{{ '/beyond/' | relative_url }}">{{ all }}</a></p></div>
   </section>
 {%- endif -%}
