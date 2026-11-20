@@ -7,7 +7,7 @@ Plan attack: not required (Files touch no Adversarial or Human-merge path; not a
 - **`assets/site.css`, one rule** (allowed by the story's last criterion): `.hero h1:lang(en){font-size:clamp(40px,5.4vw,96px)}`. At the shared size (7vw, 101 px at 1440) the English `h1` ran 1000 px wide and "AI" and "not" sat on the `&` glyph (screenshot checked). With the rule the `h1` box ends at x=835 and the `&` box starts at x=880 at 1440×900 (also clear at 1024 and 800 px wide); at 390 the clamp's 40 px floor applies as before, so the phone size is unchanged. `:lang(en)` only, the Swedish page is untouched (`_site/sv/index.html` byte-identical, see checks).
 - **Mark link** `href="#"` → `href="/"` (as `/sv/` points to `/sv/`); text unchanged.
 - **Footer**: the inline SVG mark before "© 2026" is gone (025's footer has none); the five texts are unchanged.
-- **Cover include**: `lang="en"` gives the English tag, link texts and `aria-label` prefix; the lead also gets `lang="sv"` on `/` (on `/sv/` it has none, byte-identical). The old include's "Week NN · date" line is not in the cover (as in 025). The `<p>` with or without `lang` is written as two whole start tags in an `if`, because `check_html.py` reads `<p{{ … }}>` as an unclosed tag.
+- **Cover include**: `lang="en"` gives the English tag, link texts and `aria-label` prefix; the lead also gets `lang="sv"` on `/` (on `/sv/` it has none, byte-identical). The `<p>` with or without `lang` is written as two whole start tags in an `if`, because `check_html.py` reads `<p{{ … }}>` as an unclosed tag.
 - Removed with the inline `<style>`: the reveal script, the two `mat-band` images, the strata SVG (all in the plan).
 
 ## Build checks — 2026-11-20
@@ -18,10 +18,10 @@ Plan attack: not required (Files touch no Adversarial or Human-merge path; not a
 - Jekyll 4.4.1: `_site/sv/index.html` from master and from this branch are byte-identical (`cmp`), without letters and with one scratch sample letter (not committed). `_site/index.html` has no `id="beyond"` without letters and the English cover with one.
 - Playwright (Chromium, sample letter in the build): `scrollWidth` = 1440 / 390. Film shown, lines hidden by default; `reducedMotion: 'reduce'` → film `display:none`, lines shown; `*.mp4` aborted → `video.error.code` 4, `.hero.no-film`, lines shown. All five figure labels inside the SVG box at both widths.
 - Contrast: CSS colours unchanged from 025 (table in its response file). The hero `h1` over the film, measured as in 025 (12 frames, 95th-percentile background behind the `h1` box with text and `&` hidden): 3.27 at 1440 (large text, 75 px; AA 3.0), 4.05 at 390.
-- Screenshots in `.team/screenshots/026/`: `en-1440.png`, `en-390.png`, `en-1440-reduced-motion.png`, `en-1440-film-blocked.png`, `en-1440-figure-in-view.png`, `en-390-figure-in-view.png`, `sv-1440.png`, `sv-390.png`.
+- Screenshots in `.team/screenshots/026/`: `en-1440.png`, `en-390.png`, `en-1440-reduced-motion.png`, `en-1440-film-blocked.png`, `en-1440-figure-in-view.png`, `en-390-figure-in-view.png`, `en-1440-cover.png` (round 1), `sv-1440.png`, `sv-390.png`.
 - Link check of every `href`/`src` on the built `/` (with sample letter): anchors `#arbetssatt #grundaren #kontakt #praktiken #review` exist; `/`, `/sv/`, `/beyond/`, the letter, `/assets/site.css`, `assets/favicon.svg`, the film and its poster 200 locally; the Google Fonts CSS URL 200. **Not checked** (the session's proxy blocks the host): dignami.com (3 URLs), mondmodel.com, the R2 sample PDF, transformationbeyond.se (canonical/hreflang), cal.com. All unchanged from master. Mail links excluded.
 
-Visible text, master `/` → branch `/` (both built by Jekyll with the sample letter; `alt`/`aria-label` prefixed). Every difference is in the plan's Copy strings or listed above:
+Visible text (updated in round 1), master `/` → branch `/` (both built by Jekyll with the sample letter; `alt`/`aria-label` prefixed). Every difference is in the plan's Copy strings or listed above:
 ```diff
 1,3c1
 < Transformation
@@ -169,16 +169,16 @@ Visible text, master `/` → branch `/` (both built by Jekyll with the sample le
 > Vems namn står på utfallet?
 > Arbetet går att delegera till AI. Ansvaret gör det inte.
 > Transformation & Beyond
-110,111d145
-< Week 47 ·
-< 16 November 2026
-112a147
+112a149
 > Arbetet går att delegera till AI. Ansvaret gör det inte.
-115d149
+115d151
 < [alt] Layered rock strata in bronze duotone
-118a153
+118a155
 > →
 ```
+
+## Codex round 1 — 2026-11-20
+- **M1 (P1) Preserve the letter metadata** (index.html:141, the cover's missing "Week NN · date" line) — **valid, fixed** in this round's push. The plan's Copy strings do not list removing it. `_includes/latest-letter-cover.html` renders, for `lang="en"` only, `<p>Week {{ latest.week }} · <time datetime="…">{{ date "%-d %B %Y" }}</time></p>` under the tag, the same text and date format as the old `latest-letter.html`. `/sv/` keeps 025's cover (byte-identical build, with and without a letter). The visible-text diff above no longer has a "Week 47 · 16 November 2026" deletion. Screenshot `en-1440-cover.png`.
 
 ## Outcome
 built-by: claude
