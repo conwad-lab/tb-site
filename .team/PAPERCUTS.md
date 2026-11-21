@@ -17,3 +17,4 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 2026-11-17 | builder | @codex build task on issue #49 got no reply or reaction in an hour (story 021) | built it myself | open
 2026-11-18 | Builder | `git fetch origin <branch>` in the cloud's shallow single-branch clone did not create `origin/<branch>` | fetch with an explicit refspec `+refs/heads/<b>:refs/remotes/origin/<b>` | open
 2026-11-20 | Builder | full-page Playwright shot at scroll 0 shows the figure without dots and labels (scroll-driven fade-in, `animation-timeline: view()`) | extra screenshot with the figure scrolled into view | open
+2026-11-21 | builder | cloud clone: git fetch of a bare sha from the submodule remote fails; fetched main then checked out the pinned sha | fetch origin main | open
