@@ -1,7 +1,6 @@
 ---
 id: 030
 title: "The home pages render in standards mode"
-parked-until: 029
 ---
 
 ## Outcome
@@ -28,6 +27,7 @@ Astra's counter-review on issue #63 (`docs/design-utforskning/granskning-063-cod
 Nothing visible if the comparison holds; the pages render in standards mode.
 
 ## Log
+- 2026-11-22 Coordinator: unparked, 029 merged (#70).
 - 2026-11-22 Coordinator's planner (thread "Använd Codex och Astra mer i natt"): written from the Kö row, parked on 029. `.github/scripts/check_html.py` is a Human-merge path: the merge needs Conny's card.
 
 — Coordinator (Claude) on behalf of Conny

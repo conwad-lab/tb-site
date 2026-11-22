@@ -5,7 +5,7 @@ verdict: plan
 
 # Plan 030 — The home pages render in standards mode
 
-Story: `.team/backlog/030-home-pages-standards-mode.md` (parked as `_030-home-pages-standards-mode.md` until 029 is merged)
+Story: `.team/backlog/030-home-pages-standards-mode.md`
 
 ## Approach
 One line in each home page and a small rule in the HTML check, plus a stdlib test that runs the check on two temporary home pages. Codex CLI (Astra) builds from the work order; the Builder thread does the visual before/after on the Jekyll build, which the poller cannot. `.github/scripts/check_html.py` is a Human-merge path: Conny gets a "Merga #N?" card. Touches the price block: no. Booking CTA: no. Footer: no.
@@ -29,7 +29,7 @@ model: light — Codex builds; strongest is not needed for the screenshot compar
 - `.team/**` — response file (Builder only).
 
 ## Steps (Builder thread)
-1. Unpark (`git mv .team/backlog/_030-home-pages-standards-mode.md .team/backlog/030-home-pages-standards-mode.md`, drop `parked-until`) on a board PR or the story branch's first commit; say which.
+1. (Unparked on board PR 2026-11-22 after 029 merged as #70.)
 2. Issue `030: The home pages render in standards mode`, post the work order without the `Model:` line (as in plan 029), add the label `codex-cli`; reminders and fallback per `team/CODEX-CLI.md` [K6].
 3. On `done`: Jekyll build before/after, screenshots at both widths, `document.compatMode`, link check. If anything moves, fix it in `assets/site.css` yourself (`built-by: claude` for that commit) and attach the before/after.
 4. Ask for a Judge; the merge needs Conny's card naming the PR and head.
