@@ -1,4 +1,6 @@
-"""Fail on unreadable HTML files or unbalanced tags. Usage: check_html.py FILE..."""
+"""Fail on unreadable HTML files, unbalanced tags, or a home page without <!doctype html>.
+Usage: check_html.py FILE..."""
+import os
 import sys
 from html.parser import HTMLParser
 
@@ -27,11 +29,25 @@ class Checker(HTMLParser):
         else:
             self.errors.append(f"line {self.getpos()[0]}: unexpected </{tag}>")
 
+def needs_doctype(path):
+    return os.path.normpath(path) in ("index.html", os.path.join("sv", "index.html"))
+
 bad = 0
 for path in sys.argv[1:]:
     text = open(path, encoding="utf-8").read()
     if not text.strip():
         print(f"{path}: empty"); bad += 1; continue
+    if needs_doctype(path):
+        content = text
+        lines = content.splitlines(keepends=True)
+        if lines and lines[0].rstrip("\r\n") == "---":
+            for i in range(1, len(lines)):
+                if lines[i].rstrip("\r\n") == "---":
+                    content = "".join(lines[i + 1:])
+                    break
+        if not content.lstrip().lower().startswith("<!doctype html>"):
+            print(f"{path}: missing <!doctype html>")
+            bad += 1
     c = Checker(); c.feed(text); c.close()
     errs = c.errors + [f"line {l}: <{t}> never closed" for t, l in c.stack]
     for e in errs:
