@@ -38,7 +38,7 @@ Judged against story and plan `028-agent-team-v0.8.15-auto-merge`, `AGENTS.md` a
 
 ## What I checked
 - tests run: `tests/agent-team-merge.test.sh` at 495c6f8, `check_html.py`, YAML parse.
-- tried to break: whether any new trigger reaches job `merge` (no, every new event's action differs from `created`); whether moving concurrency to job level lets two `merge` runs of one PR race (no, same group, `cancel-in-progress: false`); whether `auto` and the tb-site Pages step interact (they do not: `auto` requests no Pages build, and a bump changes nothing Jekyll publishes, as `.claude/` and `.team/` are excluded); whether the pin moves forward (agent-team #36 merged f1fde0f's successor line; the tests and CLOUD.md at 495c6f8 are v0.8.15).
+- tried to break: whether any new trigger reaches job `merge` (no, every new event's action differs from `created`); whether moving concurrency to job level lets two `merge` runs of one PR race (no, same group, `cancel-in-progress: false`); whether `auto` and the tb-site Pages step interact (they do not: `auto` requests no Pages build, and a bump changes nothing Jekyll publishes, as `.claude/` and `.team/` are excluded); whether the pin moves forward (`git merge-base --is-ancestor f1fde0f 495c6f8`: true; `git log f1fde0f..495c6f8` is the one commit agent-team #36).
 - scope vs story: the six files the plan names plus the Builder's response file.
 - Remove: nothing, because this PR only applies the rulebook in a product repo; CLOUD.md gets shorter upstream (3 450 → 3 444).
 
@@ -46,6 +46,6 @@ Judged against story and plan `028-agent-team-v0.8.15-auto-merge`, `AGENTS.md` a
 `.github/workflows/agent-team-merge.yml` is on **Human-merge paths** and SETUP step 8 makes this install PR need Conny's yes naming it; M1 ruled not valid is also an [H1] disagreement. So: no merge line from the Judge; a card "Merga #67" via the Coordinator, and on the yes the Judge posts `Approved by Conny on a decision card` with the card's head.
 
 ## Papercuts
-- 2026-11-22 | reviewer | `gh api repos/conwad-lab/agent-team/compare/...` refused (agent-team not in this session's scope) | checked the pin's tests and CLOUD.md in the checked-out submodule instead | open
+- 2026-11-22 | reviewer | `gh api repos/conwad-lab/agent-team/compare/...` refused (agent-team not in this session's scope) | checked ancestry with git in the submodule checkout | open
 
 — Judge (Claude) on behalf of Conny
