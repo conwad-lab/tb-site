@@ -7,7 +7,8 @@ Jekyll 4.4.1 build of master (before) and this head (after); Playwright, reduced
 - After the fix: full-page height identical at 1440 (9718 / 10580); 2px shorter at 390 (the 3-line sample link wraps at 22.67px vs the quirks line height); the only pixel differences are inside that one link's text rows (sub-pixel). No horizontal scroll (`scrollWidth == innerWidth`) at 1440, 390 and 360.
 - Not checked: the link check against the live site (the cloud cannot reach it); nothing changed any href.
 
-## Codex round 1 — pending
+## Codex round 1 — 2026-11-22
+- No findings on 991d9dd (review receipt: "Didn't find any major issues"). Nothing to answer.
 
 ## Outcome
 built-by: codex-cli->claude
