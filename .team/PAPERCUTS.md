@@ -18,3 +18,4 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 2026-11-18 | Builder | `git fetch origin <branch>` in the cloud's shallow single-branch clone did not create `origin/<branch>` | fetch with an explicit refspec `+refs/heads/<b>:refs/remotes/origin/<b>` | open
 2026-11-20 | Builder | full-page Playwright shot at scroll 0 shows the figure without dots and labels (scroll-driven fade-in, `animation-timeline: view()`) | extra screenshot with the figure scrolled into view | open
 2026-11-21 | builder | cloud clone: git fetch of a bare sha from the submodule remote fails; fetched main then checked out the pinned sha | fetch origin main | open
+2026-11-22 | builder | plan 030 is a Human-merge-path plan (check_html.py) so CLOUD.md [F5] asks for a plan attack, but the plan's Steps and the Coordinator's go skipped it | built from the plan; Codex reviews the PR | open
