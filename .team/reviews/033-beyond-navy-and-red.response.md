@@ -7,7 +7,7 @@ Jekyll 4.4.1 build of the PR head and of master d72113b, both with an uncommitte
 - Requests to other hosts: fonts.googleapis.com (the css2 URL), fonts.gstatic.com Newsreader and Familjen Grotesk woff2 only. No Hanken Grotesk, no JetBrains Mono.
 - Focus ring (Tab): header and footer links paper rgb(248, 246, 241) 2px solid; letter body links and "Alla nummer" red rgb(207, 35, 24) 2px solid.
 - Link check (17 internal hrefs on the three pages, local server): all 200. External links and mailto not fetched.
-- Screenshots before/after at 1440×900 and 390×844 of `/beyond/`, the fixture letter and `/404.html`: `/mnt/project-files/tb-site-033/` (13 PNGs; the API route used here cannot attach images to a PR, so they are not on the PR itself).
+- Screenshots before/after at 1440×900 and 390×844 of `/beyond/`, the fixture letter and `/404.html`, plus the header focus ring: `.team/screenshots/033-beyond-{before,after}-{archive,letter,404}-{1440,390}.png` and `033-beyond-after-focus-header.png`, committed on the branch as in earlier stories (`.team/` is excluded from the published site).
 
 Contrast, measured (WCAG relative luminance):
 | Pair | Measured | Need |
@@ -28,3 +28,6 @@ parts: none
 missed: nothing; the plan's steps applied cleanly. Codex's environment could not run Jekyll (no Gemfile), so the Builder ran the build and screenshots.
 Codex CLI Hinder: none, the order was never picked up (no `codex-cli: started` on issue #83).
 Codex @codex Hinder: "ingen Git-remote och ingen lokal Jekyll/Gemfile; full patch följer".
+
+## Codex round 1 — 2026-11-23
+- M1 `.team/reviews/033-beyond-navy-and-red.response.md:10` screenshots not attached to the PR — fixed: the 13 PNGs are committed under `.team/screenshots/033-beyond-*.png` (the repo's convention) and the line above names them.
