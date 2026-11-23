@@ -10,3 +10,12 @@
 ## Codex round 3 — 2026-11-23
 - no findings on 70aa75e
 - after the round: agent-team #42 merged as b16e2a5; the submodule moves from 2bed8ec to b16e2a5 (v0.8.20 with #41 and #42), so the pinned suite tests the workflow installed here
+
+## Codex round 4 — 2026-11-23
+- no findings on 1558169
+
+## Outcome
+built-by: claude
+model: Claude (Builder thread)
+parts: none
+missed: nothing (rulebook install without a plan Estimate). Codex took four rounds; rounds 1–2 found real holes in the green class, fixed upstream in agent-team #42 and pinned here at b16e2a5.
