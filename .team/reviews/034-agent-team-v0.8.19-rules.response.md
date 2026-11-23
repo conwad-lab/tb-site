@@ -3,3 +3,6 @@
 - M1 tb-site #81 / dignami-aos #82: lines nested under `seats:` in `.team/team.md` could change as green — valid, fixed: the guarded keys' blocks are compared whole at both ends (agent-team #42).
 - M1 mondmodel #963: Team settings here hold walls the workflow cannot name (e.g. Workflow changes) — valid, fixed: `Guard paths: \`AGENTS.md\``, so any AGENTS.md rule change takes a card; the green class here is `.team/` board, review files and `.team/team.md` version and model lines.
 - M2 mondmodel #963: an unclosed `<!--` in Team settings could hide a guarded entry — valid, fixed: changed AGENTS.md lines with unbalanced comments, raw HTML blocks, fences or heading underlines are red (agent-team #42, tests 164 → 170).
+
+## Codex round 2 — 2026-11-23
+- M1 `.github/workflows/agent-team-merge.yml:430` an unindented comment line inside seats: let a new seat through — fixed in agent-team #42 (da63958), ported here in 260fe70: .team/team.md may change only the values of its team, builder, project and model lines, in place
