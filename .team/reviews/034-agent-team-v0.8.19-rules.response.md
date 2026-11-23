@@ -6,3 +6,7 @@
 
 ## Codex round 2 — 2026-11-23
 - M1 `.github/workflows/agent-team-merge.yml:430` an unindented comment line inside seats: let a new seat through — fixed in agent-team #42 (da63958), ported here in 260fe70: .team/team.md may change only the values of its team, builder, project and model lines, in place
+
+## Codex round 3 — 2026-11-23
+- no findings on 70aa75e
+- after the round: agent-team #42 merged as b16e2a5; the submodule moves from 2bed8ec to b16e2a5 (v0.8.20 with #41 and #42), so the pinned suite tests the workflow installed here
