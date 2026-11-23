@@ -20,3 +20,4 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 2026-11-21 | builder | cloud clone: git fetch of a bare sha from the submodule remote fails; fetched main then checked out the pinned sha | fetch origin main | proposed 2026-11-23
 2026-11-22 | builder | plan 030 is a Human-merge-path plan (check_html.py) so CLOUD.md [F5] asks for a plan attack, but the plan's Steps and the Coordinator's go skipped it | built from the plan; Codex reviews the PR | open
 2026-W47 | Codex fixed 15 | Judge fixed 4 | failed @codex tasks 1 | escalations 0 | papercuts open 4 | cards ? (kortloggen ej räknad) | human wait ? h
+2026-11-23 | builder | codex-cli poller on the MacBook took no order within 17 min (issue #83) | removed label, @codex built, patch applied with git am (Codex has no remote) | open
