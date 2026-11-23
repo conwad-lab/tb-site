@@ -60,6 +60,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] **Rulebook story.** Ompinning till agent-team v0.8.14 (f1fde0f, agent-team #35, story S: Codex bygger som standard på planens `## Work order`, Sol eller Astra per order, en `Proof:`-rad) och `builder: codex-cli` som reserv i `.team/team.md` och `AGENTS.md` § Team settings **Builder**. Ingen workflowändring. `model: light`. Begärd av koordinatorn 2026-11-21 efter merge av #35 (Connys ja till story S 06:10Z). 027
 
+- [x] Pausknappen på startsidornas film blir bara en symbol (paus resp. play), diskret, ingen synlig text; namnet "Pause film"/"Play film" och "Pausa filmen"/"Spela filmen" står kvar för skärmläsare. Beställd av Conny 2026-11-23 ("Jag vill bara ha en discret pausknapp. Bara symbolen för paus resp play."). Filmens längd ingår inte (väntar på Connys svar i 029-tråden). `model: light`, builder codex-cli. Vad blir publikt: en liten rund knapp med symbol i stället för textknappen. 031
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
