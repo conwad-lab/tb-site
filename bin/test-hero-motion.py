@@ -9,8 +9,11 @@ import sys
 FILM = "/assets/film/sluseholmen-720.mp4"
 CSS_LINES = (
     ".hero.paused .flow svg{animation-play-state:paused}",
-    ".motion{position:absolute;top:calc(96px + env(safe-area-inset-top,0px));right:max(var(--pad),env(safe-area-inset-right,0px));z-index:2;font:500 14px/1 var(--f);color:var(--on-blue);background:rgba(12,34,51,.72);border:2px solid var(--on-blue);padding:9px 14px;cursor:pointer}",
+    ".motion{position:absolute;top:calc(96px + env(safe-area-inset-top,0px));right:max(var(--pad),env(safe-area-inset-right,0px));z-index:2;display:grid;place-items:center;width:40px;height:40px;padding:0;color:var(--on-blue);background:rgba(12,34,51,.5);border:1px solid rgba(248,246,241,.5);border-radius:50%;cursor:pointer}",
     ".motion:focus-visible{outline:3px solid var(--white);outline-offset:2px;box-shadow:0 0 0 8px var(--black)}",
+    ".motion[hidden],.motion .i-play,.hero.paused .motion .i-pause{display:none}",
+    ".hero.paused .motion .i-play{display:block}",
+    ".motion svg{width:14px;height:14px;fill:currentColor}",
     "h2.tag{font-family:var(--f);letter-spacing:normal;line-height:1.5;text-wrap:wrap}",
 )
 VOID = set("area base br col embed hr img input link meta param source track wbr".split())
@@ -26,6 +29,8 @@ class Page(HTMLParser):
         element = {
             "tag": tag, "attrs": dict(attrs), "text": "",
             "in_hero": any(has_class(parent, "hero") for parent in self.stack),
+            "in_motion_button": any(parent["tag"] == "button" and has_class(parent, "motion")
+                                    for parent in self.stack),
         }
         self.elements.append(element)
         if tag not in VOID:
@@ -91,15 +96,26 @@ def main():
             check(button["in_hero"], name, "button.motion must be inside .hero")
             check(attrs.get("data-pause") == pause, name, "incorrect data-pause label")
             check(attrs.get("data-play") == play, name, "incorrect data-play label")
-            check(button["text"] == pause, name, "incorrect initial button text")
+            check(button["text"].strip() == "", name, "button.motion must have no text")
+            check(attrs.get("aria-label") == pause, name, "incorrect initial aria-label")
+        for icon_class in ("i-pause", "i-play"):
+            icons = [e for e in page.elements if e["tag"] == "svg" and has_class(e, icon_class)]
+            check(len(icons) == 1, name, f"expected exactly one svg.{icon_class}")
+            for icon in icons:
+                attrs = icon["attrs"]
+                check(icon["in_motion_button"], name, f"svg.{icon_class} must be inside button.motion")
+                check(attrs.get("aria-hidden") == "true", name, f"svg.{icon_class} must be aria-hidden")
+                check(attrs.get("focusable") == "false", name, f"svg.{icon_class} must not be focusable")
+                check("style" not in attrs, name, f"svg.{icon_class} must not have a style attribute")
         for label in labels:
             matches = [e for e in page.elements if has_class(e, "tag") and e["text"] == label]
             check(sum(e["tag"] == "h2" for e in matches) == 1,
                   name, f"expected one h2.tag for {label!r}")
             check(not any(e["tag"] == "p" for e in matches),
                   name, f"label must not remain a p.tag: {label!r}")
-        for hook in ("prefers-reduced-motion: reduce", "getAttribute('data-src')", "classList.toggle('paused')"):
+        for hook in ("prefers-reduced-motion: reduce", "getAttribute('data-src')", "classList.toggle('paused')", "setAttribute('aria-label'"):
             check(hook in source, name, f"missing script hook: {hook}")
+        check("btn.textContent" not in source, name, "button script must not replace icon content")
 
     css_path = "assets/site.css"
     try:
