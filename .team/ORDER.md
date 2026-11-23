@@ -70,6 +70,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [ ] Ny delningsbild (OG) i marint och rött: `assets/og-1200x630.png` (1200×630, Newsreader + Familjen Grotesk, marint `#0C2233`, rött `#CF2318`, papper `#F8F6F1`, ordmärket "Transformation & Beyond" med rött `&` och raden "The AI Value Review"), och `og:image` på `index.html` och `sv/index.html` pekar på `https://transformationbeyond.se/assets/og-1200x630.png` i stället för r2.dev. Bilden levereras av designern (Claude) i PR:en; provrapportens PDF på r2.dev rörs inte. Ingen annan text. `model: light`. Vad blir publikt: en ny bild när sajten delas på LinkedIn och i meddelanden. (efter 036) (id 037)
 
+- [ ] Kärnorden på första skärmen enligt Connys beslut 2026-11-23 ("Understand · Rethink · Rebuild" blir T&B:s kärnord; Dignami lånar dem för Assurance): en kort etikettrad direkt ovanför `h1` i heron, "Understand · Rethink · Rebuild" på `index.html` och "Förstå · Ompröva · Bygg om" på `sv/index.html`, i samma stil som befintliga `.tag`-etiketter (versaler, spärrad), med punkterna i rött `#CF2318` om kontrasten håller WCAG AA mot filmen, annars i samma färg som texten. Raden är text, inte rubrik (ingen ny `h`-nivå). Ingen annan text, inget pris, ingen länk och ingen färg ändras. Skärmbilder av första skärmen på båda sidorna vid 1440×900 och 390×844 före och efter; `h1` får inte krocka med `&`-glyfen. Ny copy: de två raderna ovan. `model: light`. Vad blir publikt: tre ord ovanför rubriken på båda startsidorna. (efter raden om första skärmen)
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
