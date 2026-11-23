@@ -6,7 +6,7 @@ title: "Upgrade agent-team to v0.8.19 and let green rule changes merge on agreem
 Rulebook story.
 
 ## Outcome
-tb-site runs agent-team v0.8.19 and its merge workflow's job `auto` knows the `rules` class: a later `Rulebook story.` PR that changes only `.team/` board and review files, `.team/team.md` version and model lines or ordinary Team settings lines merges by itself once the Judge's approving review is on the head, Codex found nothing blocking and every check is green. Changes to the walls (workflows, `.claude/`, `REVIEW.md`, the submodule outside a release bump, the guarded Team settings keys, Human-only paths, Guard paths) keep their card, and every card says why Conny is needed (`Varför du:`).
+tb-site runs agent-team v0.8.19 and its merge workflow's job `auto` knows the `rules` class: a later `Rulebook story.` PR that changes only `.team/` board and review files, `.team/team.md` version and model lines merges by itself once the Judge's approving review is on the head, Codex found nothing blocking and every check is green. Changes to the walls (workflows, `.claude/`, `REVIEW.md`, the submodule outside a release bump, the guarded Team settings keys, Human-only paths, Guard paths, and here all of `AGENTS.md`) keep their card, and every card says why Conny is needed (`Varför du:`).
 
 ## Why
 agent-team #40 (v0.8.19, story X, merged 2026-11-23 as 2bed8ec) on Conny's yes 2026-11-23 10:26Z: "jag ska inte behöva klicka manuellt på något varje gång som jag inte läser för att båda agenterna har varit överens." `team/SETUP.md` step 8 leaves the switch to each repo: copy the workflow again and set `- **Auto-merge:** release, rules` and `- **Guard paths:**`. This install is red (it changes the workflow and the guarded keys), so it takes one card.
@@ -21,7 +21,7 @@ In the four weeks after merge, at least one green `Rulebook story.` PR in tb-sit
 ## Acceptance criteria
 - [ ] `.claude/skills/agent-team` points at 2bed8ec; the `.team/team.md` pin line reads `@ v0.8.19 (2bed8ec; tag not pushed, pinned by commit)`.
 - [ ] `.github/workflows/agent-team-merge.yml`: job `auto` taken again from agent-team `assets/root` at 2bed8ec with only this repo's existing local changes kept (runs-on); triggers, permissions and job `merge` unchanged.
-- [ ] `AGENTS.md` § Team settings: `- **Auto-merge:** release, rules` and a new `- **Guard paths:** none` line, each with its comment.
+- [ ] `AGENTS.md` § Team settings: `- **Auto-merge:** release, rules` and a new `- **Guard paths:** \`AGENTS.md\`` line (this repo's Team settings hold walls the workflow cannot name, Codex M1 on mondmodel #963), each with its comment.
 - [ ] The workflow parses as YAML and each job's script passes `bash -n`; agent-team's `tests/agent-team-merge.test.sh` passes at 2bed8ec (164/164).
 
 ## Out of scope

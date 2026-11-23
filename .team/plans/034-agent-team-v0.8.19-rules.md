@@ -10,7 +10,7 @@ Story: `.team/backlog/034-agent-team-v0.8.19-rules.md`. Branch `feat/034-agent-t
 ## Approach
 1. Move the submodule to 2bed8ec; update the pin line in `.team/team.md`.
 2. Replace job `auto` in `.github/workflows/agent-team-merge.yml` with the asset's at 2bed8ec, keeping this repo's local changes to it (a three-way merge of old asset, this repo's copy and the new asset). Add one header comment line. Nothing else in the file moves.
-3. `AGENTS.md` Team settings: `Auto-merge: release, rules` with a comment naming both classes, and `Guard paths: none` (the hardcoded walls already make everything outside `.team/` and Team settings red here).
+3. `AGENTS.md` Team settings: `Auto-merge: release, rules` with a comment naming both classes, and `Guard paths: `AGENTS.md`` (Team settings here hold walls the workflow cannot name; Codex M1 on mondmodel #963), so the green class is `.team/` board and review files and `.team/team.md` version and model lines.
 4. Check: YAML parses, `bash -n` on each script block, agent-team merge tests at 2bed8ec.
 
 ## Estimate

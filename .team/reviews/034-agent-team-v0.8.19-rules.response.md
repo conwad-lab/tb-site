@@ -1,0 +1,5 @@
+## Codex round 1 — 2026-11-23 (findings across the six install PRs, answered in every one)
+- M1 relationsmodellen-site #80: a guarded Team settings key's continuation lines could change as green — valid, fixed: each guarded top-level bullet is compared whole at both ends (agent-team #42).
+- M1 tb-site #81 / dignami-aos #82: lines nested under `seats:` in `.team/team.md` could change as green — valid, fixed: the guarded keys' blocks are compared whole at both ends (agent-team #42).
+- M1 mondmodel #963: Team settings here hold walls the workflow cannot name (e.g. Workflow changes) — valid, fixed: `Guard paths: \`AGENTS.md\``, so any AGENTS.md rule change takes a card; the green class here is `.team/` board, review files and `.team/team.md` version and model lines.
+- M2 mondmodel #963: an unclosed `<!--` in Team settings could hide a guarded entry — valid, fixed: changed AGENTS.md lines with unbalanced comments, raw HTML blocks, fences or heading underlines are red (agent-team #42, tests 164 → 170).
