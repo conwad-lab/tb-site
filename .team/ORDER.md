@@ -62,6 +62,8 @@ Underlag för alla rader: `.team/briefs/2026-10-site-refresh.md` (beslutat — l
 
 - [x] Pausknappen på startsidornas film blir bara en symbol (paus resp. play), diskret, ingen synlig text; namnet "Pause film"/"Play film" och "Pausa filmen"/"Spela filmen" står kvar för skärmläsare. Beställd av Conny 2026-11-23 ("Jag vill bara ha en discret pausknapp. Bara symbolen för paus resp play."). Filmens längd ingår inte (väntar på Connys svar i 029-tråden). `model: light`, builder codex-cli. Vad blir publikt: en liten rund knapp med symbol i stället för textknappen. 031
 
+- [x] & Beyond-arkivet (`/beyond/`, brevsidorna och 404-sidan, `assets/beyond.css`) byter från brons till startsidornas Marin och rött med Newsreader + Familjen Grotesk; faviconen följer med. Connys beslut 2026-11-17–20 (profilen) och 2026-11-19, villkor för & Beyond #1 2026-11-23 (`tb-omprofilering/plan.md` steg 2). Ingen text ändras. `model: light`, builder codex-cli. Vad blir publikt: arkivet, brevsidorna och 404-sidan i marin och rött, ny favicon. 033
+
 ## Förslag
 
 Rutinen och PO skriver förslag hit, en rad var med underlaget. PO tar inte en rad härifrån förrän Conny flyttat den till **Kö** eller sagt ja.
