@@ -15,7 +15,8 @@ Format: `YYYY-MM-DD | role | what failed | workaround | status`, where status is
 2026-W46 | Codex fixed 1 | Judge fixed 3 | failed @codex tasks 5 | escalations 0 | papercuts open 0 | cards 2 | human wait ≥0.1 h (#34: kortloggen saknar kortets starttid)
 2026-11-17 | builder | `gh pr view` fails (GraphQL 403 in cloud sessions) | REST `gh api repos/…/pulls/25` | open
 2026-11-17 | builder | @codex build task on issue #49 got no reply or reaction in an hour (story 021) | built it myself | open
-2026-11-18 | Builder | `git fetch origin <branch>` in the cloud's shallow single-branch clone did not create `origin/<branch>` | fetch with an explicit refspec `+refs/heads/<b>:refs/remotes/origin/<b>` | open
+2026-11-18 | Builder | `git fetch origin <branch>` in the cloud's shallow single-branch clone did not create `origin/<branch>` | fetch with an explicit refspec `+refs/heads/<b>:refs/remotes/origin/<b>` | proposed 2026-11-23
 2026-11-20 | Builder | full-page Playwright shot at scroll 0 shows the figure without dots and labels (scroll-driven fade-in, `animation-timeline: view()`) | extra screenshot with the figure scrolled into view | open
-2026-11-21 | builder | cloud clone: git fetch of a bare sha from the submodule remote fails; fetched main then checked out the pinned sha | fetch origin main | open
+2026-11-21 | builder | cloud clone: git fetch of a bare sha from the submodule remote fails; fetched main then checked out the pinned sha | fetch origin main | proposed 2026-11-23
 2026-11-22 | builder | plan 030 is a Human-merge-path plan (check_html.py) so CLOUD.md [F5] asks for a plan attack, but the plan's Steps and the Coordinator's go skipped it | built from the plan; Codex reviews the PR | open
+2026-W47 | Codex fixed 15 | Judge fixed 4 | failed @codex tasks 1 | escalations 0 | papercuts open 4 | cards ? (kortloggen ej räknad) | human wait ? h
