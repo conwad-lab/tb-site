@@ -11,7 +11,7 @@ Story: `.team/backlog/035-first-screen-lower-hero.md`
 One CSS value changes: `.hero{... min-height:100svh ...}` becomes `min-height:86svh` in `assets/site.css`, so the booking band under the hero enters the first screen. The diagram's `aria-label` was checked against the visible axis texts (x: "Understands your business", y: "Builds the technology"; labs low on x and high on y, giants the other way, Transformation & Beyond high on both) and matches on both pages, so it is not touched; the new test pins that. Touches the price block: no. Booking CTA: no. Footer: no.
 
 ## Baseline
-`master` at 17aae53 (034 merged as #81): Test before commit exits 0. The Builder takes screenshots of `/` and `/sv/` first screen at 1440×900 and 390×844 for before/after.
+`master` at 17aae53 (034 merged as #81): Test before commit exits 0. The Builder takes screenshots of `/` and `/sv/` first screen at 1440×900 and 390×844 for before/after. Screenshots could not be taken at planning time (no browser in the routine's planning run); the Builder's before-shots are therefore the baseline that decides whether the one-value order can meet the acceptance criteria. If at 390×844 or 125 % zoom the band stays below the fold because the hero's content is taller than 86svh, the Builder stops with `blocked` and the measured heights instead of widening the order; the Coordinator then plans the next step (a smaller `padding-top` or headline size) as a new story.
 
 ## Estimate
 size: S
