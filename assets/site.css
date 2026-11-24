@@ -26,7 +26,7 @@ h1,h2,h3,.gap > div,.band,.qs li,.price,.hand p:first-child{font-family:var(--hf
 @media(max-width:860px){.top{flex-wrap:wrap;height:auto;padding-top:16px;gap:4px 20px}.top nav{gap:20px;font-size:14px}.top nav a{padding:8px 0}.top nav a:not(.keep){display:none}}
 
 /* hero: navy field, red ampersand, film */
-.hero{position:relative;isolation:isolate;background:var(--blue);color:var(--on-blue);min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(24px,4vh,48px);overflow:hidden}
+.hero{position:relative;isolation:isolate;background:var(--blue);color:var(--on-blue);min-height:86svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(24px,4vh,48px);overflow:hidden}
 .amp{position:absolute;right:-.06em;top:50%;transform:translateY(-54%);font-family:var(--hf);font-size:calc(clamp(360px,74vw,1180px)*.8);font-weight:500;line-height:.7;color:var(--red);letter-spacing:-.05em;pointer-events:none;user-select:none}
 .hero h1{position:relative;font-size:clamp(40px,7vw,122px);max-width:16ch}
 .hero h1:lang(en){font-size:clamp(40px,5.4vw,96px)}
