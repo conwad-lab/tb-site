@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="sv">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 {%- assign page_title = page.title | default: "& Beyond" -%}
@@ -13,13 +14,16 @@
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:type" content="{% if page.collection == 'beyond' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="sv_SE">
-{%- if page.image %}
-<meta property="og:image" content="{{ page.image | absolute_url }}">
+<meta property="og:site_name" content="Transformation &amp; Beyond">
+{%- assign share_image = page.image | default: '/assets/og-1200x630.png' | absolute_url | escape %}
+<meta property="og:image" content="{{ share_image }}">
+{%- unless page.image %}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Transformation &amp; Beyond — The AI Value Review">
+{%- endunless %}
 <meta name="twitter:card" content="summary_large_image">
-{%- else %}
-<meta property="og:image" content="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/og-1200x630.png">
-<meta name="twitter:card" content="summary_large_image">
-{%- endif %}
+<meta name="twitter:image" content="{{ share_image }}">
 <link rel="alternate" type="application/atom+xml" title="& Beyond" href="{{ '/beyond/feed.xml' | relative_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +32,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/beyond.css' | relative_url }}">
+</head>
+<body>
 
 <header>
   <div class="wrap nav">
@@ -49,3 +55,5 @@
     <span><a href="{{ '/beyond/feed.xml' | relative_url }}">RSS</a></span>
   </div>
 </footer>
+</body>
+</html>
