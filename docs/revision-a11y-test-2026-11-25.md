@@ -1,0 +1,49 @@
+# Tillgänglighet och testtäckning · 25 november 2026
+
+Texten över filmens stillbild på båda startsidorna har för låg kontrast. Bakom en del av brödtexten är den **2,98:1** mot kravet **4,5:1**. Två avsnittslänkar försvinner också vid inzoomning. Det viktigaste flödet som saknar ett återkommande test är vägen från erbjudandet till bokning på båda språken.
+
+Granskningen gäller `tb-site` på `master` vid `28dedbf`. Underlaget är HTML, Liquid, CSS, de inbäddade skripten och brevimporten. Testinventeringen omfattar CI, repots testskript och tidigare dokumenterade stickprov. Riktade stickprov i Chromium verifierade kontrasten mot den versionerade stillbilden och hur figurens bildtext exponeras för hjälpmedel. Bedömningen avser kriterier på nivå A och AA. Skärmläsarupplevelsen, externa tjänster och provrapportens PDF-innehåll behöver bedömas i sina egna miljöer. [WCAG 2.2](https://www.w3.org/TR/WCAG22/)
+
+## Fynd på den publika sajten
+
+P1 innebär att en central uppgift blockeras, P2 att en funktion försvinner eller innehåll blir svårt att använda och P3 ett lokalt hinder med begränsad påverkan. Inget verifierat fynd nådde P1.
+
+| Allvar och kriterium | Plats | Vad användaren möter och hur det kan rättas |
+|---|---|---|
+| **P2 · 1.4.3 Kontrast (minimum), AA** | `assets/site.css:29`, `:34`, `:44–45` · `index.html:35–41` · `sv/index.html:37–43` | På båda startsidorna ligger ljus brödtext över postern. Vid 1440 × 900, skalfaktor 1, JavaScript av, normal rörelse och lokalt reservtypsnitt uppmättes bakgrunden till `#869199` bakom sista **n** i ”Transformation” i första stycket (x=198, y=731 från övre vänstra hörnet). Bakgrunden avlästes med texten genomskinlig. Textfärgen `#F8F6F1` ger 2,98:1 för 21 px normal text. Ge textytan en bakgrund som håller minst 4,5:1 över både postern och filmen. |
+| **P2 · 1.4.10 Omflöde, AA** | `assets/site.css:26` · `index.html:29` · `sv/index.html:31` | Vid högst 860 CSS-px tas länkarna till `#praktiken` och `#arbetssatt` bort med `display:none`. Vid 320 CSS-px kan en besökare läsa avsnitten genom att rulla, men förlorar möjligheten att hoppa till dem från menyn. Låt länkarna radbrytas eller samla dem i en tangentbordsåtkomlig meny. |
+| **P2 · 3.1.2 Språk för del av sida, AA** | `sv/index.html:5`, `:82`, `:152` | Det engelska citatet ”some built, in demo, others not in operation…” förekommer två gånger och ärver sidans svenska språk. En talsyntes kan därför läsa hela citatet med svenskt uttal. Märk själva citaten med `lang="en"` så att källänken intill fortfarande har svenskt uttal. |
+| **P3 · 1.3.1 Information och relationer, A** | `index.html:51–53` · `sv/index.html:53–55` | ”Principskiss, inga mätvärden” ligger i en `figcaption` inuti en `div`. I Chromiums tillgänglighetsträd för den engelska sidan har figuren tomt namn, medan bildtexten läses som vanlig text. Gör bildtexten till figurens första eller sista direkta barn. Behåll SVG-bildens egen beskrivning av axlar och punkter. |
+
+**Villkorad risk, P3 · 4.1.2 Namn, roll, värde (A).** Vid återstart byter filmknappen omedelbart namn och ikon till ”Pausa filmen”. Om webbläsaren avvisar `play()` ignoreras felet och filmen kan stå still medan knappen erbjuder paus. Återställ knappen när uppspelningen misslyckas och kontrollera att den fortfarande motsvarar synlig rörelse när linjeanimationen ersätter filmen. Källor är `index.html:173–178`, `sv/index.html:186–191` och `assets/site.css:49–59`.
+
+## Offertmallarna som används lokalt
+
+`_config.yml:7` undantar `docs/` från publicering. De svenska och engelska offertmallarna öppnas däremot i webbläsaren för att fyllas i före utskrift. Bristerna nedan gäller det arbetsmomentet. [Mallarnas bruksanvisning](offert-ordforandens-fraga/README.md)
+
+| Allvar och kriterium | Plats under `docs/offert-ordforandens-fraga/` | Vad användaren möter och hur det kan rättas |
+|---|---|---|
+| **P2 · 1.3.1 och 4.1.2, A** | `mall-sv.html:48–59` · `mall-en.html:48–59` · `exempel-sv.html:50–61` | De två datumfälten har samma platshållare och saknar koppling till sina etiketter. De tre svarsalternativen är redigerbara tecken (☐/☑). Vid fältnavigering saknas namnet på respektive val och ett maskinläsbart valt tillstånd. Koppla fälten till synliga etiketter och använd en namngiven grupp radioknappar för valet av exakt ett svar. |
+| **P2 · 1.4.10 Omflöde, AA** | `mall-sv.html:12` · `mall-en.html:12` · `exempel-sv.html:12` | Även på skärm har innehållet fast A4-bredd, 210 mm (cirka 794 CSS-px). Vid 320 CSS-px krävs sidorullning för att fylla i uppgifterna och läsa raderna. Begränsa A4-bredden till utskrift och låt fälten staplas på smal skärm. |
+
+## Vad testerna täcker i dag
+
+- **Varje PR.** `pr-check` läser HTML-källorna och kontrollerar taggbalans samt doctype på båda startsidorna. Jobbet varken bygger Jekyll-sidorna eller kör en webbläsare. [Arbetsflödet](../.github/workflows/pr-check.yml#L15) · [HTML-kontrollen](../.github/scripts/check_html.py#L35)
+- **Separata körbara tester.** Ett testar HTML-kontrollen med provfiler, ett kontrollerar startsidornas filmattribut, knappnamn, ikonmarkering, två rubriker och vissa kodrader. Ett tredje kontrollerar & Beyond-paletten, typsnittsreferenser och fokusregler i källan. Inget av dessa tre skript anropas av `pr-check`. [HTML-test](../bin/test-check-html.py#L12) · [Filmtest](../bin/test-hero-motion.py#L66) · [Palettest](../bin/test-beyond-palette.py#L40)
+- **Tidigare stickprov.** Granskarna har provat filmknappen med tangentbord, reducerad rörelse och avstängt JavaScript. De har också byggt tomt arkiv och provbrev, granskat omslagets språk, följt upp kontrast och fokus samt laddat en nästlad 404-adress. De resultaten gäller de revisioner och tillstånd som anges i protokollen. [Film och tangentbord](../.team/reviews/029-hero-motion-pause-and-h2-labels.md#L25) · [Knappens namn och tillstånd](../.team/reviews/031-pause-button-icon-only.md#L24) · [Arkiv och Atom](../.team/reviews/016-and-beyond-archive.md#L24) · [Brevomslag](../.team/reviews/026-poster-design-en.md#L27) · [Kontrast och fokus](../.team/reviews/033-beyond-navy-and-red.md#L24) · [404](../.team/reviews/023-not-found-page.md#L27)
+
+## Sidor och flöden som saknar återkommande test
+
+Varje rad nedan beskriver ett användarflöde som saknar körbart regressionstest i repot. Kontrollera tangentbordsinteraktion i webbläsare och språkväxling, läsordning och annonserade namn även med skärmläsare.
+
+| Flöde | Vad nästa test ska visa |
+|---|---|
+| **Bokning från `/` och `/sv/`** · `index.html:48`, `:112`, `:146–149`, `:164–165` · `sv/index.html:50`, `:125`, `:159–162`, `:177–178` | Aktivera både sidans första bokningslänk och länken i erbjudandet med Enter. Kontrollera hoppet till `#kontakt`, nästa tabbstopp och att slutlänken öppnar rätt Cal.com-adress. Med JavaScript av ska samma länk erbjuda adresserad e-post med ämne. Den separata kontaktlänken ska gå att använda i båda lägena. |
+| **Orientering och språkbyte på startsidorna** · `index.html:27–32`, `:153–159` · `sv/index.html:29–34`, `:106–115`, `:165–172` | Gå genom menyn och tillbaka med Tab/Skift+Tab vid 1280 och 320 CSS-px. Pröva alla avsnittsgenvägar, språkbyte via sidfoten och rubriknavigering till det svenska Skåne-avsnittet. Kontrollera att fokus syns och inte täcks helt (2.4.7 och 2.4.11), samt att små menylänkar har minst 24 × 24 CSS-px träffyta eller uppfyller avståndsundantaget (2.5.8). |
+| **Film och rörelse på båda språken** · `index.html:167–180` · `sv/index.html:180–193` · `assets/site.css:45–60` | Pausa och återuppta med Enter och mellanslag. Jämför knappnamnet med faktisk uppspelning vid nekad start och med linjerna när filmen fallerar. Kontrollera stillbildens kontrast och att ingen film hämtas om reducerad rörelse är på från start. |
+| **Provrapport och källor** · `index.html:49`, `:80–82`, `:112` · `sv/index.html:51`, `:82–84`, `:125` | Öppna prov-PDF och källänk från respektive språk med tangentbord. Kontrollera länknamn, destination och att det går att fortsätta från rätt länk efter återgång. PDF:ens taggar, läsordning och textalternativ behöver ett separat dokumenttest. |
+| **Senaste brevet → brev → arkiv** · `_includes/latest-letter-cover.html:2–11` · `beyond/index.html:17–32` · `_layouts/beyond-letter.html:7–17` | Bygg först med tom samling, sedan med två provbrev, varav ett saknar ingress. Kontrollera att omslaget visas först när det finns ett brev, att det nyaste brevet öppnas, att svensk titel läses med rätt språk även från engelsk startsida och att ”Alla nummer” leder tillbaka till en korrekt ordnad lista. Det finns inga incheckade brev i samlingen vid granskad revision. |
+| **Brevbilder och RSS** · `bin/import-beyond.py:242–249`, `:271–275` · `beyond/feed.xml:13–24` · `beyond/index.html:14` | Importera ett provbrev med en informationsbärande bild. Kontrollera att bildens budskap finns i den byggda artikeln även när separat alt-textfil saknas. Kontrollera att Atom-posten leder till samma brev som arkivet. |
+| **Prenumeration** · `beyond/index.html:11–14` · `prenumerera/index.html:7–11` | Prova båda vägarna till Substack. Arkivlänken ska öppna anmälan. Direktadressen `/prenumerera/` ska leda till samma mål och reservlänken ska fungera om automatisk vidarebefordran är avstängd. Själva formuläret finns hos Substack. |
+| **Feladress → rätt sida** · `404.html:28–38` | Öppna en okänd nästlad adress. Kontrollera status 404 och aktivera var och en av de tre återvägarna med tangentbord. Kontrollera titel, språk och huvudrubrik på engelska startsidan, svenska startsidan och arkivet. |
+| **Fylla i offert → skriva ut** · `docs/offert-ordforandens-fraga/mall-sv.html:48–63` och motsvarande engelska mall | En tidigare granskning verifierade utskrift på en A4-sida. Prova att fylla i datum, identifiera och välja exakt ett svar med enbart tangentbord och skärmläsare samt läsa den färdiga PDF:en i rätt ordning. [Tidigare offertgranskning](../.team/reviews/018-offer-template-chairs-question.md#L114) |
