@@ -30,7 +30,7 @@ Story `.team/backlog/035-first-screen-lower-hero.md`, plan `.team/plans/035-firs
 | Price, CTA, Cal.com URL, contact address, founder claims, footer, copy unchanged, no extra section | Diff stat: `site.css` 1 line, new test file; no HTML touched | pass |
 
 ## Codex findings
-- No Codex review existed on the draft; I posted `@codex review` and marked the PR ready. Codex on 0828f6f (2026-11-26T07:44Z) found **P1 "M1 Attach the required before-and-after screenshots"** (against N1 of the first version of this file): valid — fixed. The screenshots are now committed in `.team/reviews/035-screenshots/` and the Evidence row says what they show. A second Codex round on the new head follows.
+- No Codex review existed on the draft; I posted `@codex review` and marked the PR ready. Codex on 0828f6f (2026-11-26T07:44Z) found **P1 "M1 Attach the required before-and-after screenshots"** (against N1 of the first version of this file): valid — fixed. The screenshots are now committed in `.team/reviews/035-screenshots/` and the Evidence row says what they show. The second Codex round on 9d57e83 (2026-11-26) finished with no findings (receipt "Didn't find any major issues", `has_unresolved_findings: false`). Main was merged into the branch once more afterwards (the diff against main is unchanged: `assets/site.css` and `bin/test-hero-first-screen.py`).
 
 ## What I checked
 - tests run: the four bin tests, check_html.py, Playwright at three viewports on both pages.
