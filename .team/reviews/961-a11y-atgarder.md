@@ -17,7 +17,7 @@ Order 961 (Astra work order, `Plan: .team/ORDER.md`; no ORDER row). Not a Human-
 - **S1** `docs/offert-ordforandens-fraga/README.md:2` still says "ersätt ☐ med ☑ för exakt ett valt svar", which the PR makes false (the choices are now radio buttons). One-line fix in the same PR (the Builder noted it under "För PO"; leaving a false instruction in the template's own manual is worse than touching the README).
 
 ## Nits
-- N1 Mobile header: all five links now show and wrap to two rows; story 008's D7 had hidden all but "What we view / Book" on purpose. The fix is what finding P2·1.4.10 asked for ("låt länkarna radbrytas"), so I accept it; Conny should look at the mobile header once live.
+- N1 Mobile header: all five links now show and wrap to two rows; story 008's D7 had kept only the brand and the booking link in the mobile menu on purpose. The fix is what finding P2·1.4.10 asked for ("låt länkarna radbrytas"), so I accept it; Conny should look at the mobile header once live.
 - N2 `.film` opacity .5 → .35 and `.hero-foot .sis` opacity removed are visual changes. They are the cheapest way to reach the contrast and I accept them under "inga designval" because the order's own measure demands it; the film is now somewhat dimmer.
 - N3 The Builder's screenshots are "i byggets lokala bilaga" and not attached to the PR; the checks below are mine.
 
