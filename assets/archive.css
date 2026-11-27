@@ -4,6 +4,7 @@
   min-height: auto;
   padding-top: clamp(130px, 17vw, 230px);
 }
+.archive .hero .tag::before { background: var(--red); }
 .archive .hero-foot { grid-template-columns: 1fr; }
 .archive .hero-foot p { max-width: 52ch; }
 .archive-body { padding-block: clamp(32px, 5vw, 72px); }
