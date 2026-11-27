@@ -30,6 +30,11 @@ body > header{background:var(--navy);color:var(--on-navy)}
 .archive h1,.letter h1{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.04;margin:.2em 0 .5em;text-wrap:balance;color:var(--ink)}
 .archive h1{font-size:clamp(44px,7vw,88px)}
 .lead{font-size:19px;color:var(--body);max-width:36em;line-height:1.55;margin:0 0 18px}
+.signup label{display:block;font-weight:700}
+.signup div{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.signup input,.signup button{font:inherit;padding:8px 12px;border:1px solid var(--navy);max-width:100%}
+.signup button{background:var(--navy);color:var(--on-navy);cursor:pointer}
+.signup p{font-size:14px}
 .follow{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.02em;margin:0 0 48px}
 .follow a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--hair)}
 .follow a:hover{color:var(--red-deep);border-color:var(--red)}
