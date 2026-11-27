@@ -47,3 +47,15 @@ Varje rad nedan beskriver ett användarflöde som saknar körbart regressionstes
 | **Prenumeration** · `beyond/index.html:11–14` · `prenumerera/index.html:7–11` | Prova båda vägarna till Substack. Arkivlänken ska öppna anmälan. Direktadressen `/prenumerera/` ska leda till samma mål och reservlänken ska fungera om automatisk vidarebefordran är avstängd. Själva formuläret finns hos Substack. |
 | **Feladress → rätt sida** · `404.html:28–38` | Öppna en okänd nästlad adress. Kontrollera status 404 och aktivera var och en av de tre återvägarna med tangentbord. Kontrollera titel, språk och huvudrubrik på engelska startsidan, svenska startsidan och arkivet. |
 | **Fylla i offert → skriva ut** · `docs/offert-ordforandens-fraga/mall-sv.html:48–63` och motsvarande engelska mall | En tidigare granskning verifierade utskrift på en A4-sida. Prova att fylla i datum, identifiera och välja exakt ett svar med enbart tangentbord och skärmläsare samt läsa den färdiga PDF:en i rätt ordning. [Tidigare offertgranskning](../.team/reviews/018-offer-template-chairs-question.md#L114) |
+
+## Uppföljning av P1 och P2
+
+Granskningen vid `28dedbf` gav fem P2-fynd. Efter åtgärd kontrollerades följande i Chromium.
+
+- [x] **P2 · Kontrast på startsidorna.** Vid rapportens mätpunkt på postern ökade kontrasten från 2,98:1 till 4,79:1. Även en vit filmruta ger minst 4,5:1 mot brödtexten på båda språken.
+- [x] **P2 · Omflöde i menyn.** Vid 320 CSS-px nås alla fem menylänkar med Tab på båda startsidorna. Enter på genvägarna leder till `#praktiken` respektive `#arbetssatt`.
+- [x] **P2 · Språk i citaten.** Båda engelska citaten på den svenska startsidan har `lang="en"`. Källänkarna intill har svenska som språk.
+- [x] **P2 · Offertfältens etiketter och svarsalternativ.** I alla tre offertfilerna har datumen skilda namn från sina synliga etiketter. Piltangenterna byter valt svar i en namngiven grupp.
+- [x] **P2 · Omflöde i offertmallarna.** Vid 320 CSS-px staplas fälten och alla tre offerter går att fylla i utan sidorullning. Varje offert ryms på en A4-sida vid utskrift.
+
+Inga P1- eller P2-fynd behövde hoppas över.

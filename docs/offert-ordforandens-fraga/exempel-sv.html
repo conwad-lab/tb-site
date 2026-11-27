@@ -9,7 +9,7 @@
   :root { --paper:#F7F5F0; --ink:#1C2022; --bronze:#7A5729; --hair:#E3DFD5; }
   * { box-sizing:border-box; }
   body { margin:0; background:#d9d6cf; color:var(--ink); font:11pt/1.35 "Hanken Grotesk",Arial,sans-serif; }
-  .page { width:210mm; min-height:297mm; margin:0 auto; padding:18mm; background:var(--paper); display:flex; flex-direction:column; }
+  .page { width:100%; max-width:210mm; min-height:297mm; margin:0 auto; padding:18mm; background:var(--paper); display:flex; flex-direction:column; }
   .masthead { display:flex; justify-content:space-between; align-items:baseline; gap:10mm; border-bottom:1px solid var(--ink); padding-bottom:5mm; }
   .brand { font:500 18pt/1 "Newsreader",Georgia,serif; white-space:nowrap; }
   .brand b { color:var(--bronze); font:500 12pt "JetBrains Mono",monospace; }
@@ -27,13 +27,19 @@
   h2 { font:500 14pt "Newsreader",Georgia,serif; margin:0 0 3mm; }
   .choice { display:grid; grid-template-columns:7mm 1fr; gap:3mm; align-items:start; border-top:1px solid var(--hair); padding:3mm 0; font-size:10.5pt; }
   .choice:last-child { border-bottom:1px solid var(--hair); }
-  .box { font-size:15pt; line-height:1; cursor:text; }
+  .box { justify-self:start; margin:0.2em 0 0; }
   .terms { margin:8mm 0 6mm; font-size:10pt; }
   .yes { margin:0 0 6mm; font-weight:600; }
   .signature { display:grid; grid-template-columns:1.5fr 1fr .65fr; gap:6mm; }
   .signature div { border-top:1px solid var(--ink); padding-top:2mm; font-size:8pt; }
   footer { border-top:1px solid var(--hair); margin-top:auto; padding-top:3mm; font-size:8pt; }
   .example-band { background:var(--bronze); color:white; padding:2mm 3mm; font:500 8pt "JetBrains Mono",monospace; letter-spacing:.08em; }
+  @media screen and (max-width:42rem) {
+    .page { min-height:100vh; padding:1rem; overflow-wrap:anywhere; }
+    .masthead { flex-wrap:wrap; gap:2mm; }
+    .brand { white-space:normal; }
+    .details, .signature { grid-template-columns:1fr; }
+  }
   @page { size:A4; margin:18mm; }
   @media print {
     body { background:var(--paper); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -47,18 +53,18 @@
   <header class="masthead"><div class="brand">Transformation <b>&amp;</b> Beyond</div><div class="email">contact@transformationbeyond.se</div></header>
   <p class="eyebrow">Offert</p>
   <h1>Ordförandens fråga</h1>
-  <section><span class="label">Er fråga, ordagrant</span><div class="question" contenteditable="true">Vad har våra Copilot-licenser gett i kronor, och ska vi förnya dem i mars?</div></section>
+  <section><span class="label" id="question-label">Er fråga, ordagrant</span><div class="question" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="question-label">Vad har våra Copilot-licenser gett i kronor, och ska vi förnya dem i mars?</div></section>
   <section class="details">
-    <div><span class="label">Bolag</span><span class="value" contenteditable="true">Exempelbolaget Fjällsta AB</span></div>
-    <div><span class="label">Mottagare</span><span class="value" contenteditable="true">Anna Exempel, styrelseordförande</span></div>
-    <div><span class="label">Styrelsemöte</span><span class="value" contenteditable="true">2027-02-18</span></div>
-    <div><span class="label">Leverans</span><span class="value" contenteditable="true">2027-02-11</span><div class="delivery-note">en vecka före mötet</div></div>
+    <div><span class="label" id="company-label">Bolag</span><span class="value" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="company-label">Exempelbolaget Fjällsta AB</span></div>
+    <div><span class="label" id="recipient-label">Mottagare</span><span class="value" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="recipient-label">Anna Exempel, styrelseordförande</span></div>
+    <div><span class="label" id="meeting-label">Styrelsemöte</span><span class="value" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="meeting-label">2027-02-18</span></div>
+    <div><span class="label" id="delivery-label">Leverans</span><span class="value" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="delivery-label" aria-describedby="delivery-note">2027-02-11</span><div class="delivery-note" id="delivery-note">en vecka före mötet</div></div>
   </section>
-  <section>
-    <h2>Vilket svar köps</h2>
-    <div class="choice"><span class="box" contenteditable="true">☑</span><span>Kostnad per utfall för en namngiven process, mätt före ett AI-köp</span></div>
-    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Granskning av ett AI-framtaget underlag som står på styrelsemötets dagordning</span></div>
-    <div class="choice"><span class="box" contenteditable="true">☐</span><span>Hela The AI Value Review</span></div>
+  <section role="radiogroup" aria-labelledby="answer-heading">
+    <h2 id="answer-heading">Vilket svar köps</h2>
+    <label class="choice"><input class="box" type="radio" name="answer" checked><span>Kostnad per utfall för en namngiven process, mätt före ett AI-köp</span></label>
+    <label class="choice"><input class="box" type="radio" name="answer"><span>Granskning av ett AI-framtaget underlag som står på styrelsemötets dagordning</span></label>
+    <label class="choice"><input class="box" type="radio" name="answer"><span>Hela The AI Value Review</span></label>
   </section>
   <p class="terms">Villkor enligt bifogat avtal</p>
   <p class="yes">Ja. Vi beställer det kryssade svaret.</p>
