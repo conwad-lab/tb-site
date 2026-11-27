@@ -2,12 +2,12 @@
 {%- assign latest = site.beyond | sort: "date" | last -%}
 {%- if latest -%}
   {%- if include.lang == "en" -%}
-    {%- assign aria = "Latest letter" -%}{%- assign heading = "Latest letter (in Swedish)" -%}{%- assign cta = "Read the letter" -%}{%- assign all = "All letters" -%}{%- assign leadlang = ' lang="sv"' -%}
+    {%- assign aria = "Latest letter" -%}{%- assign heading = "Latest letter (in Swedish)" -%}{%- assign cta = "Read the letter" -%}{%- assign all = "All letters" -%}{%- assign subscribe = "Subscribe" -%}{%- assign leadlang = ' lang="sv"' -%}
   {%- else -%}
-    {%- assign aria = "Senaste brevet" -%}{%- assign heading = "Senaste brevet" -%}{%- assign cta = "Läs brevet" -%}{%- assign all = "Alla nummer" -%}{%- assign leadlang = "" -%}
+    {%- assign aria = "Senaste brevet" -%}{%- assign heading = "Senaste brevet" -%}{%- assign cta = "Läs brevet" -%}{%- assign all = "Alla nummer" -%}{%- assign subscribe = "Prenumerera" -%}{%- assign leadlang = "" -%}
   {%- endif -%}
   <section class="brev w" id="beyond">
     <a class="cover" href="{{ latest.url | relative_url }}" aria-label="{{ aria }}: {{ latest.title | escape }}"><span class="ca" aria-hidden="true">&amp;</span><span class="ct">&amp; Beyond · {{ latest.date | date: '%Y' }}</span><span class="ch" lang="sv">{{ latest.title | escape }}</span>{% if latest.lead %}<span class="cs"{{ leadlang }}>{{ latest.lead | escape }}</span>{% endif %}<span class="cm">Transformation &amp; Beyond</span></a>
-    <div><p class="tag">{{ heading }}</p>{% if include.lang == "en" %}<p>Week {{ latest.week }} · <time datetime="{{ latest.date | date: '%Y-%m-%d' }}">{{ latest.date | date: "%-d %B %Y" }}</time></p>{% endif %}<h2 lang="sv">{{ latest.title | escape }}</h2>{% if latest.lead %}{% if include.lang == "en" %}<p lang="sv">{% else %}<p>{% endif %}{{ latest.lead | escape }}</p>{% endif %}<p class="lk"><a href="{{ latest.url | relative_url }}">{{ cta }} →</a><a href="{{ '/beyond/' | relative_url }}">{{ all }}</a></p></div>
+    <div><p class="tag">{{ heading }}</p>{% if include.lang == "en" %}<p>Week {{ latest.week }} · <time datetime="{{ latest.date | date: '%Y-%m-%d' }}">{{ latest.date | date: "%-d %B %Y" }}</time></p>{% endif %}<h2 lang="sv">{{ latest.title | escape }}</h2>{% if latest.lead %}{% if include.lang == "en" %}<p lang="sv">{% else %}<p>{% endif %}{{ latest.lead | escape }}</p>{% endif %}<p class="lk"><a href="{{ latest.url | relative_url }}">{{ cta }} →</a><a href="{{ '/beyond/' | relative_url }}">{{ all }}</a><a href="{{ '/prenumerera/' | relative_url }}">{{ subscribe }}</a></p></div>
   </section>
 {%- endif -%}
