@@ -1,14 +1,17 @@
 ---
 layout: beyond-base
+archive_home: true
 title: "& Beyond"
 description: "& Beyond är Conny Wadbros veckobrev om gränslandet mellan teknik och verksamhet: AI, styrning och arbetet runt omkring. Varje måndag, på svenska."
 ---
 <section class="archive">
-  <div class="wrap">
-    <p class="eyebrow">Veckobrev · Varje måndag</p>
+  <div class="hero w">
+    <p class="tag">Veckobrev · Varje måndag</p>
     <h1>&amp; Beyond</h1>
-    <p class="lead">Ett veckobrev om gränslandet mellan teknik och verksamhet: vad veckans studier och rapporter betyder för en nordisk ledningsgrupp. Skrivet av Conny Wadbro, Transformation &amp; Beyond.</p>
-    <form class="signup" action="https://beyondbrev.substack.com/subscribe" method="get">
+    <div class="hero-foot"><p>Ett veckobrev om gränslandet mellan teknik och verksamhet: vad veckans studier och rapporter betyder för en nordisk ledningsgrupp. Skrivet av Conny Wadbro, Transformation &amp; Beyond.</p></div>
+  </div>
+  <div class="archive-body w">
+    <form class="archive-signup" action="https://beyondbrev.substack.com/subscribe" method="get">
       <label for="signup-email">Din e-postadress</label>
       <div>
         <input id="signup-email" type="email" name="email" required autocomplete="email" aria-describedby="signup-note">
@@ -23,7 +26,7 @@ description: "& Beyond är Conny Wadbros veckobrev om gränslandet mellan teknik
 
     {%- assign letters = site.beyond | sort: "date" | reverse %}
     {%- if letters.size > 0 %}
-    <ol class="issues">
+    <ol class="archive-issues">
       {%- for l in letters %}
       <li>
         <a href="{{ l.url | relative_url }}">

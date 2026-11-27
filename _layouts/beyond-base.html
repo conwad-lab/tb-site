@@ -31,10 +31,21 @@
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+{% if page.archive_home %}
+<link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/archive.css' | relative_url }}">
+{% else %}
 <link rel="stylesheet" href="{{ '/assets/beyond.css' | relative_url }}">
+{% endif %}
 </head>
 <body>
 
+{% if page.archive_home %}
+<header class="top w">
+  <a class="name" href="/sv/">Transformation &amp; Beyond</a>
+  <nav aria-label="Huvudmeny"><a href="/sv/#praktiken">Vad vi gör</a><a href="/sv/#arbetssatt">Arbetssätt</a><a class="keep" href="/sv/#review">Genomlysningen</a><a class="keep" href="/sv/#grundaren">Vem du får</a><a class="keep" href="/beyond/" aria-current="page">&amp; Beyond</a></nav>
+</header>
+{% else %}
 <header>
   <div class="wrap nav">
     <a class="mark" href="{{ '/' | relative_url }}">Transformation <span>&amp;</span> Beyond</a>
@@ -43,11 +54,21 @@
     </nav>
   </div>
 </header>
+{% endif %}
 
 <main>
 {{ content }}
 </main>
 
+{% if page.archive_home %}
+<footer class="w">
+  <span>© {{ site.time | date: "%Y" }} Transformation &amp; Beyond AB</span>
+  <span>org.nr 559411-1634 · Lomma, Skåne</span>
+  <a href="/beyond/feed.xml">RSS</a>
+  <a href="https://www.dignami.com/en" target="_blank" rel="noopener">Assurance &amp; plattform → Dignami ↗</a>
+  <a href="/" hreflang="en" lang="en">In English</a>
+</footer>
+{% else %}
 <footer>
   <div class="wrap foot">
     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-4px"><g fill="#F8F6F1"><rect x="12" y="6" width="4" height="18"/><rect x="4" y="12" width="18" height="6"/></g><rect x="22" y="12" width="6" height="6" fill="#CF2318"/></svg>&ensp;© {{ site.time | date: "%Y" }} Transformation &amp; Beyond AB</span>
@@ -55,5 +76,6 @@
     <span><a href="{{ '/beyond/feed.xml' | relative_url }}">RSS</a></span>
   </div>
 </footer>
+{% endif %}
 </body>
 </html>
