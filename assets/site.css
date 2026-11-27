@@ -30,6 +30,8 @@ h1,h2,h3,.gap > div,.band,.qs li,.price,.hand p:first-child{font-family:var(--hf
 .amp{position:absolute;right:-.06em;top:50%;transform:translateY(-54%);font-family:var(--hf);font-size:calc(clamp(360px,74vw,1180px)*.8);font-weight:500;line-height:.7;color:var(--red);letter-spacing:-.05em;pointer-events:none;user-select:none}
 .hero h1{position:relative;font-size:clamp(40px,7vw,122px);max-width:16ch}
 .hero h1:lang(en){font-size:clamp(40px,5.4vw,96px)}
+.hero .tag{position:relative}
+.hero .tag::before{background:var(--on-blue)}
 .nb{white-space:nowrap}
 .hero-foot{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 56px;margin-top:clamp(28px,5vh,56px);padding-top:22px;border-top:var(--lw) solid var(--on-blue);font-size:clamp(17px,1.5vw,21px);line-height:1.4}
 .hero-foot p{margin:0;max-width:34ch}
