@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Value Review — sample management memo</title>
+<style>
+@page { size: A4; margin: 18mm 20mm; }
+body { max-width: 48em; margin: auto; color: #0c2233; font: 11pt/1.35 Arial, sans-serif; }
+h1,h2 { font-family: Georgia, serif; margin: .7em 0 .25em; }
+h1 { font-size: 25pt; }
+h2 { font-size: 16pt; }
+p { margin: .3em 0 .6em; }
+table { width: 100%; border-collapse: collapse; }
+td,th { border-bottom: 1px solid #aaa; padding: .25em .35em; text-align: left; vertical-align: top; }
+small { font-size: 9pt; }
+a { color: #0c2233; }
+</style>
+</head>
+<body>
+<header><small>Transformation &amp; Beyond · The AI Value Review · Sample management memo</small>
+<h1>Keep approval at the release gate</h1>
+<p>To the leadership team · Arnold OS self-review · Evidence as of 19 July 2026</p></header>
+<h2>Decision requested</h2>
+<p>Keep overnight diagnosis and preparation of changes under supervision. Retain human approval before release. Before expanding autonomy, assign a second reviewer and agree which exceptions require escalation. Management can defer further investment while it measures the cost and benefit of this change.</p>
+<h2>Where the operation stood</h2>
+<p>In the July review, the orchestrator could take an alert through diagnosis and prepare a pull request for review. Every release and escalation depended on one operator. The review placed the system at rung 4. Its evidence for rung 5 was partial.</p>
+<table>
+<thead><tr><th scope="col">Capability rung</th><th scope="col">Evidence in the review</th></tr></thead>
+<tbody>
+<tr><td>0 · Data and BI consumption</td><td>Operators used inventory, failure and freshness reports.</td></tr>
+<tr><td>1 · Assisted authoring</td><td>Operators worked interactively with AI assistants.</td></tr>
+<tr><td>2 · Grounded self-service Q&amp;A</td><td>The inbox answered status questions from live queries.</td></tr>
+<tr><td>3 · Supervised workflow automation</td><td>Multi-step runs produced work for human review.</td></tr>
+<tr><td>4 · Supervised autonomous agents</td><td>A bounded overnight task could reach a review checkpoint.</td></tr>
+<tr><td>5 · Governed multi-agent workflows</td><td>Partial. Agents coordinated, but one operator still reviewed every irreversible output.</td></tr>
+</tbody></table>
+<h2>What management needs before expanding</h2>
+<p><strong>Ownership and data.</strong> Name a backup reviewer. For a bounded trial, record the decision owner, outcome, elapsed approval time and rework for each proposed change. Compare both reviewers’ escalation decisions before delegating release authority.</p>
+<p><strong>Economics.</strong> The July review attributed USD 74.73 per month of compute usage to the autonomous tier within a USD 200 monthly pool. That figure alone cannot establish savings per approved change. Measure operator time and accepted outcomes alongside compute and hosting costs.</p>
+<p><strong>Model choice.</strong> The evidence describes routing smaller models to routine checks. It contains no open-weight comparison. Before changing models or moving to metered billing, replay representative tasks and compare acceptance, escalation and cost per accepted outcome.</p>
+<p><small>Evidence: <a href="https://pub-4ef719d99967461999898e674993d796.r2.dev/brand/tb/architecture-review-sample.pdf">Architecture Review — Arnold OS, 19 July 2026</a>, pp. 2–3 (ladder and checkpoints) and “Advise agenda crosswalk” (compute and model evidence). The trial and decision above are recommendations based on that dated record.</small></p>
+</body>
+</html>
