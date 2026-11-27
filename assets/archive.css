@@ -1,0 +1,40 @@
+/* The archive shares site.css with the home pages. */
+.archive { padding: 0; }
+.archive .hero {
+  min-height: auto;
+  padding-top: clamp(130px, 17vw, 230px);
+}
+.archive .hero-foot { grid-template-columns: 1fr; }
+.archive .hero-foot p { max-width: 52ch; }
+.archive-body { padding-block: clamp(32px, 5vw, 72px); }
+.archive-signup label { display: block; margin-bottom: 8px; font-weight: 700; }
+.archive-signup div { display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-signup input, .archive-signup button {
+  max-width: 100%;
+  min-height: 44px;
+  border: 2px solid var(--blue);
+  border-radius: 0;
+  padding: 8px 14px;
+  font: inherit;
+}
+.archive-signup button {
+  background: var(--blue);
+  color: var(--on-blue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.archive-signup button:hover { background: var(--black); }
+.archive-signup p, .archive .follow { font-size: 16px; }
+.archive-issues {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  border-top: var(--lw) solid var(--black);
+}
+.archive-issues li { border-bottom: 1px solid var(--black); }
+.archive-issues a { display: grid; gap: 8px; padding-block: 24px; text-decoration: none; }
+.archive-issues .wk { font-size: 15px; font-weight: 700; }
+.archive-issues .t { font: 500 clamp(28px, 4vw, 56px)/1.1 var(--hf); }
+.archive-issues .d { max-width: 56ch; }
+.archive-issues a:hover .t { text-decoration: underline; }
+.archive .empty { border-top: var(--lw) solid var(--black); padding-top: 24px; }
